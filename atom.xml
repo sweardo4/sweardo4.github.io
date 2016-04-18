@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.xiaoluo.win/"/>
-  <updated>2016-04-18T06:13:21.000Z</updated>
+  <updated>2016-04-18T06:59:07.000Z</updated>
   <id>http://www.xiaoluo.win/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.xiaoluo.win/2016/04/18/react-native-macone/"/>
     <id>http://www.xiaoluo.win/2016/04/18/react-native-macone/</id>
     <published>2016-04-18T03:32:43.000Z</published>
-    <updated>2016-04-18T06:13:21.000Z</updated>
+    <updated>2016-04-18T06:59:07.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;开发环境需求&quot;&gt;&lt;a href=&quot;#开发环境需求&quot; class=&quot;headerlink&quot; title=&quot;开发环境需求&quot;&gt;&lt;/a&gt;开发环境需求&lt;/h2&gt;&lt;p&gt;   1.需要Xcode7.0及以上版本&lt;br&gt;   2.需要Node.js 4.0及以上版本&lt;/p&gt;
 &lt;p&gt;  Node安装:安装 nvm（安装向导在&lt;a href=&quot;https://github.com/creationix/nvm#installation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;） nvm是nodejs版本管理工具。&lt;br&gt;  然后运行&lt;/p&gt;
@@ -56,11 +56,6 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   这是因为ANDROID_HOME环境变量没有设置正确&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;gt; * 请回看上面的内容
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   2.failed to find target with hash string ‘android-23’ in: /usr/local/Cellar/android-sdk&lt;br&gt;     在android-sdk目录中不存在android-23(可能会是其他版本)&lt;br&gt;      办法:在Android SDK manager 中安装这个版本的android sdk build－tools&lt;/p&gt;
-&lt;p&gt;  3.ANDROID_HOME error&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A problem occurred evaluating project ‘:app’.&lt;br&gt;SDK location not found. Define location with sdk.dir in the local.properties file or with an ANDROID_HOME environment variable.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;  多是没有正确设置android-sdk 所在目录,找到正确的目录设置ANDROID_HOME 环境变量就可以了&lt;/p&gt;
 &lt;h3 id=&quot;更多信息了解请访问这里&quot;&gt;&lt;a href=&quot;#更多信息了解请访问这里&quot; class=&quot;headerlink&quot; title=&quot;更多信息了解请访问这里&quot;&gt;&lt;/a&gt;更多信息了解请访问&lt;a href=&quot;http://reactnative.cn/docs/0.23/getting-started.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/h3&gt;</content>
     
     <summary type="html">
