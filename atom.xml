@@ -72,10 +72,11 @@
     <link href="http://www.xiaoluo.win/2016/04/19/reactone/"/>
     <id>http://www.xiaoluo.win/2016/04/19/reactone/</id>
     <published>2016-04-19T09:36:55.000Z</published>
-    <updated>2016-05-10T06:20:35.000Z</updated>
+    <updated>2016-05-10T06:21:15.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;分清这些关键字&quot;&gt;&lt;a href=&quot;#分清这些关键字&quot; class=&quot;headerlink&quot; title=&quot;分清这些关键字&quot;&gt;&lt;/a&gt;分清这些关键字&lt;/h2&gt;&lt;p&gt;组件，状态机，虚拟DOM，真实DOM，组件的生命周期&lt;/p&gt;
 &lt;p&gt;###组件&lt;br&gt;React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;figure class=&quot;highlight jsx&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; MyComponent  = React.createClass(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		render:&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				&amp;lt;div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;					&amp;lt;p&amp;gt;My component&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ReactDOM.render(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;lt;MyComponent /&amp;gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		document.getElementById(&#39;elementId&#39;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;###虚拟DOM 真实DOM&lt;br&gt;组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，叫做虚拟 DOM （virtual DOM）。只有当它插入文档以后，才会变成真实的 DOM 。根据 React 的设计，所有的 DOM 变动，都先在虚拟 DOM 上发生，然后再将实际发生变动的部分，反映在真实 DOM上，这种算法叫做 &lt;a href=&quot;http://calendar.perfplanet.com/2013/diff/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DOM diff&lt;/a&gt; ，它可以极大提高网页的性能表现。&lt;/p&gt;
 &lt;p&gt;###状态机&lt;br&gt;React 的一大创新，就是将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染UI&lt;/p&gt;
@@ -95,7 +96,7 @@
     <summary type="html">
     
       &lt;h2 id=&quot;分清这些关键字&quot;&gt;&lt;a href=&quot;#分清这些关键字&quot; class=&quot;headerlink&quot; title=&quot;分清这些关键字&quot;&gt;&lt;/a&gt;分清这些关键字&lt;/h2&gt;&lt;p&gt;组件，状态机，虚拟DOM，真实DOM，组件的生命周期&lt;/p&gt;
-&lt;p&gt;###组件&lt;br&gt;React 允
+&lt;p&gt;###组件&lt;br&gt;React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类&lt;/p&gt;
     
     </summary>
     
