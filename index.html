@@ -487,7 +487,7 @@
               
                 
                 <a class="post-title-link" href="/2016/04/19/reactone/" itemprop="url">
-                  react快速开始
+                  react分清这些关键字
                 </a>
               
             
@@ -505,6 +505,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -537,7 +556,23 @@
       
         
           
-            
+            <h2 id="分清这些关键字"><a href="#分清这些关键字" class="headerlink" title="分清这些关键字"></a>分清这些关键字</h2><p>组件，状态机，虚拟DOM，真实DOM，组件的生命周期</p>
+<p>###组件<br>React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MyComponent  = React.createClass(&#123;</span><br><span class="line">			render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="keyword">return</span> (</span><br><span class="line">					&lt;div&gt;</span><br><span class="line">							&lt;p&gt;My component&lt;/p&gt;</span><br><span class="line">					&lt;/div&gt;</span><br><span class="line">					)</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	ReactDOM.render(</span><br><span class="line">		&lt;MyComponent /&gt;,</span><br><span class="line">		document.getElementById('elementId')</span><br><span class="line"></span><br><span class="line">		)</span><br></pre></td></tr></table></figure>
+<p>###虚拟DOM 真实DOM<br>组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，叫做虚拟 DOM （virtual DOM）。只有当它插入文档以后，才会变成真实的 DOM 。根据 React 的设计，所有的 DOM 变动，都先在虚拟 DOM 上发生，然后再将实际发生变动的部分，反映在真实 DOM上，这种算法叫做 <a href="http://calendar.perfplanet.com/2013/diff/" target="_blank" rel="external">DOM diff</a> ，它可以极大提高网页的性能表现。</p>
+<p>###状态机<br>React 的一大创新，就是将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染UI</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MyComponent = React.createClass(&#123;</span><br><span class="line">	getInitialState:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;st:<span class="literal">false</span>&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	handleState:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.setState(&#123;</span><br><span class="line">			st:!<span class="keyword">this</span>.state.st,</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;,</span><br><span class="line">	render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> text = <span class="keyword">this</span>.state.st ? &lt;p&gt;状态为true&lt;/p&gt; : &lt;p&gt;状态为false&lt;/p&gt;</span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">			&lt;div onClick=&#123;this.handleState&#125;&gt;</span><br><span class="line">					&#123;text&#125;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			)</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">ReactDOM.render(</span><br><span class="line">	&lt;MyComponent /&gt;,</span><br><span class="line">	document.getElementById('elementId')</span><br><span class="line">	)</span><br></pre></td></tr></table></figure>
+<p>###组件的生命周期</p>
+<p>分为三个状态</p>
+<blockquote>
+<p>   Mounting：已插入真实 DOM<br>   Updating：正在被重新渲染<br>   Unmounting：已移出真实 DOM</p>
+</blockquote>
+<p>React 为每个状态都提供了两种处理函数，will 函数在进入状态之前调用，did 函数在进入状态之后调用，三种状态共计五种处理函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">componentWillMount()</span><br><span class="line">componentDidMount()</span><br><span class="line">componentWillUpdate(object nextProps, object nextState)</span><br><span class="line">componentDidUpdate(object prevProps, object prevState)</span><br><span class="line">componentWillUnmount()</span><br></pre></td></tr></table></figure>
+<p>此外，React 还提供两种特殊状态的处理函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用</span><br><span class="line">shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用</span><br></pre></td></tr></table></figure>
+<p><a href="http://facebook.github.io/react/docs/component-specs.html#lifecycle-methods" target="_blank" rel="external">官方文档</a></p>
+
           
         
       
@@ -1238,7 +1273,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
