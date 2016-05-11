@@ -3,10 +3,29 @@
 
 
     
+  <url>
+    <loc>http://www.xiaoluo.win/2016/05/11/bscarousel/</loc>
+    <lastmod>2016-05-11T03:58:24.000Z</lastmod>
+    <data>
+        <display>
+        <title>bootstrap源码注释解析-Carousel</title>
+        <pubTime>2016-05-11T03:47:49.000Z</pubTime>
+        
+        <tag>bs</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://www.xiaoluo.win/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
   <url>
     <loc>http://www.xiaoluo.win/2016/04/19/reactone/</loc>
-    <lastmod>2016-05-10T06:23:59.000Z</lastmod>
+    <lastmod>2016-05-11T03:50:59.000Z</lastmod>
     <data>
         <display>
         <title>react分清这些关键字</title>
@@ -17,27 +36,7 @@
          
            
              
-              <breadCrumb title="技术" url="http://www.xiaoluo.win/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/05/06/boot31/</loc>
-    <lastmod>2016-05-06T08:05:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>bootstrap源码解析之Alert组件</title>
-        <pubTime>2016-05-06T07:44:13.000Z</pubTime>
-        
-        <tag>bootstrap-sass3.3.5</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://www.xiaoluo.win/categories/%E6%8A%80%E6%9C%AF/"/>
+              <breadCrumb title="react" url="http://www.xiaoluo.win/categories/react/"/>
           
         </display>
     </data>
@@ -46,7 +45,7 @@
     
   <url>
     <loc>http://www.xiaoluo.win/2016/04/26/react-native-two/</loc>
-    <lastmod>2016-04-26T09:03:38.000Z</lastmod>
+    <lastmod>2016-05-11T03:50:47.000Z</lastmod>
     <data>
         <display>
         <title>react-native ios 导航栏实例</title>
@@ -57,12 +56,53 @@
          
            
              
-              <breadCrumb title="技术" url="http://www.xiaoluo.win/categories/%E6%8A%80%E6%9C%AF/"/>
+              <breadCrumb title="react" url="http://www.xiaoluo.win/categories/react/"/>
           
         </display>
     </data>
     </url>
 
+    
+  <url>
+    <loc>http://www.xiaoluo.win/2016/04/18/react-native-macone/</loc>
+    <lastmod>2016-05-11T03:50:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>react-native 开发环境安装及遇到的问题总结</title>
+        <pubTime>2016-04-18T03:32:43.000Z</pubTime>
+        
+        <tag>react-native</tag>
+         
+         
+           
+             
+              <breadCrumb title="react" url="http://www.xiaoluo.win/categories/react/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.xiaoluo.win/2016/05/06/boot31/</loc>
+    <lastmod>2016-05-11T03:50:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>bootstrap源码解析之Alert组件</title>
+        <pubTime>2016-05-06T07:44:13.000Z</pubTime>
+        
+        <tag>bs</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://www.xiaoluo.win/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://www.xiaoluo.win/2014/11/07/winter/</loc>
@@ -94,26 +134,6 @@
            
              
               <breadCrumb title="记录" url="http://www.xiaoluo.win/categories/%E8%AE%B0%E5%BD%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/04/18/react-native-macone/</loc>
-    <lastmod>2016-04-18T06:59:07.000Z</lastmod>
-    <data>
-        <display>
-        <title>react-native 开发环境安装及遇到的问题总结</title>
-        <pubTime>2016-04-18T03:32:43.000Z</pubTime>
-        
-        <tag>react-native</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://www.xiaoluo.win/categories/%E6%8A%80%E6%9C%AF/"/>
           
         </display>
     </data>

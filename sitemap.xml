@@ -2,30 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.xiaoluo.win/about/index.html</loc>
+    <loc>http://www.xiaoluo.win/2016/05/11/bscarousel/</loc>
     
-    <lastmod>2016-05-11T01:25:18.000Z</lastmod>
+    <lastmod>2016-05-11T03:58:24.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.xiaoluo.win/2016/04/19/reactone/</loc>
     
-    <lastmod>2016-05-10T06:23:59.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoluo.win/2016/05/06/boot31/</loc>
-    
-    <lastmod>2016-05-06T08:05:10.000Z</lastmod>
+    <lastmod>2016-05-11T03:50:59.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.xiaoluo.win/2016/04/26/react-native-two/</loc>
     
-    <lastmod>2016-04-26T09:03:38.000Z</lastmod>
+    <lastmod>2016-05-11T03:50:47.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoluo.win/2016/04/18/react-native-macone/</loc>
+    
+    <lastmod>2016-05-11T03:50:36.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoluo.win/2016/05/06/boot31/</loc>
+    
+    <lastmod>2016-05-11T03:50:23.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoluo.win/about/index.html</loc>
+    
+    <lastmod>2016-05-11T01:25:18.000Z</lastmod>
     
   </url>
   
@@ -40,13 +54,6 @@
     <loc>http://www.xiaoluo.win/2014/03/20/ping/</loc>
     
     <lastmod>2016-04-19T03:48:04.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoluo.win/2016/04/18/react-native-macone/</loc>
-    
-    <lastmod>2016-04-18T06:59:07.000Z</lastmod>
     
   </url>
   
