@@ -4,11 +4,31 @@
 
     
   <url>
-    <loc>http://www.xiaoluo.win/2016/05/11/bscarousel/</loc>
-    <lastmod>2016-05-11T03:59:41.000Z</lastmod>
+    <loc>http://www.xiaoluo.win/2016/05/06/boot31/</loc>
+    <lastmod>2016-05-11T06:02:37.000Z</lastmod>
     <data>
         <display>
-        <title>bootstrap源码注释解析-Carousel</title>
+        <title>bootstrap源码解析之Alert插件</title>
+        <pubTime>2016-05-06T07:44:13.000Z</pubTime>
+        
+        <tag>bs</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://www.xiaoluo.win/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.xiaoluo.win/2016/05/11/bscarousel/</loc>
+    <lastmod>2016-05-11T06:02:16.000Z</lastmod>
+    <data>
+        <display>
+        <title>bootstrap源码解析之Carousel插件</title>
         <pubTime>2016-05-11T03:47:49.000Z</pubTime>
         
         <tag>bs</tag>
@@ -77,26 +97,6 @@
            
              
               <breadCrumb title="react" url="http://www.xiaoluo.win/categories/react/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/05/06/boot31/</loc>
-    <lastmod>2016-05-11T03:50:23.000Z</lastmod>
-    <data>
-        <display>
-        <title>bootstrap源码解析之Alert组件</title>
-        <pubTime>2016-05-06T07:44:13.000Z</pubTime>
-        
-        <tag>bs</tag>
-         
-         
-           
-             
-              <breadCrumb title="javascript" url="http://www.xiaoluo.win/categories/javascript/"/>
           
         </display>
     </data>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.xiaoluo.win/"/>
-  <updated>2016-05-11T03:59:41.000Z</updated>
+  <updated>2016-05-11T06:02:16.000Z</updated>
   <id>http://www.xiaoluo.win/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>bootstrap源码注释解析-Carousel</title>
+    <title>bootstrap源码解析之Carousel插件</title>
     <link href="http://www.xiaoluo.win/2016/05/11/bscarousel/"/>
     <id>http://www.xiaoluo.win/2016/05/11/bscarousel/</id>
     <published>2016-05-11T03:47:49.000Z</published>
-    <updated>2016-05-11T03:59:41.000Z</updated>
+    <updated>2016-05-11T06:02:16.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;轮播插件源码分析&quot;&gt;&lt;a href=&quot;#轮播插件源码分析&quot; class=&quot;headerlink&quot; title=&quot;轮播插件源码分析&quot;&gt;&lt;/a&gt;轮播插件源码分析&lt;/h2&gt;&lt;p&gt;很多的事情只有做了,才能深入了解。&lt;br&gt;已经在注释之中,关于这个bs轮播插件对于前段工程师来说还是比较简单的。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -41,11 +41,11 @@
   </entry>
   
   <entry>
-    <title>bootstrap源码解析之Alert组件</title>
+    <title>bootstrap源码解析之Alert插件</title>
     <link href="http://www.xiaoluo.win/2016/05/06/boot31/"/>
     <id>http://www.xiaoluo.win/2016/05/06/boot31/</id>
     <published>2016-05-06T07:44:13.000Z</published>
-    <updated>2016-05-11T03:50:23.000Z</updated>
+    <updated>2016-05-11T06:02:37.000Z</updated>
     
     <content type="html">&lt;p&gt;alert 组件相对是比较简单的 下面是经过注释后的解析部分.&lt;/p&gt;
 &lt;p&gt;下面咱们要讨论的是bootstrap源码中jQuery插件的写法规则，在3.3.5sass版本中首先是防止全局污染的+function($){}(jQuery);防止命名重复的noConflict，把绑定事件到特定的命名空间下，最后是一个事件委托。&lt;/p&gt;
