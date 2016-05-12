@@ -310,7 +310,7 @@
 
       
         
-          <p>addEventListener是用来注册事件的，通常第二个参数我们传入的是一个回调函数，但是很多著名的js源码中你它可以传入object，只需要这个object具有handleEvent属性即可。<br>这是一个强大的功能，jQuery源码中封装了同样的功能。</p>
+          <p>addEventListener是用来注册事件的，通常第二个参数我们传入的是一个回调函数，但是在很多著名的js源码中发现它可以传入object，只需要这个object具有handleEvent属性即可。<br>这是一个强大的功能，jQuery源码中封装了同样的功能。</p>
 <h2 id="原生js如何使用"><a href="#原生js如何使用" class="headerlink" title="原生js如何使用"></a>原生js如何使用</h2><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// using funcion handle</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clickHandler</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'clickHandler:'</span>, <span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'click'</span>, clickHandler, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/05/12/handleEvent/#more" rel="contents">
