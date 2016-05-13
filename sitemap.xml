@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.xiaoluo.win/about/index.html</loc>
+    
+    <lastmod>2016-05-12T08:45:59.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.xiaoluo.win/2016/05/11/bscarousel/</loc>
     
     <lastmod>2016-05-12T08:24:33.000Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>http://www.xiaoluo.win/2016/04/18/react-native-macone/</loc>
     
     <lastmod>2016-05-11T03:50:36.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoluo.win/about/index.html</loc>
-    
-    <lastmod>2016-05-11T01:25:18.000Z</lastmod>
     
   </url>
   
