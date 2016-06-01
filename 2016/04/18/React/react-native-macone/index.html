@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="react," />
+  <meta name="keywords" content="react-native," />
 
 
 
@@ -82,19 +82,25 @@
 
 
 
-<meta name="description" content="分清这些关键字组件，状态机，虚拟DOM，真实DOM，组件的生命周期
-组件React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类">
+<meta name="description" content="开发环境需求   1.需要Xcode7.0及以上版本   2.需要Node.js 4.0及以上版本
+  Node安装:安装 nvm（安装向导在这里） nvm是nodejs版本管理工具。  然后运行
+  1nvm install node &amp;amp;&amp;amp; nvm alias default node">
 <meta property="og:type" content="article">
-<meta property="og:title" content="react分清这些关键字">
-<meta property="og:url" content="http://www.xiaoluo.win/2016/04/19/reactone/index.html">
+<meta property="og:title" content="react-native 开发环境安装及遇到的问题总结">
+<meta property="og:url" content="http://www.xiaoluo.win/2016/04/18/React/react-native-macone/index.html">
 <meta property="og:site_name" content="CikeSwear's blog">
-<meta property="og:description" content="分清这些关键字组件，状态机，虚拟DOM，真实DOM，组件的生命周期
-组件React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类">
-<meta property="og:updated_time" content="2016-05-11T03:50:59.000Z">
+<meta property="og:description" content="开发环境需求   1.需要Xcode7.0及以上版本   2.需要Node.js 4.0及以上版本
+  Node安装:安装 nvm（安装向导在这里） nvm是nodejs版本管理工具。  然后运行
+  1nvm install node &amp;amp;&amp;amp; nvm alias default node">
+<meta property="og:image" content="http://reactnative.cn/static/docs/0.23/img/AndroidSDK1.png">
+<meta property="og:image" content="http://www.xiaoluo.win/images/sdk2.png">
+<meta property="og:updated_time" content="2016-05-11T03:50:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="react分清这些关键字">
-<meta name="twitter:description" content="分清这些关键字组件，状态机，虚拟DOM，真实DOM，组件的生命周期
-组件React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类">
+<meta name="twitter:title" content="react-native 开发环境安装及遇到的问题总结">
+<meta name="twitter:description" content="开发环境需求   1.需要Xcode7.0及以上版本   2.需要Node.js 4.0及以上版本
+  Node安装:安装 nvm（安装向导在这里） nvm是nodejs版本管理工具。  然后运行
+  1nvm install node &amp;amp;&amp;amp; nvm alias default node">
+<meta name="twitter:image" content="http://reactnative.cn/static/docs/0.23/img/AndroidSDK1.png">
 
 
 
@@ -112,7 +118,7 @@
   };
 </script>
 
-  <title> react分清这些关键字 | CikeSwear's blog </title>
+  <title> react-native 开发环境安装及遇到的问题总结 | CikeSwear's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +268,7 @@
             
             
               
-                react分清这些关键字
+                react-native 开发环境安装及遇到的问题总结
               
             
           </h1>
@@ -274,8 +280,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-19T17:36:55+08:00" content="2016-04-19">
-              2016-04-19
+            <time itemprop="dateCreated" datetime="2016-04-18T11:32:43+08:00" content="2016-04-18">
+              2016-04-18
             </time>
           </span>
 
@@ -304,8 +310,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/19/reactone/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/19/reactone/" itemprop="commentsCount"></span>
+                <a href="/2016/04/18/React/react-native-macone/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/18/React/react-native-macone/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -328,23 +334,40 @@
       
 
       
-        <h2 id="分清这些关键字"><a href="#分清这些关键字" class="headerlink" title="分清这些关键字"></a>分清这些关键字</h2><p>组件，状态机，虚拟DOM，真实DOM，组件的生命周期</p>
-<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><p>React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类</p>
-<a id="more"></a>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MyComponent  = React.createClass(&#123;</span><br><span class="line">		render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> (</span><br><span class="line">				&lt;div&gt;</span><br><span class="line">					&lt;p&gt;My component&lt;/p&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">			)</span><br><span class="line">		&#125;</span><br><span class="line">&#125;);</span><br><span class="line">ReactDOM.render(</span><br><span class="line">		&lt;MyComponent /&gt;,</span><br><span class="line">		document.getElementById('elementId')</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="虚拟DOM-真实DOM"><a href="#虚拟DOM-真实DOM" class="headerlink" title="虚拟DOM 真实DOM"></a>虚拟DOM 真实DOM</h3><p>组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，叫做虚拟 DOM （virtual DOM）。只有当它插入文档以后，才会变成真实的 DOM 。根据 React 的设计，所有的 DOM 变动，都先在虚拟 DOM 上发生，然后再将实际发生变动的部分，反映在真实 DOM上，这种算法叫做 <a href="http://calendar.perfplanet.com/2013/diff/" target="_blank" rel="external">DOM diff</a> ，它可以极大提高网页的性能表现。</p>
-<h3 id="状态机"><a href="#状态机" class="headerlink" title="状态机"></a>状态机</h3><p>React 的一大创新，就是将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染UI</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MyComponent = React.createClass(&#123;</span><br><span class="line">	getInitialState:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;st:<span class="literal">false</span>&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	handleState:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.setState(&#123;</span><br><span class="line">			st:!<span class="keyword">this</span>.state.st,</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;,</span><br><span class="line">	render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> text = <span class="keyword">this</span>.state.st ? &lt;p&gt;状态为true&lt;/p&gt; : &lt;p&gt;状态为false&lt;/p&gt;</span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">			&lt;div onClick=&#123;this.handleState&#125;&gt;</span><br><span class="line">					&#123;text&#125;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			)</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">ReactDOM.render(</span><br><span class="line">	&lt;MyComponent /&gt;,</span><br><span class="line">	document.getElementById('elementId')</span><br><span class="line">	)</span><br></pre></td></tr></table></figure>
-<h3 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h3><p>分为三个状态</p>
+        <h2 id="开发环境需求"><a href="#开发环境需求" class="headerlink" title="开发环境需求"></a>开发环境需求</h2><p>   1.需要Xcode7.0及以上版本<br>   2.需要Node.js 4.0及以上版本</p>
+<p>  Node安装:安装 nvm（安装向导在<a href="https://github.com/creationix/nvm#installation" target="_blank" rel="external">这里</a>） nvm是nodejs版本管理工具。<br>  然后运行</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install node &amp;&amp; nvm <span class="built_in">alias</span> default node</span><br></pre></td></tr></table></figure>
+  <a id="more"></a>
+<p>  这将会默认安装最新版本的Node.js并且设置好命令行的环境变量，这样你可以输入node命令来启动Node.js环境。nvm使你可以同时安装多个版本的Node.js，并且在这些版本之间轻松切换。</p>
+<p>  3.建议运行以下命令， 否则你可能会遇到一个Node.js监视文件系统的BUG。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install watchman</span><br></pre></td></tr></table></figure>
+<p>  4.你还可以通过一下命令安装flow为js代码加上类型检查</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install flow</span><br></pre></td></tr></table></figure>
+<h3 id="android-sdk-安装"><a href="#android-sdk-安装" class="headerlink" title="android sdk 安装"></a>android sdk 安装</h3><p>  1.install last <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">JDK</a>  你还可以在<a href="http://www.java.com/zh_CN/download/mac_download.jsp" target="_blank" rel="external">这里</a>下载mac一键式安装包<br>  2.安装android sdk</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install android-sdk</span><br></pre></td></tr></table></figure>
+<h3 id="定义ANDROID-HOME环境变量"><a href="#定义ANDROID-HOME环境变量" class="headerlink" title="定义ANDROID_HOME环境变量"></a>定义ANDROID_HOME环境变量</h3><p>  重要: 确保ANDROID_HOME环境变量指向你已经安装的Android SDK目录:<br>  如果你不知道自己的android-sdk安装到那个目录里了,你可以运行命令进入android sdk manager界面<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android</span><br></pre></td></tr></table></figure></p>
+<p>  我们在界面中找到SDK PATH 这就是你的android-sdk 所在目录<br>  加入ANDROID_HOME  环境变量</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ANDROID_HOME = [SDK PATH]</span><br><span class="line"><span class="comment"># 也可能是这个样子</span></span><br><span class="line"><span class="built_in">export</span> ANDROID_HOME=/usr/<span class="built_in">local</span>/opt/android-sdk</span><br><span class="line"><span class="comment"># 否则也可能是（当然具体视你把SDK放在哪）：</span></span><br><span class="line"><span class="built_in">export</span> ANDROID_HOME=~/Library/Android/sdk</span><br></pre></td></tr></table></figure>
+<h3 id="设置SDK"><a href="#设置SDK" class="headerlink" title="设置SDK"></a>设置SDK</h3><p>   <img src="http://reactnative.cn/static/docs/0.23/img/AndroidSDK1.png" alt="1"><br>   <img src="/images/sdk2.png" alt="2"></p>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g react-native-cli</span><br><span class="line">react-native init AwesomeProject</span><br></pre></td></tr></table></figure>
+<p>   译注：由于众所周知的网络原因，react-native命令行从npm官方源拖代码时会遇上麻烦。请将npm仓库源替换为国内镜像：</p>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">npm config <span class="built_in">set</span> disturl https://npm.taobao.org/dist</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="运行android"><a href="#运行android" class="headerlink" title="运行android"></a>运行android</h3>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到工程目录</span></span><br><span class="line"><span class="built_in">cd</span> AwesomeProject</span><br><span class="line"><span class="comment"># 运行</span></span><br><span class="line">react-native run-android</span><br></pre></td></tr></table></figure>
+<h3 id="运行ios"><a href="#运行ios" class="headerlink" title="运行ios"></a>运行ios</h3>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> AwesomeProject</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>   Mounting：已插入真实 DOM<br>   Updating：正在被重新渲染<br>   Unmounting：已移出真实 DOM</p>
+<ul>
+<li>用XCode打开ios/AwesomeProject.xcodeproj并点击Run按钮。</li>
+<li>使用你喜欢的文本编辑器打开index.ios.js并随便改上几行。</li>
+<li>在iOS Emulator中按下⌘-R就可以刷新APP并看到你的最新修改！</li>
+</ul>
 </blockquote>
-<p>React 为每个状态都提供了两种处理函数，will 函数在进入状态之前调用，did 函数在进入状态之后调用，三种状态共计五种处理函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">componentWillMount()</span><br><span class="line">componentDidMount()</span><br><span class="line">componentWillUpdate(object nextProps, object nextState)</span><br><span class="line">componentDidUpdate(object prevProps, object prevState)</span><br><span class="line">componentWillUnmount()</span><br></pre></td></tr></table></figure>
-<p>此外，React 还提供两种特殊状态的处理函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用</span><br><span class="line">shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用</span><br></pre></td></tr></table></figure>
-<p><a href="http://facebook.github.io/react/docs/component-specs.html#lifecycle-methods" target="_blank" rel="external">官方文档</a></p>
-
+<h3 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h3><p>   1.SDK location not found</p>
+<pre><code>&gt;  Failed to notify ProjectEvaluationListener.afterEvaluate(), but primary configuration failure takes precedence.
+&gt;  java.lang.RuntimeException: SDK location not found. Define location with sdk.dir in the local.properties file or with an ANDROID_HOME environment variable.
+</code></pre><p>   这是因为ANDROID_HOME环境变量没有设置正确</p>
+<pre><code>&gt; * 请回看上面的内容
+</code></pre><p>   2.failed to find target with hash string ‘android-23’ in: /usr/local/Cellar/android-sdk<br>     在android-sdk目录中不存在android-23(可能会是其他版本)<br>      办法:在Android SDK manager 中安装这个版本的android sdk build－tools</p>
+<h3 id="更多信息了解请访问这里"><a href="#更多信息了解请访问这里" class="headerlink" title="更多信息了解请访问这里"></a>更多信息了解请访问<a href="http://reactnative.cn/docs/0.23/getting-started.html" target="_blank" rel="external">这里</a></h3>
       
     </div>
     
@@ -364,7 +387,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/react/" rel="tag">#react</a>
+            <a href="/tags/react-native/" rel="tag">#react-native</a>
           
         </div>
       
@@ -373,16 +396,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/18/React/react-native-macone/" rel="next" title="react-native 开发环境安装及遇到的问题总结">
-                <i class="fa fa-chevron-left"></i> react-native 开发环境安装及遇到的问题总结
+              <a href="/2014/11/07/感想/winter/" rel="next" title="冬日">
+                <i class="fa fa-chevron-left"></i> 冬日
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/26/React/react-native-two/" rel="prev" title="react-native ios 导航栏实例">
-                react-native ios 导航栏实例 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/04/19/reactone/" rel="prev" title="react分清这些关键字">
+                react分清这些关键字 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -398,10 +421,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/04/19/reactone/"
-     data-title="react分清这些关键字"
+        <div class="ds-share flat" data-thread-key="2016/04/18/React/react-native-macone/"
+     data-title="react-native 开发环境安装及遇到的问题总结"
      data-content=""
-     data-url="http://www.xiaoluo.win/2016/04/19/reactone/">
+     data-url="http://www.xiaoluo.win/2016/04/18/React/react-native-macone/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -428,8 +451,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/19/reactone/"
-           data-title="react分清这些关键字" data-url="http://www.xiaoluo.win/2016/04/19/reactone/">
+      <div class="ds-thread" data-thread-key="2016/04/18/React/react-native-macone/"
+           data-title="react-native 开发环境安装及遇到的问题总结" data-url="http://www.xiaoluo.win/2016/04/18/React/react-native-macone/">
       </div>
     
   </div>
@@ -556,7 +579,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分清这些关键字"><span class="nav-number">1.</span> <span class="nav-text">分清这些关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组件"><span class="nav-number">1.1.</span> <span class="nav-text">组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟DOM-真实DOM"><span class="nav-number">1.2.</span> <span class="nav-text">虚拟DOM 真实DOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态机"><span class="nav-number">1.3.</span> <span class="nav-text">状态机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件的生命周期"><span class="nav-number">1.4.</span> <span class="nav-text">组件的生命周期</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境需求"><span class="nav-number">1.</span> <span class="nav-text">开发环境需求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#android-sdk-安装"><span class="nav-number">1.1.</span> <span class="nav-text">android sdk 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义ANDROID-HOME环境变量"><span class="nav-number">1.2.</span> <span class="nav-text">定义ANDROID_HOME环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置SDK"><span class="nav-number">1.3.</span> <span class="nav-text">设置SDK</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速开始"><span class="nav-number">2.</span> <span class="nav-text">快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运行android"><span class="nav-number">2.1.</span> <span class="nav-text">运行android</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行ios"><span class="nav-number">2.2.</span> <span class="nav-text">运行ios</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题处理"><span class="nav-number">2.3.</span> <span class="nav-text">问题处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多信息了解请访问这里"><span class="nav-number">2.4.</span> <span class="nav-text">更多信息了解请访问这里</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
