@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.xiaoluo.win/2016/06/21/angular-provider/</loc>
+    
+    <lastmod>2016-06-21T06:17:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoluo.win/2016/02/20/angular-createInjector/</loc>
+    
+    <lastmod>2016-06-21T04:46:57.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoluo.win/2016/02/14/angular-module/</loc>
+    
+    <lastmod>2016-06-21T03:25:46.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoluo.win/2016/02/10/angular-start/</loc>
+    
+    <lastmod>2016-06-21T03:11:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.xiaoluo.win/about/index.html</loc>
     
     <lastmod>2016-05-12T08:45:59.000Z</lastmod>
@@ -51,14 +79,14 @@
   </url>
   
   <url>
-    <loc>http://www.xiaoluo.win/tags/index.html</loc>
+    <loc>http://www.xiaoluo.win/categories/index.html</loc>
     
     <lastmod>2016-04-25T15:22:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.xiaoluo.win/categories/index.html</loc>
+    <loc>http://www.xiaoluo.win/tags/index.html</loc>
     
     <lastmod>2016-04-25T15:22:02.000Z</lastmod>
     

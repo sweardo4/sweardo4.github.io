@@ -261,6 +261,137 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/21/angular-provider/" itemprop="url">
+                  AngularJS深入(5) -- provider
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-21T13:51:56+08:00" content="2016-06-21">
+              2016-06-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/AngularJS/" itemprop="url" rel="index">
+                    <span itemprop="name">AngularJS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/21/angular-provider/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/angular-provider/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>provider, value, constant, service, factory他们都是AngularJS中$provider服务所提供的方法之一</p>
+<p><img src="/images/iKDimba.png" alt="module"></p>
+<h2 id="provider是干啥的？"><a href="#provider是干啥的？" class="headerlink" title="provider是干啥的？"></a>provider是干啥的？</h2><p>provider可以为应用提供通用的服务，形式可以是常量，也可以是对象。<br>比如我们在controller里常用的$http就是AngularJS框架提供的provider～</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">myApp.controller(<span class="string">'MainController'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, $http</span>) </span>&#123;</span><br><span class="line">    $http.get(…)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>在上面的代码里，就可以直接使用$http包好的各种功能了～</p>
+<h2 id="自定义provider"><a href="#自定义provider" class="headerlink" title="自定义provider"></a>自定义provider</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义:</span></span><br><span class="line">$provide.provider(<span class="string">'age'</span>, &#123;</span><br><span class="line">    start: <span class="number">10</span>,</span><br><span class="line">    $get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.start + <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//或</span></span><br><span class="line">$provide.provider(<span class="string">'age'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$filterProvider</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.start = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">this</span>.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.start + <span class="number">2</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用:</span></span><br><span class="line">app.controller(<span class="string">'MainCtrl'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, age</span>) </span>&#123;</span><br><span class="line">  $scope.age = age; <span class="comment">//12</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>provider的基本原则就是通过实现$get方法来在应用中注入单例，使用的时候拿到的age就是$get执行后的结果。 上面例子中的两种定义方法都可以～</p>
+<h2 id="value-vs-constant"><a href="#value-vs-constant" class="headerlink" title="value vs. constant"></a>value vs. constant</h2><p>区别一：value可以被修改，constant一旦声明无法被修改<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">app.value(<span class="string">'greeting'</span>, <span class="string">'hello value'</span>)</span><br><span class="line">	.value(<span class="string">'greeting'</span>, <span class="string">'hello world '</span>)</span><br><span class="line">	.controller(<span class="string">'ctrl'</span>, [<span class="string">'greeting'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(greeting); <span class="comment">// hello world</span></span><br><span class="line">	&#125;]);</span><br><span class="line"></span><br><span class="line"><span class="comment">////////////////////</span></span><br><span class="line"></span><br><span class="line">app.constant(<span class="string">'greeting'</span>, <span class="string">'hello constant'</span>)</span><br><span class="line">	.constant(<span class="string">'greeting'</span>, <span class="string">'hello world '</span>)</span><br><span class="line">	.controller(<span class="string">'ctrl'</span>, [<span class="string">'greeting'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(greeting); <span class="comment">// hello constant</span></span><br><span class="line">	&#125;]);</span><br></pre></td></tr></table></figure></p>
+<p>区别二：在config中，value不可以被注入，而constant可以被注入，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">app.constant(<span class="string">'greeting'</span>, <span class="string">'hello world'</span>)</span><br><span class="line">	.config(<span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(greeting); <span class="comment">// hello world</span></span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">////////////////////</span></span><br><span class="line"></span><br><span class="line">app.value(<span class="string">'greeting'</span>, <span class="string">'hello world'</span>)</span><br><span class="line">	.config(<span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(greeting); <span class="comment">// Error: [$injector:unpr] Unknown provider: greeting</span></span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="provider-factory-amp-service"><a href="#provider-factory-amp-service" class="headerlink" title="provider, factory &amp; service"></a>provider, factory &amp; service</h2><p>这三者的关系非常密切，看如下例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Greeting</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'hello world'</span>);</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.provider(<span class="string">'greetingFromProvider'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Greeting();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	.factory(<span class="string">'greetingFromFactory'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Greeting();</span><br><span class="line">	&#125;)</span><br><span class="line">	.service(<span class="string">'greetingFromService'</span>, Greeting)</span><br><span class="line">	.controller(<span class="string">'ctrl'</span>, [<span class="string">'greetingFromProvider'</span>, <span class="string">'greetingFromFactory'</span>, <span class="string">'greetingFromService'</span>,</span><br><span class="line">		<span class="function"><span class="keyword">function</span>(<span class="params">gp, gf, gs</span>) </span>&#123;</span><br><span class="line">			gp.sayHello();</span><br><span class="line">			gf.sayHello();</span><br><span class="line">			gs.sayHello();</span><br><span class="line">		&#125;</span><br><span class="line">	]);</span><br></pre></td></tr></table></figure></p>
+<p>可以简单理解为service接收的参数是构造函数，factory接收的参数是工厂函数，而该工厂函数是作为provider中的$get属性而存在的。但是provider比factory更加灵活可配置，因此可以理解为可配置的工厂函数。例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">app.provider(<span class="string">'greeting'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> name = <span class="string">'world'</span>;</span><br><span class="line">		<span class="keyword">this</span>.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> &#123;</span><br><span class="line">				sayHello: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">					<span class="built_in">console</span>.log(<span class="string">'hello '</span> + name);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;;</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span>(<span class="params">newName</span>) </span>&#123;</span><br><span class="line">			name = newName;</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;)</span><br><span class="line">	.config(<span class="function"><span class="keyword">function</span>(<span class="params">greetingProvider</span>) </span>&#123;</span><br><span class="line">		greetingProvider.setName(<span class="string">'alex'</span>);</span><br><span class="line">	&#125;)</span><br><span class="line">	.controller(<span class="string">'ctrl'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		greeting.sayHello(); <span class="comment">// hello alex</span></span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="底层实现代码"><a href="#底层实现代码" class="headerlink" title="底层实现代码"></a>底层实现代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">provider</span>(<span class="params">name, provider_</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (isFunction(provider_)) &#123;</span><br><span class="line">        provider_ = providerInjector.instantiate(provider_);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!provider_.$get) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="string">'Provider '</span> + name + <span class="string">' must define $get factory method.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> providerCache[name + providerSuffix] = provider_;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factory</span>(<span class="params">name, factoryFn</span>) </span>&#123; <span class="keyword">return</span> provider(name, &#123; $get: factoryFn &#125;); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">service</span>(<span class="params">name, constructor</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> factory(name, [<span class="string">'$injector'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$injector</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> $injector.instantiate(<span class="keyword">constructor</span>);</span><br><span class="line">    &#125;]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function value(name, value) &#123; <span class="keyword">return</span> factory(name, valueFn(value)); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">constant</span>(<span class="params">name, value</span>) </span>&#123;</span><br><span class="line">    providerCache[name] = value;</span><br><span class="line">    instanceCache[name] = value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">decorator</span>(<span class="params">serviceName, decorFn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> origProvider = providerInjector.get(serviceName + providerSuffix),</span><br><span class="line">        orig$get = origProvider.$get;</span><br><span class="line"></span><br><span class="line">    origProvider.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> origInstance = instanceInjector.invoke(orig$get, origProvider);</span><br><span class="line">        <span class="keyword">return</span> instanceInjector.invoke(decorFn, <span class="literal">null</span>, &#123;$delegate: origInstance&#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/12/handleEvent/" itemprop="url">
                   addEventListener和handleEvent
                 </a>
@@ -998,8 +1129,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/11/07/感想/winter/" itemprop="url">
-                  冬日
+                <a class="post-title-link" href="/2016/02/20/angular-createInjector/" itemprop="url">
+                  AngularJS深入(3) -- 依赖注入
                 </a>
               
             
@@ -1012,8 +1143,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-11-07T08:55:29+08:00" content="2014-11-07">
-              2014-11-07
+            <time itemprop="dateCreated" datetime="2016-02-20T11:16:15+08:00" content="2016-02-20">
+              2016-02-20
             </time>
           </span>
 
@@ -1026,8 +1157,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/记录/" itemprop="url" rel="index">
-                    <span itemprop="name">记录</span>
+                  <a href="/categories/AngularJS/" itemprop="url" rel="index">
+                    <span itemprop="name">AngularJS</span>
                   </a>
                 </span>
 
@@ -1042,8 +1173,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/11/07/感想/winter/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/11/07/感想/winter/" itemprop="commentsCount"></span>
+                <a href="/2016/02/20/angular-createInjector/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/20/angular-createInjector/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1067,12 +1198,16 @@
 
       
         
-          <p>童年的某年某天开始冬日的太阳是那麽的温柔，照在脸上像是依偎在一个毛绒玩具身上一样，软软的暖暖的。这样的感觉也只能在冬日才能感受得到。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/11/07/感想/winter/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <h2 id="1-实例"><a href="#1-实例" class="headerlink" title="1.实例"></a>1.实例</h2><p><a href="http://jsfiddle.net/whitewolf/zyA5B/8/" target="_blank" rel="external">在线查看</a></p>
+<p>index.html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-app</span>=<span class="string">"myModule"</span>  <span class="attr">ng-controller</span>=<span class="string">"myController"</span> <span class="attr">ng-init</span>=<span class="string">"msg='test for alert'"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">ng-model</span>=<span class="string">"msg"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">ng-click</span>=<span class="string">"message(msg);"</span>&gt;</span>click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">br</span>/&gt;</span> &#123;&#123;msg&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>app.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myModule = angular.module(<span class="string">'myModule'</span>, []);</span><br><span class="line"></span><br><span class="line">myModule.factory(<span class="string">'$alert'</span>, [<span class="string">'$window'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$window</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		alert: <span class="function"><span class="keyword">function</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">			$<span class="built_in">window</span>.alert(text);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;&#125;]);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> myController = <span class="function"><span class="keyword">function</span>(<span class="params">$scope, $alert</span>) </span>&#123;</span><br><span class="line">		$scope.message = <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(msg);</span><br><span class="line">			$alert.alert(msg);</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;;</span><br><span class="line">	myController.$inject = [<span class="string">'$scope'</span>, <span class="string">'$alert'</span>];</span><br><span class="line">	myModule.controller(<span class="string">"myController"</span>, myController);</span><br></pre></td></tr></table></figure></p>
+<pre><code>##工厂方法注入
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">angualar.module(<span class="string">'myModule'</span>, []).</span><br><span class="line"></span><br><span class="line">config([<span class="string">'depProvider'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">depProvider</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">&#125;]).</span><br><span class="line"></span><br><span class="line">factory(<span class="string">'serviceId'</span>, [<span class="string">'depService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">depService</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">&#125;]).</span><br><span class="line"></span><br><span class="line">directive(<span class="string">'directiveName'</span>, [<span class="string">'depService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">depService</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">&#125;]).</span><br><span class="line"></span><br><span class="line">filter(<span class="string">'filterName'</span>, [<span class="string">'depService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">depService</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">&#125;]).</span><br><span class="line"></span><br><span class="line">run([<span class="string">'depService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">depService</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">&#125;]);</span><br></pre></td></tr></table></figure>
+</code></pre><h2 id="2-源码解析"><a href="#2-源码解析" class="headerlink" title="2.源码解析"></a>2.源码解析</h2><p>AngularJS的一个强大之处就在于依赖注入。在调用bootstrap的时候，会调用createInjector来创建一个注射器进行注入。该方法的代码简化如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createInjector</span>(<span class="params">modulesToLoad, strictDi</span>) </span>&#123;</span><br><span class="line">    strictDi = (strictDi === <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">var</span> INSTANTIATING = &#123;&#125;,</span><br><span class="line">        providerSuffix = <span class="string">'Provider'</span>,</span><br><span class="line">        path = [],</span><br><span class="line">        loadedModules = <span class="keyword">new</span> HashMap([], <span class="literal">true</span>),</span><br><span class="line">        providerCache = &#123;</span><br><span class="line">            <span class="comment">// ... ...</span></span><br><span class="line">        &#125;,</span><br><span class="line">        providerInjector = (providerCache.$injector =</span><br><span class="line">            createInternalInjector(providerCache, <span class="function"><span class="keyword">function</span>(<span class="params">serviceName, caller</span>) </span>&#123;</span><br><span class="line">                <span class="comment">// ... ...</span></span><br><span class="line">            &#125;)),</span><br><span class="line">        instanceCache = &#123;&#125;,</span><br><span class="line">        instanceInjector = (instanceCache.$injector =</span><br><span class="line">            createInternalInjector(instanceCache, <span class="function"><span class="keyword">function</span>(<span class="params">serviceName, caller</span>) </span>&#123;</span><br><span class="line">                <span class="comment">// ... ...</span></span><br><span class="line">            &#125;));</span><br><span class="line"></span><br><span class="line">    forEach(loadModules(modulesToLoad), <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (fn) instanceInjector.invoke(fn);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> instanceInjector;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">supportObject</span>(<span class="params">delegate</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">provider</span>(<span class="params">name, provider_</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">enforceReturnValue</span>(<span class="params">name, factory</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">factory</span>(<span class="params">name, factoryFn, enforce</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">service</span>(<span class="params">name, constructor</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">value</span>(<span class="params">name, val</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">constant</span>(<span class="params">name, value</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">decorator</span>(<span class="params">serviceName, decorFn</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">loadModules</span>(<span class="params">modulesToLoad</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">createInternalInjector</span>(<span class="params">cache, factory</span>) </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">getService</span>(<span class="params">serviceName, caller</span>) </span>&#123;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">invoke</span>(<span class="params">fn, self, locals, serviceName</span>) </span>&#123;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">instantiate</span>(<span class="params">Type, locals, serviceName</span>) </span>&#123;&#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="comment">// ... ...</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
         
       
     </div>
@@ -1120,8 +1255,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/09/17/感想/spring/" itemprop="url">
-                  Today is the Lantern Festival
+                <a class="post-title-link" href="/2016/02/14/angular-module/" itemprop="url">
+                  AngularJS深入(2) -- 模块化
                 </a>
               
             
@@ -1134,8 +1269,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-09-17T19:00:50+08:00" content="2014-09-17">
-              2014-09-17
+            <time itemprop="dateCreated" datetime="2016-02-14T11:16:15+08:00" content="2016-02-14">
+              2016-02-14
             </time>
           </span>
 
@@ -1148,8 +1283,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/记录/" itemprop="url" rel="index">
-                    <span itemprop="name">记录</span>
+                  <a href="/categories/AngularJS/" itemprop="url" rel="index">
+                    <span itemprop="name">AngularJS</span>
                   </a>
                 </span>
 
@@ -1164,8 +1299,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/09/17/感想/spring/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/17/感想/spring/" itemprop="commentsCount"></span>
+                <a href="/2016/02/14/angular-module/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/14/angular-module/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1189,256 +1324,153 @@
 
       
         
-          <blockquote>
+          
+            <h2 id="1-setupModuleLoader"><a href="#1-setupModuleLoader" class="headerlink" title="1.setupModuleLoader"></a>1.setupModuleLoader</h2><p>该方法主要用于设置模块加载器，源码比较长，并且使用了多层闭包。首先在该方法中，定义了一个非常有用的方法ensure，代码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ensure</span>(<span class="params">obj, name, factory</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> obj[name] || (obj[name] = factory());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>很容易理解，当obj有name属性的时候，作为getter来使用，否则作为setter来使用。<br>然后可以将setupModuleLoader简化如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupModuleLoader</span>(<span class="params">window</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// ... ...</span></span><br><span class="line">	<span class="keyword">return</span> angular.module = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> modules = &#123;&#125;;</span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">module</span>(<span class="params">name, requires, configFn</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> ensure(modules, name, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">				<span class="comment">// ... ...</span></span><br><span class="line">				<span class="keyword">var</span> moduleInstance = &#123;</span><br><span class="line">					<span class="comment">// ... ...</span></span><br><span class="line">				&#125;;</span><br><span class="line">				<span class="keyword">return</span> moduleInstance;</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是这样依然不够直观清晰，接下来打破闭包，将代码继续简化调整如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupModuleLoader</span>(<span class="params">window</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> modules = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">	angular.module = <span class="function"><span class="keyword">function</span> <span class="title">module</span>(<span class="params">name, requires, configFn</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (modules[name]) &#123;</span><br><span class="line">			<span class="keyword">return</span> modules[name];</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> moduleInstance = &#123;</span><br><span class="line">			<span class="comment">// ... ...</span></span><br><span class="line">		&#125;;</span><br><span class="line">		modules.name = moduleInstance;</span><br><span class="line">		<span class="keyword">return</span> moduleInstance;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">module</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>到这里可以发现，该方法主要是为angular对象定义了module方法。接下来主要对angular.module方法进行分析。源码结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">module</span>(<span class="params">name, requires, configFn</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> assertNotHasOwnProperty = <span class="function"><span class="keyword">function</span>(<span class="params">name, context</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (name === <span class="string">'hasOwnProperty'</span>) &#123;</span><br><span class="line">			<span class="keyword">throw</span> ngMinErr(<span class="string">'badname'</span>, <span class="string">'hasOwnProperty is not a valid &#123;0&#125; name'</span>, context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	assertNotHasOwnProperty(name, <span class="string">'module'</span>);</span><br><span class="line">	<span class="keyword">if</span> (requires &amp;&amp; modules.hasOwnProperty(name)) &#123;</span><br><span class="line">		modules[name] = <span class="literal">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> ensure(modules, name, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">// ... ...</span></span><br><span class="line">	&#125;);</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p>首先是确保模块名不为hasOwnProperty，这是因为在接下来的判断语句中会调用modules.hasOwnProperty，如果模块名也为hasOwnProperty，就会出问题。接下来是一个判断，如果requires存在且modules已经有相应的模块，则重置其为null，这里也就是对同名模块的重新注册。</p>
+<p>这里可以看到，如果通过angular.module(name)来调用，则会直接跳过判断语句，进入ensure，此时如果存在该模块，则直接返回modules[name]，在这种情况下，angular.module的作用相当于是一个getter。如果通过angular.module(name, requires[, configFn])来调用，则用作setter，来注册一个模块。</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/10/angular-start/" itemprop="url">
+                  AngularJS深入(1)--启动
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-10T09:49:09+08:00" content="2016-02-10">
+              2016-02-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/AngularJS/" itemprop="url" rel="index">
+                    <span itemprop="name">AngularJS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/10/angular-start/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/10/angular-start/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>本系列文章分析基于 AngularJS v1.5.7</p>
+<p>参考资料:</p>
+<blockquote>
+<p><a href="https://docs.angularjs.org/api">AngularJS API Docs</a><br><a href="https://docs.angularjs.org/guide">AngularJS Developer Guide</a><br><a href="http://www.imooc.com/learn/156">AngularJS实战</a><br><a href="http://stackoverflow.com/questions/15666048/service-vs-provider-vs-factory">Service vs provider vs factory</a></p>
+</blockquote>
+<h2 id="1-整体架构"><a href="#1-整体架构" class="headerlink" title="1 整体架构"></a>1 整体架构</h2><p>与其它很多库和框架一样，是一个自执行函数，其整体结构简化如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window, document, undefined</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// define variables and functions</span></span><br><span class="line">	<span class="comment">// and do some operations</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">window</span>.angular.bootstrap) &#123;<span class="comment">//判断是否已经加载过angular</span></span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'WARNING: Tried to load angular more than once.'</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	bindJQuery();<span class="comment">//如果已经加载了jQuery，则AngularJS会使用已经加载的jQuery，否则使用内部实现的JQLite，其相当于是一个简化版的jQuery；</span></span><br><span class="line"></span><br><span class="line">	publishExternalAPI(angular);<span class="comment">//执行publishExternalAPI(angular)来为全局变量angular增加属性和方法，并建立起模块机制，注册核心模块；</span></span><br><span class="line"></span><br><span class="line">	jqLite(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		angularInit(<span class="built_in">document</span>, bootstrap);<span class="comment">//在文档加载完成后执行angularInit()。</span></span><br><span class="line">	&#125;);</span><br><span class="line">&#125;)(<span class="built_in">window</span>, <span class="built_in">document</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-bindJQuery"><a href="#2-bindJQuery" class="headerlink" title="2.bindJQuery"></a>2.bindJQuery</h2><p>该方法主要是绑定jQuery，简化后的代码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bindJQueryFired = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bindJQuery</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (bindJQueryFired) &#123;<span class="comment">//绑定过将不再绑定</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> jqName = jq();</span><br><span class="line">    jQuery = <span class="built_in">window</span>.jQuery;</span><br><span class="line">    <span class="keyword">if</span> (isDefined(jqName)) &#123;</span><br><span class="line">        jQuery = jqName === <span class="literal">null</span> ? <span class="literal">undefined</span> : <span class="built_in">window</span>[jqName];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (jQuery &amp;&amp; jQuery.fn.on) &#123;<span class="comment">//如果载入了jquery库</span></span><br><span class="line">        jqLite = jQuery;</span><br><span class="line">        <span class="comment">// ... ...</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;<span class="comment">// 如果jq库不存在</span></span><br><span class="line">        jqLite = JQLite;<span class="comment">//载入简化版jq  ---angularjs 内部实现的一个jquery</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    angular.element = jqLite;<span class="comment">//element</span></span><br><span class="line">    bindJQueryFired = <span class="literal">true</span>;<span class="comment">//标识符  绑定过jquery后设置为true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>绑定jquery  三种来源 ng-jq指定、引入的jQuery库、内置实现的JQLite，其使用流程为：</p>
+<p>如果有ng-jq</p>
 <ul>
-<li>年年岁岁闹元宵，</li>
-<li>岁岁年年又今日，
+<li>如果ng-jq的值不为空，则使用它指定的库</li>
+<li>如果ng-jq指定的值为空，则变量jQuery的值为undefined，此时强制使用JQLite，无论是否引入了jQuery库</li>
+</ul>
+<p>如果没有ng-jq</p>
+<ul>
+<li>如果引入了jQuery库，则使用它</li>
+<li>如果没有引入jQuery库，则使用JQLite</li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/09/17/感想/spring/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/03/20/感想/ping/" itemprop="url">
-                  南王地-浮萍立冬水
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-20T22:15:10+08:00" content="2014-03-20">
-              2014-03-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/记录/" itemprop="url" rel="index">
-                    <span itemprop="name">记录</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/03/20/感想/ping/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/03/20/感想/ping/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p> 这是一个美丽的地方，正如你跟着以诺出去支教的地方一样，这也是一个难忘的地方，但和那灯红酒绿的大城市相比多的是那一份幽静淡雅之气，春夏秋冬人们围绕的是这山，围绕的是这里的梯田。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/20/感想/ping/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/02/03/jade/" itemprop="url">
-                  南王地-仙石化成人
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-02-03T20:10:29+08:00" content="2014-02-03">
-              2014-02-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/记录/" itemprop="url" rel="index">
-                    <span itemprop="name">记录</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/02/03/jade/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/02/03/jade/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>今日有一仙石在这地方幻化成人，变得和我认识那个女子一样年纪，也巧不知怎么没过多久他们却成了好盆友，整日在山中一起玩耍，并没有因为出生而变的存在隔阂，就像出生在同一娘胎一样关系友好。只见的那仙石面容如白色海棠花一样，
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/02/03/jade/#more" rel="contents">
+            <a class="btn" href="/2016/02/10/angular-start/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1471,6 +1503,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1509,7 +1545,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1517,7 +1553,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1526,7 +1562,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

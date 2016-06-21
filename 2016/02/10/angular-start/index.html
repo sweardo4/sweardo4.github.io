@@ -1,0 +1,746 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="angularjs," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CikeSwear's blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本系列文章分析基于 AngularJS v1.5.7
+参考资料:
+
+AngularJS API DocsAngularJS Developer GuideAngularJS实战Service vs provider vs factory
+
+1 整体架构与其它很多库和框架一样，是一个自执行函数，其整体结构简化如下：1234567891011121314151617(function(window,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AngularJS深入(1)--启动">
+<meta property="og:url" content="http://www.xiaoluo.win/2016/02/10/angular-start/index.html">
+<meta property="og:site_name" content="CikeSwear's blog">
+<meta property="og:description" content="本系列文章分析基于 AngularJS v1.5.7
+参考资料:
+
+AngularJS API DocsAngularJS Developer GuideAngularJS实战Service vs provider vs factory
+
+1 整体架构与其它很多库和框架一样，是一个自执行函数，其整体结构简化如下：1234567891011121314151617(function(window,">
+<meta property="og:image" content="http://www.xiaoluo.win/images/module.png">
+<meta property="og:updated_time" content="2016-06-21T03:11:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AngularJS深入(1)--启动">
+<meta name="twitter:description" content="本系列文章分析基于 AngularJS v1.5.7
+参考资料:
+
+AngularJS API DocsAngularJS Developer GuideAngularJS实战Service vs provider vs factory
+
+1 整体架构与其它很多库和框架一样，是一个自执行函数，其整体结构简化如下：1234567891011121314151617(function(window,">
+<meta name="twitter:image" content="http://www.xiaoluo.win/images/module.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> AngularJS深入(1)--启动 | CikeSwear's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CikeSwear's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Building a better life together</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                AngularJS深入(1)--启动
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-10T09:49:09+08:00" content="2016-02-10">
+              2016-02-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/AngularJS/" itemprop="url" rel="index">
+                    <span itemprop="name">AngularJS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/10/angular-start/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/10/angular-start/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本系列文章分析基于 AngularJS v1.5.7</p>
+<p>参考资料:</p>
+<blockquote>
+<p><a href="https://docs.angularjs.org/api" target="_blank" rel="external">AngularJS API Docs</a><br><a href="https://docs.angularjs.org/guide" target="_blank" rel="external">AngularJS Developer Guide</a><br><a href="http://www.imooc.com/learn/156" target="_blank" rel="external">AngularJS实战</a><br><a href="http://stackoverflow.com/questions/15666048/service-vs-provider-vs-factory" target="_blank" rel="external">Service vs provider vs factory</a></p>
+</blockquote>
+<h2 id="1-整体架构"><a href="#1-整体架构" class="headerlink" title="1 整体架构"></a>1 整体架构</h2><p>与其它很多库和框架一样，是一个自执行函数，其整体结构简化如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window, document, undefined</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// define variables and functions</span></span><br><span class="line">	<span class="comment">// and do some operations</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">window</span>.angular.bootstrap) &#123;<span class="comment">//判断是否已经加载过angular</span></span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'WARNING: Tried to load angular more than once.'</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	bindJQuery();<span class="comment">//如果已经加载了jQuery，则AngularJS会使用已经加载的jQuery，否则使用内部实现的JQLite，其相当于是一个简化版的jQuery；</span></span><br><span class="line"></span><br><span class="line">	publishExternalAPI(angular);<span class="comment">//执行publishExternalAPI(angular)来为全局变量angular增加属性和方法，并建立起模块机制，注册核心模块；</span></span><br><span class="line"></span><br><span class="line">	jqLite(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		angularInit(<span class="built_in">document</span>, bootstrap);<span class="comment">//在文档加载完成后执行angularInit()。</span></span><br><span class="line">	&#125;);</span><br><span class="line">&#125;)(<span class="built_in">window</span>, <span class="built_in">document</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-bindJQuery"><a href="#2-bindJQuery" class="headerlink" title="2.bindJQuery"></a>2.bindJQuery</h2><p>该方法主要是绑定jQuery，简化后的代码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bindJQueryFired = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bindJQuery</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (bindJQueryFired) &#123;<span class="comment">//绑定过将不再绑定</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> jqName = jq();</span><br><span class="line">    jQuery = <span class="built_in">window</span>.jQuery;</span><br><span class="line">    <span class="keyword">if</span> (isDefined(jqName)) &#123;</span><br><span class="line">        jQuery = jqName === <span class="literal">null</span> ? <span class="literal">undefined</span> : <span class="built_in">window</span>[jqName];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (jQuery &amp;&amp; jQuery.fn.on) &#123;<span class="comment">//如果载入了jquery库</span></span><br><span class="line">        jqLite = jQuery;</span><br><span class="line">        <span class="comment">// ... ...</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;<span class="comment">// 如果jq库不存在</span></span><br><span class="line">        jqLite = JQLite;<span class="comment">//载入简化版jq  ---angularjs 内部实现的一个jquery</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    angular.element = jqLite;<span class="comment">//element</span></span><br><span class="line">    bindJQueryFired = <span class="literal">true</span>;<span class="comment">//标识符  绑定过jquery后设置为true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>绑定jquery  三种来源 ng-jq指定、引入的jQuery库、内置实现的JQLite，其使用流程为：</p>
+<p>如果有ng-jq</p>
+<ul>
+<li>如果ng-jq的值不为空，则使用它指定的库</li>
+<li>如果ng-jq指定的值为空，则变量jQuery的值为undefined，此时强制使用JQLite，无论是否引入了jQuery库</li>
+</ul>
+<p>如果没有ng-jq</p>
+<ul>
+<li>如果引入了jQuery库，则使用它</li>
+<li>如果没有引入jQuery库，则使用JQLite</li>
+</ul>
+<a id="more"></a>
+<h2 id="3-publishExternalAPI"><a href="#3-publishExternalAPI" class="headerlink" title="3.publishExternalAPI"></a>3.publishExternalAPI</h2><p>代码简化如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">publishExternalAPI</span>(<span class="params">angular</span>) </span>&#123;</span><br><span class="line">    extend(angular, &#123;</span><br><span class="line">        <span class="comment">// ... ...</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    angularModule = setupModuleLoader(<span class="built_in">window</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        angularModule(<span class="string">'ngLocale'</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        angularModule(<span class="string">'ngLocale'</span>, []).provider(<span class="string">'$locale'</span>, $LocaleProvider);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    angularModule(<span class="string">'ng'</span>, [<span class="string">'ngLocale'</span>], [<span class="string">'$provide'</span>,</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">ngModule</span>(<span class="params">$provide</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// ... ...</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>主要功能</p>
+<blockquote>
+<p>对angular对象进行扩展；<br>执行setupModuleLoader(window)，该方法主要是定义了angular.module方法，用于注册及获取模块；angular.module只有一个参数的时候为获取模块，否则为注册模块；<br>如果没有注册ngLocal模块，则对其进行注册；<br>注册ng模块，也就是AngularJS的核心模块。</p>
+</blockquote>
+<h2 id="4-启动函数angularInit"><a href="#4-启动函数angularInit" class="headerlink" title="4.启动函数angularInit"></a>4.启动函数angularInit</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ngAttrPrefixes = [<span class="string">'ng-'</span>, <span class="string">'data-ng-'</span>, <span class="string">'ng:'</span>, <span class="string">'x-ng-'</span>]; <span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getNgAttribute</span>(<span class="params">element, ngAttr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> attr, i, ii = ngAttrPrefixes.length;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; ii; ++i) &#123;</span><br><span class="line">        attr = ngAttrPrefixes[i] + ngAttr;</span><br><span class="line">        <span class="keyword">if</span> (isString(attr = element.getAttribute(attr))) &#123;</span><br><span class="line">            <span class="keyword">return</span> attr;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">angularInit</span>(<span class="params">element, bootstrap</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> appElement,</span><br><span class="line">        <span class="built_in">module</span>,</span><br><span class="line">        config = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// The element `element` has priority over any other element</span></span><br><span class="line">    forEach(ngAttrPrefixes, <span class="function"><span class="keyword">function</span>(<span class="params">prefix</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> name = prefix + <span class="string">'app'</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!appElement &amp;&amp; element.hasAttribute &amp;&amp; element.hasAttribute(name)) &#123;</span><br><span class="line">            appElement = element;</span><br><span class="line">            <span class="built_in">module</span> = element.getAttribute(name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    forEach(ngAttrPrefixes, <span class="function"><span class="keyword">function</span>(<span class="params">prefix</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> name = prefix + <span class="string">'app'</span>;</span><br><span class="line">        <span class="keyword">var</span> candidate;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!appElement &amp;&amp; (candidate = element.querySelector(<span class="string">'['</span> + name.replace(<span class="string">':'</span>, <span class="string">'\\:'</span>) + <span class="string">']'</span>))) &#123;</span><br><span class="line">            appElement = candidate;</span><br><span class="line">            <span class="built_in">module</span> = candidate.getAttribute(name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">if</span> (appElement) &#123;</span><br><span class="line">        config.strictDi = getNgAttribute(appElement, <span class="string">"strict-di"</span>) !== <span class="literal">null</span>;</span><br><span class="line">        bootstrap(appElement, <span class="built_in">module</span> ? [<span class="built_in">module</span>] : [], config);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要说明的是，AngularJS支持的属性前缀有多种，包括ng-、data-ng、ng:和x-ng-。</p>
+<blockquote>
+<p>首先对element进行检测，看它是否有ng-app等属性，如果有则设定appElement和module；<br>如果element元素没有ng-app等属性，则对其后继元素进行查找，找到第一个有ng-app等属性的元素，从而设定appElement和module;<br>如果appElement不为空，即找到了应用的入口元素，则执行bootstrap。<br>需要注意的是，如果有多个元素都有ng-app属性，则只会找到第一个并启动它，而后面的应用则不会自动启动。</p>
+</blockquote>
+<h2 id="5-一切都是从模块开始"><a href="#5-一切都是从模块开始" class="headerlink" title="5.一切都是从模块开始"></a>5.一切都是从模块开始</h2><p>   <img src="/images/module.png" alt="module"></p>
+<p>index.html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">ng-app</span> =<span class="string">'MyApp'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>angular1<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"bower_components/bootstrap/dist/css/bootstrap.css"</span> <span class="attr">media</span>=<span class="string">"screen"</span> <span class="attr">title</span>=<span class="string">"no title"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"bower_components/bootstrap/dist/css/bootstrap.min.css"</span> <span class="attr">media</span>=<span class="string">"screen"</span> <span class="attr">title</span>=<span class="string">"no title"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-controller</span> =<span class="string">'greeCtrl'</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">'greeting.text'</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">h1</span> <span class="attr">ng-bind</span>=<span class="string">'greeting.text'</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">button</span> <span class="attr">ng-click</span>=<span class="string">"greenclick()"</span>&gt;</span>click<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">direct1</span>&gt;</span><span class="tag">&lt;/<span class="name">direct1</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"lib/angular-resource.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"lib/angular.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/app.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/directive.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>app.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">'MyApp'</span>,[<span class="string">'MyApp.directive'</span>,<span class="string">'ngResource'</span>])<span class="comment">//依赖注入</span></span><br><span class="line">.controller(<span class="string">'greeCtrl'</span>,[<span class="string">'$scope'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">$scope</span>)</span>&#123;</span><br><span class="line">	$scope.greenclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log($scope.greeting.text)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;])</span><br></pre></td></tr></table></figure>
+<p>MyApp 就是我们定义的一个模块，也可以叫一个应用,在ng-app定义你的应用名称</p>
+<blockquote>
+<p>通常一个应用程序仅定义一个module，在’依赖注入’的地方注入你已经定义好的指令、过滤器、服务等</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/angularjs/" rel="tag">#angularjs</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/11/07/感想/winter/" rel="next" title="冬日">
+                <i class="fa fa-chevron-left"></i> 冬日
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/14/angular-module/" rel="prev" title="AngularJS深入(2) -- 模块化">
+                AngularJS深入(2) -- 模块化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/02/10/angular-start/"
+     data-title="AngularJS深入(1)--启动"
+     data-content=""
+     data-url="http://www.xiaoluo.win/2016/02/10/angular-start/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/10/angular-start/"
+           data-title="AngularJS深入(1)--启动" data-url="http://www.xiaoluo.win/2016/02/10/angular-start/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/tou.jpg"
+               alt="Cui" />
+          <p class="site-author-name" itemprop="name">Cui</p>
+          <p class="site-description motion-element" itemprop="description">个人学习生活记录</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sweardo4" target="_blank" title="github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/cikeswear" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/313335675" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-整体架构"><span class="nav-number">1.</span> <span class="nav-text">1 整体架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-bindJQuery"><span class="nav-number">2.</span> <span class="nav-text">2.bindJQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-publishExternalAPI"><span class="nav-number">3.</span> <span class="nav-text">3.publishExternalAPI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-启动函数angularInit"><span class="nav-number">4.</span> <span class="nav-text">4.启动函数angularInit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-一切都是从模块开始"><span class="nav-number">5.</span> <span class="nav-text">5.一切都是从模块开始</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cui</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+   <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+   <div>
+   <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+   </div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"cikeswear"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
