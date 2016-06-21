@@ -2,16 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.xiaoluo.win/2014/02/01/init/</loc>
+    <loc>http://www.xiaoluo.win/2015/10/26/css/</loc>
     
-    <lastmod>2016-06-21T09:44:05.000Z</lastmod>
+    <lastmod>2016-06-21T10:05:39.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.xiaoluo.win/2015/01/21/css/</loc>
+    <loc>http://www.xiaoluo.win/2015/12/07/%E6%84%9F%E6%83%B3/winter/</loc>
     
-    <lastmod>2016-06-21T09:37:47.000Z</lastmod>
+    <lastmod>2016-06-21T10:05:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoluo.win/2015/11/17/%E6%84%9F%E6%83%B3/spring/</loc>
+    
+    <lastmod>2016-06-21T10:05:14.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoluo.win/2015/11/20/%E6%84%9F%E6%83%B3/ping/</loc>
+    
+    <lastmod>2016-06-21T10:05:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoluo.win/2015/10/21/init/</loc>
+    
+    <lastmod>2016-06-21T10:04:35.000Z</lastmod>
     
   </url>
   
@@ -26,20 +47,6 @@
     <loc>http://www.xiaoluo.win/2016/02/03/jade/</loc>
     
     <lastmod>2016-06-21T09:19:43.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoluo.win/2015/03/07/%E6%84%9F%E6%83%B3/winter/</loc>
-    
-    <lastmod>2016-06-21T09:19:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoluo.win/2015/02/17/%E6%84%9F%E6%83%B3/spring/</loc>
-    
-    <lastmod>2016-06-21T09:19:15.000Z</lastmod>
     
   </url>
   
@@ -89,13 +96,6 @@
     <loc>http://www.xiaoluo.win/2016/04/26/React/react-native-two/</loc>
     
     <lastmod>2016-06-21T08:09:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoluo.win/2014/03/20/%E6%84%9F%E6%83%B3/ping/</loc>
-    
-    <lastmod>2016-06-21T08:08:44.000Z</lastmod>
     
   </url>
   
