@@ -261,137 +261,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/21/angular-provider/" itemprop="url">
-                  AngularJS深入(5) -- provider
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-21T13:51:56+08:00" content="2016-06-21">
-              2016-06-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/AngularJS/" itemprop="url" rel="index">
-                    <span itemprop="name">AngularJS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/21/angular-provider/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/angular-provider/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>provider, value, constant, service, factory他们都是AngularJS中$provider服务所提供的方法之一</p>
-<p><img src="/images/iKDimba.png" alt="module"></p>
-<h2 id="provider是干啥的？"><a href="#provider是干啥的？" class="headerlink" title="provider是干啥的？"></a>provider是干啥的？</h2><p>provider可以为应用提供通用的服务，形式可以是常量，也可以是对象。<br>比如我们在controller里常用的$http就是AngularJS框架提供的provider～</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">myApp.controller(<span class="string">'MainController'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, $http</span>) </span>&#123;</span><br><span class="line">    $http.get(…)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>在上面的代码里，就可以直接使用$http包好的各种功能了～</p>
-<h2 id="自定义provider"><a href="#自定义provider" class="headerlink" title="自定义provider"></a>自定义provider</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义:</span></span><br><span class="line">$provide.provider(<span class="string">'age'</span>, &#123;</span><br><span class="line">    start: <span class="number">10</span>,</span><br><span class="line">    $get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.start + <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//或</span></span><br><span class="line">$provide.provider(<span class="string">'age'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$filterProvider</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.start = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">this</span>.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.start + <span class="number">2</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用:</span></span><br><span class="line">app.controller(<span class="string">'MainCtrl'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, age</span>) </span>&#123;</span><br><span class="line">  $scope.age = age; <span class="comment">//12</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>provider的基本原则就是通过实现$get方法来在应用中注入单例，使用的时候拿到的age就是$get执行后的结果。 上面例子中的两种定义方法都可以～</p>
-<h2 id="value-vs-constant"><a href="#value-vs-constant" class="headerlink" title="value vs. constant"></a>value vs. constant</h2><p>区别一：value可以被修改，constant一旦声明无法被修改<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">app.value(<span class="string">'greeting'</span>, <span class="string">'hello value'</span>)</span><br><span class="line">	.value(<span class="string">'greeting'</span>, <span class="string">'hello world '</span>)</span><br><span class="line">	.controller(<span class="string">'ctrl'</span>, [<span class="string">'greeting'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(greeting); <span class="comment">// hello world</span></span><br><span class="line">	&#125;]);</span><br><span class="line"></span><br><span class="line"><span class="comment">////////////////////</span></span><br><span class="line"></span><br><span class="line">app.constant(<span class="string">'greeting'</span>, <span class="string">'hello constant'</span>)</span><br><span class="line">	.constant(<span class="string">'greeting'</span>, <span class="string">'hello world '</span>)</span><br><span class="line">	.controller(<span class="string">'ctrl'</span>, [<span class="string">'greeting'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(greeting); <span class="comment">// hello constant</span></span><br><span class="line">	&#125;]);</span><br></pre></td></tr></table></figure></p>
-<p>区别二：在config中，value不可以被注入，而constant可以被注入，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">app.constant(<span class="string">'greeting'</span>, <span class="string">'hello world'</span>)</span><br><span class="line">	.config(<span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(greeting); <span class="comment">// hello world</span></span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">////////////////////</span></span><br><span class="line"></span><br><span class="line">app.value(<span class="string">'greeting'</span>, <span class="string">'hello world'</span>)</span><br><span class="line">	.config(<span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(greeting); <span class="comment">// Error: [$injector:unpr] Unknown provider: greeting</span></span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></p>
-<h2 id="provider-factory-amp-service"><a href="#provider-factory-amp-service" class="headerlink" title="provider, factory &amp; service"></a>provider, factory &amp; service</h2><p>这三者的关系非常密切，看如下例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Greeting</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'hello world'</span>);</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.provider(<span class="string">'greetingFromProvider'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Greeting();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	.factory(<span class="string">'greetingFromFactory'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Greeting();</span><br><span class="line">	&#125;)</span><br><span class="line">	.service(<span class="string">'greetingFromService'</span>, Greeting)</span><br><span class="line">	.controller(<span class="string">'ctrl'</span>, [<span class="string">'greetingFromProvider'</span>, <span class="string">'greetingFromFactory'</span>, <span class="string">'greetingFromService'</span>,</span><br><span class="line">		<span class="function"><span class="keyword">function</span>(<span class="params">gp, gf, gs</span>) </span>&#123;</span><br><span class="line">			gp.sayHello();</span><br><span class="line">			gf.sayHello();</span><br><span class="line">			gs.sayHello();</span><br><span class="line">		&#125;</span><br><span class="line">	]);</span><br></pre></td></tr></table></figure></p>
-<p>可以简单理解为service接收的参数是构造函数，factory接收的参数是工厂函数，而该工厂函数是作为provider中的$get属性而存在的。但是provider比factory更加灵活可配置，因此可以理解为可配置的工厂函数。例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">app.provider(<span class="string">'greeting'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> name = <span class="string">'world'</span>;</span><br><span class="line">		<span class="keyword">this</span>.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> &#123;</span><br><span class="line">				sayHello: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">					<span class="built_in">console</span>.log(<span class="string">'hello '</span> + name);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;;</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span>(<span class="params">newName</span>) </span>&#123;</span><br><span class="line">			name = newName;</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;)</span><br><span class="line">	.config(<span class="function"><span class="keyword">function</span>(<span class="params">greetingProvider</span>) </span>&#123;</span><br><span class="line">		greetingProvider.setName(<span class="string">'alex'</span>);</span><br><span class="line">	&#125;)</span><br><span class="line">	.controller(<span class="string">'ctrl'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		greeting.sayHello(); <span class="comment">// hello alex</span></span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></p>
-<h2 id="底层实现代码"><a href="#底层实现代码" class="headerlink" title="底层实现代码"></a>底层实现代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">provider</span>(<span class="params">name, provider_</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (isFunction(provider_)) &#123;</span><br><span class="line">        provider_ = providerInjector.instantiate(provider_);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!provider_.$get) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="string">'Provider '</span> + name + <span class="string">' must define $get factory method.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> providerCache[name + providerSuffix] = provider_;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factory</span>(<span class="params">name, factoryFn</span>) </span>&#123; <span class="keyword">return</span> provider(name, &#123; $get: factoryFn &#125;); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">service</span>(<span class="params">name, constructor</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> factory(name, [<span class="string">'$injector'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$injector</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> $injector.instantiate(<span class="keyword">constructor</span>);</span><br><span class="line">    &#125;]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function value(name, value) &#123; <span class="keyword">return</span> factory(name, valueFn(value)); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">constant</span>(<span class="params">name, value</span>) </span>&#123;</span><br><span class="line">    providerCache[name] = value;</span><br><span class="line">    instanceCache[name] = value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">decorator</span>(<span class="params">serviceName, decorFn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> origProvider = providerInjector.get(serviceName + providerSuffix),</span><br><span class="line">        orig$get = origProvider.$get;</span><br><span class="line"></span><br><span class="line">    origProvider.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> origInstance = instanceInjector.invoke(orig$get, origProvider);</span><br><span class="line">        <span class="keyword">return</span> instanceInjector.invoke(decorFn, <span class="literal">null</span>, &#123;$delegate: origInstance&#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/05/12/handleEvent/" itemprop="url">
                   addEventListener和handleEvent
                 </a>
@@ -1082,6 +951,137 @@
               阅读全文 &raquo;
             </a>
           </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/23/angular-provider/" itemprop="url">
+                  AngularJS深入(5) -- provider
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-23T13:51:56+08:00" content="2016-02-23">
+              2016-02-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/AngularJS/" itemprop="url" rel="index">
+                    <span itemprop="name">AngularJS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/23/angular-provider/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/23/angular-provider/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>provider, value, constant, service, factory他们都是AngularJS中$provider服务所提供的方法之一</p>
+<p><img src="/images/iKDimba.png" alt="module"></p>
+<h2 id="provider是干啥的？"><a href="#provider是干啥的？" class="headerlink" title="provider是干啥的？"></a>provider是干啥的？</h2><p>provider可以为应用提供通用的服务，形式可以是常量，也可以是对象。<br>比如我们在controller里常用的$http就是AngularJS框架提供的provider～</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">myApp.controller(<span class="string">'MainController'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, $http</span>) </span>&#123;</span><br><span class="line">    $http.get(…)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>在上面的代码里，就可以直接使用$http包好的各种功能了～</p>
+<h2 id="自定义provider"><a href="#自定义provider" class="headerlink" title="自定义provider"></a>自定义provider</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义:</span></span><br><span class="line">$provide.provider(<span class="string">'age'</span>, &#123;</span><br><span class="line">    start: <span class="number">10</span>,</span><br><span class="line">    $get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.start + <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//或</span></span><br><span class="line">$provide.provider(<span class="string">'age'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$filterProvider</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.start = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">this</span>.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.start + <span class="number">2</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用:</span></span><br><span class="line">app.controller(<span class="string">'MainCtrl'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, age</span>) </span>&#123;</span><br><span class="line">  $scope.age = age; <span class="comment">//12</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>provider的基本原则就是通过实现$get方法来在应用中注入单例，使用的时候拿到的age就是$get执行后的结果。 上面例子中的两种定义方法都可以～</p>
+<h2 id="value-vs-constant"><a href="#value-vs-constant" class="headerlink" title="value vs. constant"></a>value vs. constant</h2><p>区别一：value可以被修改，constant一旦声明无法被修改<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">app.value(<span class="string">'greeting'</span>, <span class="string">'hello value'</span>)</span><br><span class="line">	.value(<span class="string">'greeting'</span>, <span class="string">'hello world '</span>)</span><br><span class="line">	.controller(<span class="string">'ctrl'</span>, [<span class="string">'greeting'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(greeting); <span class="comment">// hello world</span></span><br><span class="line">	&#125;]);</span><br><span class="line"></span><br><span class="line"><span class="comment">////////////////////</span></span><br><span class="line"></span><br><span class="line">app.constant(<span class="string">'greeting'</span>, <span class="string">'hello constant'</span>)</span><br><span class="line">	.constant(<span class="string">'greeting'</span>, <span class="string">'hello world '</span>)</span><br><span class="line">	.controller(<span class="string">'ctrl'</span>, [<span class="string">'greeting'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(greeting); <span class="comment">// hello constant</span></span><br><span class="line">	&#125;]);</span><br></pre></td></tr></table></figure></p>
+<p>区别二：在config中，value不可以被注入，而constant可以被注入，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">app.constant(<span class="string">'greeting'</span>, <span class="string">'hello world'</span>)</span><br><span class="line">	.config(<span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(greeting); <span class="comment">// hello world</span></span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">////////////////////</span></span><br><span class="line"></span><br><span class="line">app.value(<span class="string">'greeting'</span>, <span class="string">'hello world'</span>)</span><br><span class="line">	.config(<span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(greeting); <span class="comment">// Error: [$injector:unpr] Unknown provider: greeting</span></span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="provider-factory-amp-service"><a href="#provider-factory-amp-service" class="headerlink" title="provider, factory &amp; service"></a>provider, factory &amp; service</h2><p>这三者的关系非常密切，看如下例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Greeting</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'hello world'</span>);</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.provider(<span class="string">'greetingFromProvider'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Greeting();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	.factory(<span class="string">'greetingFromFactory'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Greeting();</span><br><span class="line">	&#125;)</span><br><span class="line">	.service(<span class="string">'greetingFromService'</span>, Greeting)</span><br><span class="line">	.controller(<span class="string">'ctrl'</span>, [<span class="string">'greetingFromProvider'</span>, <span class="string">'greetingFromFactory'</span>, <span class="string">'greetingFromService'</span>,</span><br><span class="line">		<span class="function"><span class="keyword">function</span>(<span class="params">gp, gf, gs</span>) </span>&#123;</span><br><span class="line">			gp.sayHello();</span><br><span class="line">			gf.sayHello();</span><br><span class="line">			gs.sayHello();</span><br><span class="line">		&#125;</span><br><span class="line">	]);</span><br></pre></td></tr></table></figure></p>
+<p>可以简单理解为service接收的参数是构造函数，factory接收的参数是工厂函数，而该工厂函数是作为provider中的$get属性而存在的。但是provider比factory更加灵活可配置，因此可以理解为可配置的工厂函数。例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">app.provider(<span class="string">'greeting'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> name = <span class="string">'world'</span>;</span><br><span class="line">		<span class="keyword">this</span>.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> &#123;</span><br><span class="line">				sayHello: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">					<span class="built_in">console</span>.log(<span class="string">'hello '</span> + name);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;;</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span>(<span class="params">newName</span>) </span>&#123;</span><br><span class="line">			name = newName;</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;)</span><br><span class="line">	.config(<span class="function"><span class="keyword">function</span>(<span class="params">greetingProvider</span>) </span>&#123;</span><br><span class="line">		greetingProvider.setName(<span class="string">'alex'</span>);</span><br><span class="line">	&#125;)</span><br><span class="line">	.controller(<span class="string">'ctrl'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">greeting</span>) </span>&#123;</span><br><span class="line">		greeting.sayHello(); <span class="comment">// hello alex</span></span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="底层实现代码"><a href="#底层实现代码" class="headerlink" title="底层实现代码"></a>底层实现代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">provider</span>(<span class="params">name, provider_</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (isFunction(provider_)) &#123;</span><br><span class="line">        provider_ = providerInjector.instantiate(provider_);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!provider_.$get) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="string">'Provider '</span> + name + <span class="string">' must define $get factory method.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> providerCache[name + providerSuffix] = provider_;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factory</span>(<span class="params">name, factoryFn</span>) </span>&#123; <span class="keyword">return</span> provider(name, &#123; $get: factoryFn &#125;); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">service</span>(<span class="params">name, constructor</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> factory(name, [<span class="string">'$injector'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$injector</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> $injector.instantiate(<span class="keyword">constructor</span>);</span><br><span class="line">    &#125;]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function value(name, value) &#123; <span class="keyword">return</span> factory(name, valueFn(value)); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">constant</span>(<span class="params">name, value</span>) </span>&#123;</span><br><span class="line">    providerCache[name] = value;</span><br><span class="line">    instanceCache[name] = value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">decorator</span>(<span class="params">serviceName, decorFn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> origProvider = providerInjector.get(serviceName + providerSuffix),</span><br><span class="line">        orig$get = origProvider.$get;</span><br><span class="line"></span><br><span class="line">    origProvider.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> origInstance = instanceInjector.invoke(orig$get, origProvider);</span><br><span class="line">        <span class="keyword">return</span> instanceInjector.invoke(decorFn, <span class="literal">null</span>, &#123;$delegate: origInstance&#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
