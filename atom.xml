@@ -610,6 +610,72 @@
   </entry>
   
   <entry>
+    <title>CSS布局</title>
+    <link href="http://www.xiaoluo.win/2015/01/21/css/"/>
+    <id>http://www.xiaoluo.win/2015/01/21/css/</id>
+    <published>2015-01-21T09:24:07.000Z</published>
+    <updated>2016-06-21T09:37:47.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;1-box-model&quot;&gt;&lt;a href=&quot;#1-box-model&quot; class=&quot;headerlink&quot; title=&quot;1.box-model&quot;&gt;&lt;/a&gt;1.box-model&lt;/h2&gt;&lt;p&gt;盒模型基本结构如图所示：&lt;br&gt;&lt;img src=&quot;/images/box-model.png&quot; alt=&quot;model&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;盒子的content size由许多因素决定，例如：是否设置盒子的width和height值，盒子内是否包含文本或其它盒子，盒子是否是table，等等。&lt;br&gt;background属性的作用范围是border box，margin区域始终是透明的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;2-position&quot;&gt;&lt;a href=&quot;#2-position&quot; class=&quot;headerlink&quot; title=&quot;2.position&quot;&gt;&lt;/a&gt;2.position&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;static：在普通文档流中，此时设置top，right，bottom和left不起作用。&lt;/li&gt;
+&lt;li&gt;relative：元素相对于其在普通文档流中的位置发生偏移，但是该元素仍然保持它在普通文档流中的位置。&lt;/li&gt;
+&lt;li&gt;absolute：元素脱离普通文档流，相对于其最近的非static祖先元素进行定位。top，right，bottom和left可影响其位置和大小(当未设置width和height的时候)。另外该情况下margin不会发生折叠。&lt;/li&gt;
+&lt;li&gt;fixed：与absolute类似，不过是相对于可视窗口进行定位。当页面滚动的时候，元素相对于窗口位置保持不变。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;3-display、position和float的关系&quot;&gt;&lt;a href=&quot;#3-display、position和float的关系&quot; class=&quot;headerlink&quot; title=&quot;3.display、position和float的关系&quot;&gt;&lt;/a&gt;3.display、position和float的关系&lt;/h2&gt;&lt;p&gt;这三个属性会相互作用，从而影响最重盒子的生成。规则如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/display-position-float.png&quot; alt=&quot;model&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;4-Visual-formatting-model&quot;&gt;&lt;a href=&quot;#4-Visual-formatting-model&quot; class=&quot;headerlink&quot; title=&quot;4.Visual formatting model&quot;&gt;&lt;/a&gt;4.Visual formatting model&lt;/h2&gt;&lt;p&gt;Visual formatting model（可视化格式模型，以下简称VFM）是CSS中非常重要的一个概念。可以理解为，box model确定了一个元素的自身结构，而VFM用来确定这些box如何排列。&lt;/p&gt;
+&lt;p&gt;在VFM中，每一个元素都会根据box model产生零个或多个box，这些box的布局受到以下因素的影响：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;box的size和type&lt;br&gt;定位体系：普通文档流、浮动、绝对定位&lt;br&gt;在文档树中，元素之间的关系&lt;br&gt;其它外部信息，例如viewport、图片的固有尺寸等&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;许多box的定位和尺寸，取决于一个矩形的边界，该矩形被称作为包含块（containing block）。一般来说，一个元素的所生成的box会作为该元素的后代元素的包含块。同时需要注意的是，一个元素的包含块指的是包含该元素的块，而非由该元素所产生的块。&lt;/p&gt;
+&lt;p&gt;每个box相对于它的包含块都会有一个定位，但是box不会被它的包含块所限制，其内容有可能溢出，通过设置overflow的值可以处理溢出。&lt;/p&gt;
+&lt;p&gt;一个元素的包含块的确定遵循如下规则：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;根元素的包含块被称为初始包含块（initial containing block），一般来说在HTML中就是html元素。&lt;br&gt;position为static或relative的元素的包含块由离它最近的block container box（block、table-cell、inline-block）的content box所创建。&lt;br&gt;position为fixed的元素的包含块为当前的viewport。&lt;br&gt;position为absolute的元素的包含块由离它最近的position为relative、absolute或fixed的祖先元素创建：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果祖先元素为inline，包含块为祖先元素所产生的padding box，同时与祖先元素的direction有关。&lt;/li&gt;
+&lt;li&gt;否则由祖先元素的padding box所创建。&lt;/li&gt;
+&lt;li&gt;如果不存在这样的祖先元素，那么其包含块就是初始包含块。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;块级元素和块框（Block-level elements and block boxes）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当一个元素的display值为block、list-item、table的时候，该元素为块级元素。&lt;br&gt;每个块级元素会生成一个主块框（principal block-level box），主块框会为子孙元素建立包含块，生成内容，并且也是涉及所有定位体系统的框。有些块级元素除了主块框之外还会产生额外的框，例如display为list-item的元素。&lt;br&gt;除table外，其它块级元素产生的主块框仅包含块框或仅包含行内框。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;行内元素和行内框（Inline-level elements and inline boxes）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当一个元素的display值为inline、inline-table、inline-block的时候，该元素为行内元素。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;非替换的行内元素（inline）：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;width和height设置无效，由内容撑开。默认的margin-left和margin-right为0。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;普通文档流中的非替换的块级元素（block）：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;首先各个属性满足如下等式：margin-left+border-left-width+padding-left+width+padding-right+border-right-width+margin-right=width of containing block&lt;br&gt;如果width不为auto且border-left-width+padding-left+width+padding-right+border-right-width超过了包含块的宽度，margin-left和margin-right的auto值为0。&lt;br&gt;如果width、margin-left、margin-right都不为auto，此时margin-left和margin-right将不完全等于设定值。如果包含块的direction是ltr，则margin-right会自动改变以满足等式；如果包含块的direction是rtl，则margin-left会自动改变以满足等式。&lt;br&gt;如果width、margin-left、margin-right中只有一个是auto，那么该值会自动改变以满足等式。&lt;br&gt;如果width为auto，name设置为auto的margin-left或margin-right为0，此时width会自动改变以满足等式。&lt;br&gt;如果margin-left和margin-right都为auto，则这两者会相等，此方法可以用来使内容在包含块中水平居中。&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-box-model&quot;&gt;&lt;a href=&quot;#1-box-model&quot; class=&quot;headerlink&quot; title=&quot;1.box-model&quot;&gt;&lt;/a&gt;1.box-model&lt;/h2&gt;&lt;p&gt;盒模型基本结构如图所示：&lt;br&gt;&lt;img src=&quot;/images/
+    
+    </summary>
+    
+      <category term="css" scheme="http://www.xiaoluo.win/categories/css/"/>
+    
+    
+      <category term="css" scheme="http://www.xiaoluo.win/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
     <title>南王地-浮萍立冬水</title>
     <link href="http://www.xiaoluo.win/2014/03/20/%E6%84%9F%E6%83%B3/ping/"/>
     <id>http://www.xiaoluo.win/2014/03/20/感想/ping/</id>
