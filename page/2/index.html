@@ -261,6 +261,145 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/10/angular-start/" itemprop="url">
+                  AngularJS深入(1)--启动
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-10T09:49:09+08:00" content="2016-02-10">
+              2016-02-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/AngularJS/" itemprop="url" rel="index">
+                    <span itemprop="name">AngularJS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/10/angular-start/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/10/angular-start/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>本系列文章分析基于 AngularJS v1.5.7</p>
+<p>参考资料:</p>
+<blockquote>
+<p><a href="https://docs.angularjs.org/api">AngularJS API Docs</a><br><a href="https://docs.angularjs.org/guide">AngularJS Developer Guide</a><br><a href="http://www.imooc.com/learn/156">AngularJS实战</a><br><a href="http://stackoverflow.com/questions/15666048/service-vs-provider-vs-factory">Service vs provider vs factory</a></p>
+</blockquote>
+<h2 id="1-整体架构"><a href="#1-整体架构" class="headerlink" title="1 整体架构"></a>1 整体架构</h2><p>与其它很多库和框架一样，是一个自执行函数，其整体结构简化如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window, document, undefined</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// define variables and functions</span></span><br><span class="line">	<span class="comment">// and do some operations</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">window</span>.angular.bootstrap) &#123;<span class="comment">//判断是否已经加载过angular</span></span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'WARNING: Tried to load angular more than once.'</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	bindJQuery();<span class="comment">//如果已经加载了jQuery，则AngularJS会使用已经加载的jQuery，否则使用内部实现的JQLite，其相当于是一个简化版的jQuery；</span></span><br><span class="line"></span><br><span class="line">	publishExternalAPI(angular);<span class="comment">//执行publishExternalAPI(angular)来为全局变量angular增加属性和方法，并建立起模块机制，注册核心模块；</span></span><br><span class="line"></span><br><span class="line">	jqLite(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		angularInit(<span class="built_in">document</span>, bootstrap);<span class="comment">//在文档加载完成后执行angularInit()。</span></span><br><span class="line">	&#125;);</span><br><span class="line">&#125;)(<span class="built_in">window</span>, <span class="built_in">document</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-bindJQuery"><a href="#2-bindJQuery" class="headerlink" title="2.bindJQuery"></a>2.bindJQuery</h2><p>该方法主要是绑定jQuery，简化后的代码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bindJQueryFired = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bindJQuery</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (bindJQueryFired) &#123;<span class="comment">//绑定过将不再绑定</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> jqName = jq();</span><br><span class="line">    jQuery = <span class="built_in">window</span>.jQuery;</span><br><span class="line">    <span class="keyword">if</span> (isDefined(jqName)) &#123;</span><br><span class="line">        jQuery = jqName === <span class="literal">null</span> ? <span class="literal">undefined</span> : <span class="built_in">window</span>[jqName];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (jQuery &amp;&amp; jQuery.fn.on) &#123;<span class="comment">//如果载入了jquery库</span></span><br><span class="line">        jqLite = jQuery;</span><br><span class="line">        <span class="comment">// ... ...</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;<span class="comment">// 如果jq库不存在</span></span><br><span class="line">        jqLite = JQLite;<span class="comment">//载入简化版jq  ---angularjs 内部实现的一个jquery</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    angular.element = jqLite;<span class="comment">//element</span></span><br><span class="line">    bindJQueryFired = <span class="literal">true</span>;<span class="comment">//标识符  绑定过jquery后设置为true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>绑定jquery  三种来源 ng-jq指定、引入的jQuery库、内置实现的JQLite，其使用流程为：</p>
+<p>如果有ng-jq</p>
+<ul>
+<li>如果ng-jq的值不为空，则使用它指定的库</li>
+<li>如果ng-jq指定的值为空，则变量jQuery的值为undefined，此时强制使用JQLite，无论是否引入了jQuery库</li>
+</ul>
+<p>如果没有ng-jq</p>
+<ul>
+<li>如果引入了jQuery库，则使用它</li>
+<li>如果没有引入jQuery库，则使用JQLite</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/10/angular-start/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/11/07/感想/winter/" itemprop="url">
                   冬日
                 </a>
@@ -330,12 +469,10 @@
 
       
         
-          <p>童年的某年某天开始冬日的太阳是那麽的温柔，照在脸上像是依偎在一个毛绒玩具身上一样，软软的暖暖的。这样的感觉也只能在冬日才能感受得到。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/11/07/感想/winter/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <p>童年的某年某天开始冬日的太阳是那麽的温柔，照在脸上像是依偎在一个毛绒玩具身上一样，软软的暖暖的。这样的感觉也只能在冬日才能感受得到。<br>每年的四季更迭让我们的感受不同，你喜欢了冬季，我喜欢了春季。因此你我 也都有了盼望。<br>早起，寒冷天气，看见外面的景色有些惊喜，本是以为昨夜下了雪，然而那不是雪，只是霜。<br>“不知庭霰今朝落，疑是林花昨夜开。”</p>
+
+          
         
       
     </div>
@@ -452,15 +589,25 @@
 
       
         
-          <blockquote>
+          
+            <blockquote>
 <ul>
 <li>年年岁岁闹元宵，</li>
-<li>岁岁年年又今日，
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/09/17/感想/spring/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+<li>岁岁年年又今日，</li>
+<li>十五的月亮十六圆，</li>
+<li>今日怎知半阴天？</li>
+<li>家家温暖灯火照，</li>
+<li>喜看联欢乐逍遥。</li>
+<li>玫瑰也来添春色，</li>
+<li>今日更是情人节。</li>
+<li>一只猫咪街上逛，</li>
+<li>步调婀娜惹人笑。</li>
+<li>情人猫咪同路走，</li>
+<li>不知他们谁思乡。</li>
+</ul>
+</blockquote>
+
+          
         
       
     </div>
@@ -577,12 +724,21 @@
 
       
         
-          <p> 这是一个美丽的地方，正如你跟着以诺出去支教的地方一样，这也是一个难忘的地方，但和那灯红酒绿的大城市相比多的是那一份幽静淡雅之气，春夏秋冬人们围绕的是这山，围绕的是这里的梯田。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/03/20/感想/ping/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <p> 这是一个美丽的地方，正如你跟着以诺出去支教的地方一样，这也是一个难忘的地方，但和那灯红酒绿的大城市相比多的是那一份幽静淡雅之气，春夏秋冬人们围绕的是这山，围绕的是这里的梯田。<br> 这个地方人家是极少的，或是陶潜所描写的桃花源也不得知，我现在也只认识一人而已，她是个女子，虽生自这样的偏远的地方，但是从小家人也是诗书教育，随就有了大家闺秀之气，举止得礼之为。她的另一方面我是极喜欢的，之所以喜欢皆因我对妻子的理解：对生活里的知识了解很多，关心人是那样的恰当，这是在我之上的，那烧的一手好饭更是不在话下，且又是娇羞可爱，温文尔雅，一看到就会给人一种熟悉，和其他女子是极不相同的。有很多人也是和我的感觉是一样的，所以不知是哪个诗人为了讨她欢喜，特为她写了一首诗云：</p>
+<blockquote>
+<p>诗云云 :</p>
+<ul>
+<li>初春阳光，</li>
+<li>夏季微风，</li>
+<li>中秋果实，</li>
+<li>寒冬炭火，</li>
+<li>愚人儿只识是全部，</li>
+<li>然未知不及她一半。</li>
+</ul>
+</blockquote>
+
+          
         
       
     </div>
@@ -699,12 +855,17 @@
 
       
         
-          <p>今日有一仙石在这地方幻化成人，变得和我认识那个女子一样年纪，也巧不知怎么没过多久他们却成了好盆友，整日在山中一起玩耍，并没有因为出生而变的存在隔阂，就像出生在同一娘胎一样关系友好。只见的那仙石面容如白色海棠花一样，
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/02/03/jade/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <p>今日有一仙石在这地方幻化成人，变得和我认识那个女子一样年纪，也巧不知怎么没过多久他们却成了好盆友，整日在山中一起玩耍，并没有因为出生而变的存在隔阂，就像出生在同一娘胎一样关系友好。只见的那仙石面容如白色海棠花一样，依稀有些淡红夹在其中，秀丽而端庄。<br>我是时常去这地的， 就这样仙石在这里生活的久了我们也就认识了，在这里我是对她有很多说不出的事情来，一次我是见到她哭了，也是我在这里第一次见到女孩哭，且哭的是那样的伤心，我不知道如何劝慰她，也不好意思去问到底发生了什么事情，我怕提起来她哭的更厉害了。<br>我们也是时常在一起玩耍，记得在一个集市上，她曾送我一个五彩的手环，那个手环我一直收藏者，有时我也带出来让别人看看，但是每一次她都不会出现。<br>我曾问过她喜欢读什么书？她说《红》，最喜欢的作家是张大小姐那个为爱而疯狂的传奇女子，巧的是我也是喜欢的，也不知她是什么时候读的，因此我觉察到我们的喜好大都是相同。<br>有些时候感觉我在故意远离这些人，也在故意远离这个地方，总感觉分离的日子进了，先远离一点别离之痛也就少一点吧！</p>
+<blockquote>
+<p>有诗云云 :</p>
+<ul>
+<li>相聚的终将相聚，别离的终将别离。</li>
+<li>唱的是分离后的相聚，饮得是天落下的眼泪。</li>
+</ul>
+</blockquote>
+
+          
         
       
     </div>
@@ -776,7 +937,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

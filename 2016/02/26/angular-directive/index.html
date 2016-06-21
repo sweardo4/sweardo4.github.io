@@ -1,0 +1,789 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="AngularJS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CikeSwear's blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="参考资料:
+
+Creating Custom DirectivesHTML Compiler$compileangularjs1.3.0源码解析之directiveAngularJS学习笔记
+
+指令的使用通常，指令的定义名是形如 ngBind 这样的 “camel cased” 形式。在使用时，它的引用名可以是：
+
+ng:bindng_bindng-bindx-ng-binddata-ng-bin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AngularJS深入(5) -- directive">
+<meta property="og:url" content="http://www.xiaoluo.win/2016/02/26/angular-directive/index.html">
+<meta property="og:site_name" content="CikeSwear's blog">
+<meta property="og:description" content="参考资料:
+
+Creating Custom DirectivesHTML Compiler$compileangularjs1.3.0源码解析之directiveAngularJS学习笔记
+
+指令的使用通常，指令的定义名是形如 ngBind 这样的 “camel cased” 形式。在使用时，它的引用名可以是：
+
+ng:bindng_bindng-bindx-ng-binddata-ng-bin">
+<meta property="og:updated_time" content="2016-06-21T08:28:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AngularJS深入(5) -- directive">
+<meta name="twitter:description" content="参考资料:
+
+Creating Custom DirectivesHTML Compiler$compileangularjs1.3.0源码解析之directiveAngularJS学习笔记
+
+指令的使用通常，指令的定义名是形如 ngBind 这样的 “camel cased” 形式。在使用时，它的引用名可以是：
+
+ng:bindng_bindng-bindx-ng-binddata-ng-bin">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> AngularJS深入(5) -- directive | CikeSwear's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CikeSwear's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Building a better life together</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                AngularJS深入(5) -- directive
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-26T13:51:56+08:00" content="2016-02-26">
+              2016-02-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/AngularJS/" itemprop="url" rel="index">
+                    <span itemprop="name">AngularJS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/26/angular-directive/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/26/angular-directive/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>参考资料:</p>
+<blockquote>
+<p><a href="https://docs.angularjs.org/guide/directive" target="_blank" rel="external">Creating Custom Directives</a><br><a href="https://docs.angularjs.org/guide/compiler" target="_blank" rel="external">HTML Compiler</a><br><a href="https://docs.angularjs.org/api/ng/service/$compile" target="_blank" rel="external">$compile</a><br><a href="http://www.html-js.com/article/Front-end-source-code-analysis-directive-angularjs130-source-code-analysis-of-the-original" target="_blank" rel="external">angularjs1.3.0源码解析之directive</a><br><a href="https://checkcheckzz.gitbooks.io/angularjs-learning-notes/content/chapter18/18-1.html" target="_blank" rel="external">AngularJS学习笔记</a></p>
+</blockquote>
+<h2 id="指令的使用"><a href="#指令的使用" class="headerlink" title="指令的使用"></a>指令的使用</h2><p>通常，指令的定义名是形如 ngBind 这样的 “camel cased” 形式。在使用时，它的引用名可以是：</p>
+<blockquote>
+<p>ng:bind<br>ng_bind<br>ng-bind<br>x-ng-bind<br>data-ng-bind</p>
+</blockquote>
+<p>你可以根据你自己是否有 “HTML validator” 洁癖来选择。<br>指令可以放在多个地方，它们的作用相同：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">my-dir</span>=<span class="string">"exp"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>作为标签的属性</span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"my-dir: exp;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>作为标签类属性的值</span><br><span class="line"><span class="tag">&lt;<span class="name">my-dir</span>&gt;</span><span class="tag">&lt;/<span class="name">my-dir</span>&gt;</span> 作为标签</span><br><span class="line"><span class="comment">&lt;!-- directive: my-dir exp --&gt;</span> 作为注释</span><br></pre></td></tr></table></figure></p>
+<p>这些方式可以使用指令定义中的 restrict 属性来控制</p>
+<h2 id="指令的执行过程"><a href="#指令的执行过程" class="headerlink" title="指令的执行过程"></a>指令的执行过程</h2><p>ng 中对指令的解析与执行过程是这样的：</p>
+<p>1.浏览器得到 HTML 字符串内容，解析得到 DOM 结构。<br>2.ng 引入，把 DOM 结构扔给 $compile 函数处理：</p>
+<ul>
+<li>找出 DOM 结构中有变量占位符</li>
+<li>匹配找出 DOM 中包含的所有指令引用</li>
+<li>把指令关联到 DOM</li>
+<li>关联到 DOM 的多个指令按权重排列</li>
+<li>执行指令中的 compile 函数（改变 DOM 结构，返回 link 函数）</li>
+<li>得到的所有 link 函数组成一个列表作为 $compile 函数的返回</li>
+</ul>
+<p>3.执行 link 函数（连接模板的 scope）。</p>
+<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><p>一个完整指令的定义应该返回一个对象，这个对象包括了多个属性：</p>
+<blockquote>
+<p><font color="red">name: </font><br>‘指令的 controller 的名字，方便其它指令引用。’</p>
+<p><font color="red">priority:</font><br>‘这个值设置指令的权重，默认是 0 。当一个节点中有多个指令存在时，就按着权限从大到小的顺序依次执行它们的 compile 函数。相同权重顺序不定。’</p>
+<p><font color="red">terminal : </font><br>“是否以当前指令的权重为结束界限。如果这值设置为 true ，则节点中权重小于当前指令的其它指令不会被执行。相同权重的会执行。”</p>
+<p><font color="red">scope : </font><br>‘scope 的形式。 false 节点的 scope ， true 继承创建一个新的 scope ， {} 不继承创建一个新的隔离 scope 。 {@attr: ‘引用节点属性’, =attr: ‘把节点属性&gt;值引用成scope属性值’, &amp;attr: ‘把节点属性值包装成函数’}’</p>
+<p><font color="red">controller: </font><br>‘为指令定义一个controller ， function controller($scope, $element, $attrs, $transclude) { … } 这和模块中定义的controller不是一个概念’</p>
+<p><font color="red">require: </font><br>‘要引用的其它指令 conroller 的名字， ?name 忽略不存在的错误， ^name 在父级查找。’</p>
+<p><font color="red">restrict:</font><br>‘指令可以以哪些方式被使用，可以同时定义多种方式。<br>E 元素方式 <my-directive></my-directive><br>A 属性方式 <div my-directive="exp"> </div><br>C 类方式 <div class="my-directive: exp;"></div><br>M 注释方式 <!-- directive: my-directive exp -->‘</p>
+<p><font color="red">template: </font><br>‘模板内容。’</p>
+<p><font color="red">templateUrl:</font><br>‘从指定地址获取模板内容。’</p>
+<p><font color="red">replace:</font><br>‘是否使用模板内容替换掉整个节点， true 替换整个节点， false 替换节点内容。’</p>
+<p><font color="red">transclude:</font><br>‘前面已经讲过基本的用法了。可以是 ‘element’ 或 true 两种值。’</p>
+<p><font color="red">compile: </font><br>‘基本的定义函数。 function compile(tElement, tAttrs, transclude) { … }’</p>
+<p><font color="red">link:</font><br>‘前面介绍过了。大多数时候我们不需要单独定义它。只有 compile 未定义时 link 才会被尝试。 function link(scope, iElement, iAttrs, controller) { …}’</p>
+</blockquote>
+<h3 id="简单实例"><a href="#简单实例" class="headerlink" title="简单实例"></a>简单实例</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-app</span>=<span class="string">"myApp"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">my-directive</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">'myApp'</span>, [])</span><br><span class="line">  .directive(<span class="string">'myDirective'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 返回一个对象（暂且称之为指令对象）</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      restrict: <span class="string">'A'</span>,</span><br><span class="line">      replace: <span class="literal">true</span>,</span><br><span class="line">      scope: <span class="literal">true</span>,</span><br><span class="line">      template: <span class="string">'&lt;span&gt;hello world&lt;/span&gt;'</span>,</span><br><span class="line">      compile: <span class="function"><span class="keyword">function</span> (<span class="params">tElement</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'complile: '</span>, tElement);</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">scope, elem</span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'link: '</span>, elem);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="指令scope"><a href="#指令scope" class="headerlink" title="指令scope"></a>指令scope</h3><blockquote>
+<p>指令的编译过程中伴随着作用域的创建，这个作用域是跟指令相关的（比较熟悉的内置指令：ngController创建scope）。</p>
+</blockquote>
+<p>scope作用域是可继承的，也有孤立作用域的存在，那么在指令中，我们通过指定scope字段来利用这些特点：</p>
+<blockquote>
+<p>1.scope: true（非空），创建一个继承自父作用域的子作用域，这就意味着，子指令拥有了自己的作用域，同时可以访问父指令的作用域数据。<br>2.scope: false（空值），不创建任何作用域，将父作用域当做当前作用域，这意味着，子指令对数据的任何修改都会影响父作用域。<br>3.scope: {…}（对象），创建孤立作用域，这就意味着，与父作用域没有任何联系。</p>
+</blockquote>
+<p>对于前两点，没啥需要解释的，来看看第三点孤立作用域：<br>我们知道孤立作用域，是单独存在的一个作用域，没继承关系，也不直接引用父作用域，那么问题来了：如果想要访问父作用域的数据，该怎么办？</p>
+<p>angular帮我们解决了这个问题，通过将当前节点的属性做为数据传递桥梁，父作用域可以传递数据给节点属性，孤立作用域便可通过一个映射关系来访问这个节点属性来获取数据，从而达到访问父作用域的目的。</p>
+<p>问：还记得指令创建孤立作用域的的条件是什么吗？</p>
+<p>答：scope是必须是一个对象。</p>
+<p>问：那么这个对象有什么用？</p>
+<p>答：这是孤立作用域跟父作用域的数据通信的关键，其实是一个孤立作用域字段跟节点属性的映射，这样的映射有三种形式，决定着跟父作用域数据的读（写）关系。</p>
+<p>三种访问父作用域的方式：</p>
+<blockquote>
+<p>1.@attrName : 单向绑定，这就意味着，孤立作用域的任何改变都不会影响到父作用域，父作用域的改变则影响着孤立作用域。<br>2.=attrName : 双向绑定，这就意味着，孤立作用域和它的父作用域的任何改变都会影响着对方。<br>3.&amp;attrName: 函数绑定，其实就是指定调用父作用域的哪个方法。</p>
+</blockquote>
+<p>类似映射结构<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scope: &#123;</span><br><span class="line">    name: <span class="string">"@"</span>,   <span class="comment">// 单向绑定，孤立作用域的name字段对应着节点的的name属性，其实我们也可以改变属性名：name: @parentName，这样它对应的节点属性就是parent-name</span></span><br><span class="line">    color: <span class="string">"="</span>,  <span class="comment">// 双向绑定，孤立作用域的color字段对应着节点的的color属性</span></span><br><span class="line">    reverse: <span class="string">"&amp;"</span> <span class="comment">// 函数绑定，孤立作用域的reverse字段对应着节点的的reverse属性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://jsfiddle.net/shidhincr/pJLT8/10/light/" target="_blank" rel="external">实例说明</a></p>
+<h3 id="指令的controller"><a href="#指令的controller" class="headerlink" title="指令的controller"></a>指令的controller</h3><blockquote>
+<p>提到controller，大家肯定会想到定义controller（像：myModule.controller(…)），我们经常会在controller里面注入$scope当前作用域，然后往$scope里面设置值或者函数，那样我们就可以在html中引用这个controller，然后调用$scope里的值或者函数，但是这里我们要谈到的是directive中的controller，到底有啥不同点和相同点？</p>
+</blockquote>
+<p>首先说说，我们通常在指令中如何定义controller?<br>第一种：通过controller名，引用已定义的controller <a href="http://jsbin.com/sukeqe/2/edit?html,js,console" target="_blank" rel="external">代码在这里</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">app.controller(<span class="string">'myController'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</span><br><span class="line">    $scope.name = <span class="string">'Lovesueee'</span>; <span class="comment">// 给$scope赋值</span></span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'maxin'</span>; <span class="comment">// 给controller实例赋值</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.directive(<span class="string">'myDirective'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">       controller: <span class="string">'myController'</span>,</span><br><span class="line">       link: <span class="function"><span class="keyword">function</span> (<span class="params">scope, elem, attrs, ctrl</span>) </span>&#123;</span><br><span class="line">           <span class="built_in">console</span>.log(ctrl, scope);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>试一试从当前作用域里查找controller，<a href="http://jsbin.com/lititu/1/edit" target="_blank" rel="external">代码在这里</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = angular.module(<span class="string">'myApp'</span>, []).run(<span class="function"><span class="keyword">function</span> (<span class="params">$rootScope</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 将controller存在$scope中</span></span><br><span class="line">    $rootScope.myController = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = <span class="string">'maxin'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.directive(<span class="string">'myDirective'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">       controller: <span class="string">'myController'</span>,</span><br><span class="line">       link: <span class="function"><span class="keyword">function</span> (<span class="params">scope, elem, attrs, ctrl</span>) </span>&#123;</span><br><span class="line">           <span class="built_in">console</span>.log(ctrl);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>第二种：通过直接定义匿名controllerh函数 <a href="http://jsbin.com/xafibo/1/edit" target="_blank" rel="external">代码在这里</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">app.directive(<span class="string">'myDirective'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">       controller: <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</span><br><span class="line">            $scope.name = <span class="string">'Lovesueee'</span>;</span><br><span class="line">            <span class="keyword">this</span>.name = <span class="string">'maxin'</span>;</span><br><span class="line">       &#125;,</span><br><span class="line">       link: <span class="function"><span class="keyword">function</span> (<span class="params">scope, elem, attrs, ctrl</span>) </span>&#123;</span><br><span class="line">           <span class="built_in">console</span>.log(scope, ctrl);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>我们在指令的controller的构造函数中我们不再使用$scope而是this(代表controller实例)</p>
+<h3 id="指令中的require"><a href="#指令中的require" class="headerlink" title="指令中的require"></a>指令中的require</h3><p>前面提到了controller，其实当一个指令被link之前，controller构造函数会被执行，创建controller实例，此时做的很重要的一点是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = angular.module(<span class="string">'myApp'</span>, []);</span><br><span class="line"></span><br><span class="line">app.directive(<span class="string">'myParent'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        restrict: <span class="string">'EA'</span>,</span><br><span class="line">        template: <span class="string">'&lt;div&gt;&#123;&#123;greeting&#125;&#125;&#123;&#123;name&#125;&#125;'</span>+</span><br><span class="line">        <span class="string">'&lt;my-child&gt;&lt;/my-child&gt;'</span>+</span><br><span class="line">        <span class="string">'&lt;/div&gt;'</span>,</span><br><span class="line">        controller: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = <span class="string">'Lovesueee'</span>;</span><br><span class="line">        &#125;,</span><br><span class="line">        link: <span class="function"><span class="keyword">function</span>(<span class="params">scope,elem,attr,ctrl</span>)</span>&#123;</span><br><span class="line">            scope.name = ctrl.name;</span><br><span class="line">            scope.greeting = <span class="string">'Hey, I am '</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br><span class="line">app.directive(<span class="string">'myChild'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        restrict: <span class="string">'EA'</span>,</span><br><span class="line">        <span class="built_in">require</span>: <span class="string">'^myParent'</span>,</span><br><span class="line">        template: <span class="string">'&lt;div&gt;&#123;&#123;says&#125;&#125;&lt;/div&gt;'</span>,</span><br><span class="line">        link: <span class="function"><span class="keyword">function</span>(<span class="params">scope,elem,attr,ctrl</span>)</span>&#123;</span><br><span class="line">            scope.says = <span class="string">'Hey, I am child, and my parent is '</span>+ ctrl.name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>输出是</p>
+<blockquote>
+<p>Hey, I am Lovesueee<br>Hey, I am child, and my parent is Lovesueee</p>
+</blockquote>
+<p><a href="http://jsbin.com/luyuko/1/edit?html,js,console,output" target="_blank" rel="external">代码在这里</a></p>
+<p>上面的例子我们在父指令中myParent定义了controller（angularjs会自动加上为她require: ‘myParent’），它的实例除了在自身的link函数中引用以外，在子指令myChild的link函数中也有引用，这都归功于require: ‘^myParent’这一句，意思是说，将在link函数中引用myParent指令中的controller实例，整体地从这个例子来看，这其实就是一种父作用域向子作用域数据传递的方式。</p>
+<p>那么是如何做到引用controller实例呢？</p>
+<p>前面说了，controller实例是通过data方法被存储在对应指令的dom元素上的，那么要想获得这样的实例，当然就得从dom元素上再次通过data方法取出来，如果是父指令的controller实例，那么就需要在dom.parent()上通过data方法取，如果是祖先指令的controller实例，则需要一直向上遍历并通过data方法取，直到根元素为止（为此angularjs封装了一个可以向祖先元素通过data方法取数据的方法，叫做inheritedData）。</p>
+<p>而到底要不要选择向祖先元素获取controller实例，是由require的值决定的：</p>
+<blockquote>
+<p>require: ‘myParent’ 表示只从当前节点上获取myParent指令的controller实例。<br>require: ’^myParent’ 表示从当前节点上获取myParent指令的controller实例开始，如果获取不到则一直从parent节点上取。<br>require: ’?myParent’，’^?myParent’ 或者 ’?^myParent’ 加上问号，表示获取不到controller实例也不会报错。<br>注意：require的值可以是一个数组，来引用多个controller实例。</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AngularJS/" rel="tag">#AngularJS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/23/angular-provider/" rel="next" title="AngularJS深入(5) -- provider">
+                <i class="fa fa-chevron-left"></i> AngularJS深入(5) -- provider
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/18/React/react-native-macone/" rel="prev" title="react-native 开发环境安装及遇到的问题总结">
+                react-native 开发环境安装及遇到的问题总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/02/26/angular-directive/"
+     data-title="AngularJS深入(5) -- directive"
+     data-content=""
+     data-url="http://www.xiaoluo.win/2016/02/26/angular-directive/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/26/angular-directive/"
+           data-title="AngularJS深入(5) -- directive" data-url="http://www.xiaoluo.win/2016/02/26/angular-directive/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/tou.jpg"
+               alt="Cui" />
+          <p class="site-author-name" itemprop="name">Cui</p>
+          <p class="site-description motion-element" itemprop="description">个人学习生活记录</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sweardo4" target="_blank" title="github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/cikeswear" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/313335675" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#指令的使用"><span class="nav-number">1.</span> <span class="nav-text">指令的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指令的执行过程"><span class="nav-number">2.</span> <span class="nav-text">指令的执行过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义指令"><span class="nav-number">3.</span> <span class="nav-text">自定义指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单实例"><span class="nav-number">3.1.</span> <span class="nav-text">简单实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令scope"><span class="nav-number">3.2.</span> <span class="nav-text">指令scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令的controller"><span class="nav-number">3.3.</span> <span class="nav-text">指令的controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令中的require"><span class="nav-number">3.4.</span> <span class="nav-text">指令中的require</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cui</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+   <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+   <div>
+   <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+   </div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"cikeswear"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

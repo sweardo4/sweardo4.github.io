@@ -83,18 +83,21 @@
 
 
 <meta name="description" content="分清这些关键字组件，状态机，虚拟DOM，真实DOM，组件的生命周期
-组件React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类">
+组件React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类
+12345678910111213var MyComponent  = React.createClass(&amp;#123;		render:functio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react分清这些关键字">
 <meta property="og:url" content="http://www.xiaoluo.win/2016/04/19/reactone/index.html">
 <meta property="og:site_name" content="CikeSwear's blog">
 <meta property="og:description" content="分清这些关键字组件，状态机，虚拟DOM，真实DOM，组件的生命周期
-组件React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类">
-<meta property="og:updated_time" content="2016-05-11T03:50:59.000Z">
+组件React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类
+12345678910111213var MyComponent  = React.createClass(&amp;#123;		render:functio">
+<meta property="og:updated_time" content="2016-06-21T08:09:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react分清这些关键字">
 <meta name="twitter:description" content="分清这些关键字组件，状态机，虚拟DOM，真实DOM，组件的生命周期
-组件React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类">
+组件React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类
+12345678910111213var MyComponent  = React.createClass(&amp;#123;		render:functio">
 
 
 
@@ -330,7 +333,6 @@
       
         <h2 id="分清这些关键字"><a href="#分清这些关键字" class="headerlink" title="分清这些关键字"></a>分清这些关键字</h2><p>组件，状态机，虚拟DOM，真实DOM，组件的生命周期</p>
 <h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><p>React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类</p>
-<a id="more"></a>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MyComponent  = React.createClass(&#123;</span><br><span class="line">		render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> (</span><br><span class="line">				<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">p</span>&gt;</span>My component<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">			)</span><br><span class="line">		&#125;</span><br><span class="line">&#125;);</span><br><span class="line">ReactDOM.render(</span><br><span class="line">		<span class="xml"><span class="tag">&lt;<span class="name">MyComponent</span> /&gt;</span>,</span><br><span class="line">		document.getElementById('elementId')</span><br><span class="line">)</span></span><br></pre></td></tr></table></figure>
 <h3 id="虚拟DOM-真实DOM"><a href="#虚拟DOM-真实DOM" class="headerlink" title="虚拟DOM 真实DOM"></a>虚拟DOM 真实DOM</h3><p>组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，叫做虚拟 DOM （virtual DOM）。只有当它插入文档以后，才会变成真实的 DOM 。根据 React 的设计，所有的 DOM 变动，都先在虚拟 DOM 上发生，然后再将实际发生变动的部分，反映在真实 DOM上，这种算法叫做 <a href="http://calendar.perfplanet.com/2013/diff/" target="_blank" rel="external">DOM diff</a> ，它可以极大提高网页的性能表现。</p>
 <h3 id="状态机"><a href="#状态机" class="headerlink" title="状态机"></a>状态机</h3><p>React 的一大创新，就是将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染UI</p>
@@ -474,7 +476,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
