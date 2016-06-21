@@ -211,6 +211,34 @@
   </entry>
   
   <entry>
+    <title>AngularJS深入(6) -- scope</title>
+    <link href="http://www.xiaoluo.win/2016/03/20/angular-scope/"/>
+    <id>http://www.xiaoluo.win/2016/03/20/angular-scope/</id>
+    <published>2016-03-20T05:51:56.000Z</published>
+    <updated>2016-06-21T08:54:54.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Angular作用域&quot;&gt;&lt;a href=&quot;#Angular作用域&quot; class=&quot;headerlink&quot; title=&quot;Angular作用域&quot;&gt;&lt;/a&gt;Angular作用域&lt;/h1&gt;&lt;p&gt;AngularJS存在四种作用域:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.普通的带原型继承的作用域 – ng-include, ng-switch, ng-controller, directive with scope: true；&lt;br&gt;2.普通的带原型继承的，并且有赋值行为的作用域 – ng-repeat，ng-repeat为每一个迭代项创建一个普通的有原型继承的子作用域，但同时在子作用域中创建新属性存储迭代项；&lt;br&gt;3.“Isolate”作用域 – directive with scope: {…}， 该作用域没有原型继承，但可以通过’=’, ‘@’, 和 ‘&amp;amp;’与父作用域通信。&lt;br&gt;4.“transcluded”作用域 – directive with transclude: true，它也是普通的带原型继承的作用域，但它与“Isolate”作用域是相邻的好基友。&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Angular作用域&quot;&gt;&lt;a href=&quot;#Angular作用域&quot; class=&quot;headerlink&quot; title=&quot;Angular作用域&quot;&gt;&lt;/a&gt;Angular作用域&lt;/h1&gt;&lt;p&gt;AngularJS存在四种作用域:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+    
+    </summary>
+    
+      <category term="AngularJS" scheme="http://www.xiaoluo.win/categories/AngularJS/"/>
+    
+    
+      <category term="AngularJS" scheme="http://www.xiaoluo.win/tags/AngularJS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>AngularJS深入(5) -- directive</title>
     <link href="http://www.xiaoluo.win/2016/02/26/angular-directive/"/>
     <id>http://www.xiaoluo.win/2016/02/26/angular-directive/</id>

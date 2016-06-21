@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="CikeSwear" />
+  <meta name="keywords" content="AngularJS," />
 
 
 
@@ -82,16 +82,22 @@
 
 
 
-<meta name="description" content="童年的某年某天开始冬日的太阳是那麽的温柔，照在脸上像是依偎在一个毛绒玩具身上一样，软软的暖暖的。这样的感觉也只能在冬日才能感受得到。每年的四季更迭让我们的感受不同，你喜欢了冬季，我喜欢了春季。因此你我 也都有了盼望。早起，寒冷天气，看见外面的景色有些惊喜，本是以为昨夜下了雪，然而那不是雪，只是霜。“不知庭霰今朝落，疑是林花昨夜开。”">
+<meta name="description" content="Angular作用域AngularJS存在四种作用域:
+
+1.普通的带原型继承的作用域 – ng-include, ng-switch, ng-controller, directive with scope: true；2.普通的带原型继承的，并且有赋值行为的作用域 – ng-repeat，ng-repeat为每一个迭代项创建一个普通的有原型继承的子作用域，但同时在子作用域中创建新属性存储迭代项">
 <meta property="og:type" content="article">
-<meta property="og:title" content="冬日">
-<meta property="og:url" content="http://www.xiaoluo.win/2014/11/07/感想/winter/index.html">
+<meta property="og:title" content="AngularJS深入(6) -- scope">
+<meta property="og:url" content="http://www.xiaoluo.win/2016/03/20/angular-scope/index.html">
 <meta property="og:site_name" content="CikeSwear's blog">
-<meta property="og:description" content="童年的某年某天开始冬日的太阳是那麽的温柔，照在脸上像是依偎在一个毛绒玩具身上一样，软软的暖暖的。这样的感觉也只能在冬日才能感受得到。每年的四季更迭让我们的感受不同，你喜欢了冬季，我喜欢了春季。因此你我 也都有了盼望。早起，寒冷天气，看见外面的景色有些惊喜，本是以为昨夜下了雪，然而那不是雪，只是霜。“不知庭霰今朝落，疑是林花昨夜开。”">
-<meta property="og:updated_time" content="2016-06-21T08:08:52.000Z">
+<meta property="og:description" content="Angular作用域AngularJS存在四种作用域:
+
+1.普通的带原型继承的作用域 – ng-include, ng-switch, ng-controller, directive with scope: true；2.普通的带原型继承的，并且有赋值行为的作用域 – ng-repeat，ng-repeat为每一个迭代项创建一个普通的有原型继承的子作用域，但同时在子作用域中创建新属性存储迭代项">
+<meta property="og:updated_time" content="2016-06-21T08:54:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="冬日">
-<meta name="twitter:description" content="童年的某年某天开始冬日的太阳是那麽的温柔，照在脸上像是依偎在一个毛绒玩具身上一样，软软的暖暖的。这样的感觉也只能在冬日才能感受得到。每年的四季更迭让我们的感受不同，你喜欢了冬季，我喜欢了春季。因此你我 也都有了盼望。早起，寒冷天气，看见外面的景色有些惊喜，本是以为昨夜下了雪，然而那不是雪，只是霜。“不知庭霰今朝落，疑是林花昨夜开。”">
+<meta name="twitter:title" content="AngularJS深入(6) -- scope">
+<meta name="twitter:description" content="Angular作用域AngularJS存在四种作用域:
+
+1.普通的带原型继承的作用域 – ng-include, ng-switch, ng-controller, directive with scope: true；2.普通的带原型继承的，并且有赋值行为的作用域 – ng-repeat，ng-repeat为每一个迭代项创建一个普通的有原型继承的子作用域，但同时在子作用域中创建新属性存储迭代项">
 
 
 
@@ -109,7 +115,7 @@
   };
 </script>
 
-  <title> 冬日 | CikeSwear's blog </title>
+  <title> AngularJS深入(6) -- scope | CikeSwear's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -259,7 +265,7 @@
             
             
               
-                冬日
+                AngularJS深入(6) -- scope
               
             
           </h1>
@@ -271,8 +277,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-11-07T08:55:29+08:00" content="2014-11-07">
-              2014-11-07
+            <time itemprop="dateCreated" datetime="2016-03-20T13:51:56+08:00" content="2016-03-20">
+              2016-03-20
             </time>
           </span>
 
@@ -285,8 +291,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/记录/" itemprop="url" rel="index">
-                    <span itemprop="name">记录</span>
+                  <a href="/categories/AngularJS/" itemprop="url" rel="index">
+                    <span itemprop="name">AngularJS</span>
                   </a>
                 </span>
 
@@ -301,8 +307,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2014/11/07/感想/winter/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/11/07/感想/winter/" itemprop="commentsCount"></span>
+                <a href="/2016/03/20/angular-scope/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/20/angular-scope/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -325,7 +331,10 @@
       
 
       
-        <p>童年的某年某天开始冬日的太阳是那麽的温柔，照在脸上像是依偎在一个毛绒玩具身上一样，软软的暖暖的。这样的感觉也只能在冬日才能感受得到。<br>每年的四季更迭让我们的感受不同，你喜欢了冬季，我喜欢了春季。因此你我 也都有了盼望。<br>早起，寒冷天气，看见外面的景色有些惊喜，本是以为昨夜下了雪，然而那不是雪，只是霜。<br>“不知庭霰今朝落，疑是林花昨夜开。”</p>
+        <h1 id="Angular作用域"><a href="#Angular作用域" class="headerlink" title="Angular作用域"></a>Angular作用域</h1><p>AngularJS存在四种作用域:</p>
+<blockquote>
+<p>1.普通的带原型继承的作用域 – ng-include, ng-switch, ng-controller, directive with scope: true；<br>2.普通的带原型继承的，并且有赋值行为的作用域 – ng-repeat，ng-repeat为每一个迭代项创建一个普通的有原型继承的子作用域，但同时在子作用域中创建新属性存储迭代项；<br>3.“Isolate”作用域 – directive with scope: {…}， 该作用域没有原型继承，但可以通过’=’, ‘@’, 和 ‘&amp;’与父作用域通信。<br>4.“transcluded”作用域 – directive with transclude: true，它也是普通的带原型继承的作用域，但它与“Isolate”作用域是相邻的好基友。</p>
+</blockquote>
 
       
     </div>
@@ -344,21 +353,27 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/AngularJS/" rel="tag">#AngularJS</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/09/17/感想/spring/" rel="next" title="Today is the Lantern Festival">
-                <i class="fa fa-chevron-left"></i> Today is the Lantern Festival
+              <a href="/2016/02/26/angular-directive/" rel="next" title="AngularJS深入(5) -- directive">
+                <i class="fa fa-chevron-left"></i> AngularJS深入(5) -- directive
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/02/10/angular-start/" rel="prev" title="AngularJS深入(1)--启动">
-                AngularJS深入(1)--启动 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/04/18/React/react-native-macone/" rel="prev" title="react-native 开发环境安装及遇到的问题总结">
+                react-native 开发环境安装及遇到的问题总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -374,10 +389,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2014/11/07/感想/winter/"
-     data-title="冬日"
+        <div class="ds-share flat" data-thread-key="2016/03/20/angular-scope/"
+     data-title="AngularJS深入(6) -- scope"
      data-content=""
-     data-url="http://www.xiaoluo.win/2014/11/07/感想/winter/">
+     data-url="http://www.xiaoluo.win/2016/03/20/angular-scope/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -404,8 +419,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2014/11/07/感想/winter/"
-           data-title="冬日" data-url="http://www.xiaoluo.win/2014/11/07/感想/winter/">
+      <div class="ds-thread" data-thread-key="2016/03/20/angular-scope/"
+           data-title="AngularJS深入(6) -- scope" data-url="http://www.xiaoluo.win/2016/03/20/angular-scope/">
       </div>
     
   </div>
@@ -532,7 +547,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Angular作用域"><span class="nav-number">1.</span> <span class="nav-text">Angular作用域</span></a></li></ol></div>
             
           </div>
         </section>
