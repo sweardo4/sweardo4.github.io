@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.xiaoluo.win/2016/01/12/handleEvent/</loc>
+    <lastmod>2016-06-21T09:22:45.000Z</lastmod>
+    <data>
+        <display>
+        <title>addEventListener和handleEvent</title>
+        <pubTime>2016-01-12T07:31:50.000Z</pubTime>
+        
+        <tag>Event</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://www.xiaoluo.win/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.xiaoluo.win/2016/02/03/jade/</loc>
     <lastmod>2016-06-21T09:19:43.000Z</lastmod>
     <data>
@@ -113,26 +133,6 @@
            
              
               <breadCrumb title="react" url="http://www.xiaoluo.win/categories/react/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/05/12/handleEvent/</loc>
-    <lastmod>2016-06-21T08:09:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>addEventListener和handleEvent</title>
-        <pubTime>2016-05-12T07:31:50.000Z</pubTime>
-        
-        <tag>Event</tag>
-         
-         
-           
-             
-              <breadCrumb title="javascript" url="http://www.xiaoluo.win/categories/javascript/"/>
           
         </display>
     </data>
