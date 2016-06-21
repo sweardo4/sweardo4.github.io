@@ -5,18 +5,78 @@
     
   <url>
     <loc>http://www.xiaoluo.win/2016/01/08/angluar-example/</loc>
-    <lastmod>2016-06-21T10:24:38.000Z</lastmod>
+    <lastmod>2016-06-21T10:30:04.000Z</lastmod>
     <data>
         <display>
         <title>AngluarJS + ionic 项目实例解析</title>
         <pubTime>2016-01-08T10:14:57.000Z</pubTime>
         
-        <tag>angular</tag>
+        <tag>AngularJS</tag>
          
          
            
              
-              <breadCrumb title="angular" url="http://www.xiaoluo.win/categories/angular/"/>
+              <breadCrumb title="AngularJS" url="http://www.xiaoluo.win/categories/AngularJS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.xiaoluo.win/2016/02/20/angular-createInjector/</loc>
+    <lastmod>2016-06-21T10:29:59.000Z</lastmod>
+    <data>
+        <display>
+        <title>AngularJS深入(3) -- 依赖注入</title>
+        <pubTime>2016-02-20T03:16:15.000Z</pubTime>
+        
+        <tag>AngularJS</tag>
+         
+         
+           
+             
+              <breadCrumb title="AngularJS" url="http://www.xiaoluo.win/categories/AngularJS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.xiaoluo.win/2016/02/14/angular-module/</loc>
+    <lastmod>2016-06-21T10:29:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>AngularJS深入(2) -- 模块化</title>
+        <pubTime>2016-02-14T03:16:15.000Z</pubTime>
+        
+        <tag>AngularJS</tag>
+         
+         
+           
+             
+              <breadCrumb title="AngularJS" url="http://www.xiaoluo.win/categories/AngularJS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.xiaoluo.win/2016/02/10/angular-start/</loc>
+    <lastmod>2016-06-21T10:29:47.000Z</lastmod>
+    <data>
+        <display>
+        <title>AngularJS深入(1)--启动</title>
+        <pubTime>2016-02-10T01:49:09.000Z</pubTime>
+        
+        <tag>AngularJS</tag>
+         
+         
+           
+             
+              <breadCrumb title="AngularJS" url="http://www.xiaoluo.win/categories/AngularJS/"/>
           
         </display>
     </data>
@@ -306,66 +366,6 @@
         <pubTime>2016-02-23T05:51:56.000Z</pubTime>
         
         <tag>AngularJS</tag>
-         
-         
-           
-             
-              <breadCrumb title="AngularJS" url="http://www.xiaoluo.win/categories/AngularJS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/02/20/angular-createInjector/</loc>
-    <lastmod>2016-06-21T04:46:57.000Z</lastmod>
-    <data>
-        <display>
-        <title>AngularJS深入(3) -- 依赖注入</title>
-        <pubTime>2016-02-20T03:16:15.000Z</pubTime>
-        
-        <tag>angularjs</tag>
-         
-         
-           
-             
-              <breadCrumb title="AngularJS" url="http://www.xiaoluo.win/categories/AngularJS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/02/14/angular-module/</loc>
-    <lastmod>2016-06-21T03:25:46.000Z</lastmod>
-    <data>
-        <display>
-        <title>AngularJS深入(2) -- 模块化</title>
-        <pubTime>2016-02-14T03:16:15.000Z</pubTime>
-        
-        <tag>angularjs</tag>
-         
-         
-           
-             
-              <breadCrumb title="AngularJS" url="http://www.xiaoluo.win/categories/AngularJS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/02/10/angular-start/</loc>
-    <lastmod>2016-06-21T03:11:20.000Z</lastmod>
-    <data>
-        <display>
-        <title>AngularJS深入(1)--启动</title>
-        <pubTime>2016-02-10T01:49:09.000Z</pubTime>
-        
-        <tag>angularjs</tag>
          
          
            
