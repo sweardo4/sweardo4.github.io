@@ -261,6 +261,133 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/14/angular-module/" itemprop="url">
+                  AngularJS深入(2) -- 模块化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-14T11:16:15+08:00" content="2016-02-14">
+              2016-02-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/AngularJS/" itemprop="url" rel="index">
+                    <span itemprop="name">AngularJS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/14/angular-module/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/14/angular-module/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-setupModuleLoader"><a href="#1-setupModuleLoader" class="headerlink" title="1.setupModuleLoader"></a>1.setupModuleLoader</h2><p>该方法主要用于设置模块加载器，源码比较长，并且使用了多层闭包。首先在该方法中，定义了一个非常有用的方法ensure，代码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ensure</span>(<span class="params">obj, name, factory</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> obj[name] || (obj[name] = factory());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>很容易理解，当obj有name属性的时候，作为getter来使用，否则作为setter来使用。<br>然后可以将setupModuleLoader简化如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupModuleLoader</span>(<span class="params">window</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// ... ...</span></span><br><span class="line">	<span class="keyword">return</span> angular.module = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> modules = &#123;&#125;;</span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">module</span>(<span class="params">name, requires, configFn</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> ensure(modules, name, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">				<span class="comment">// ... ...</span></span><br><span class="line">				<span class="keyword">var</span> moduleInstance = &#123;</span><br><span class="line">					<span class="comment">// ... ...</span></span><br><span class="line">				&#125;;</span><br><span class="line">				<span class="keyword">return</span> moduleInstance;</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是这样依然不够直观清晰，接下来打破闭包，将代码继续简化调整如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setupModuleLoader</span>(<span class="params">window</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> modules = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">	angular.module = <span class="function"><span class="keyword">function</span> <span class="title">module</span>(<span class="params">name, requires, configFn</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (modules[name]) &#123;</span><br><span class="line">			<span class="keyword">return</span> modules[name];</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> moduleInstance = &#123;</span><br><span class="line">			<span class="comment">// ... ...</span></span><br><span class="line">		&#125;;</span><br><span class="line">		modules.name = moduleInstance;</span><br><span class="line">		<span class="keyword">return</span> moduleInstance;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">module</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>到这里可以发现，该方法主要是为angular对象定义了module方法。接下来主要对angular.module方法进行分析。源码结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">module</span>(<span class="params">name, requires, configFn</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> assertNotHasOwnProperty = <span class="function"><span class="keyword">function</span>(<span class="params">name, context</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (name === <span class="string">'hasOwnProperty'</span>) &#123;</span><br><span class="line">			<span class="keyword">throw</span> ngMinErr(<span class="string">'badname'</span>, <span class="string">'hasOwnProperty is not a valid &#123;0&#125; name'</span>, context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	assertNotHasOwnProperty(name, <span class="string">'module'</span>);</span><br><span class="line">	<span class="keyword">if</span> (requires &amp;&amp; modules.hasOwnProperty(name)) &#123;</span><br><span class="line">		modules[name] = <span class="literal">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> ensure(modules, name, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">// ... ...</span></span><br><span class="line">	&#125;);</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p>首先是确保模块名不为hasOwnProperty，这是因为在接下来的判断语句中会调用modules.hasOwnProperty，如果模块名也为hasOwnProperty，就会出问题。接下来是一个判断，如果requires存在且modules已经有相应的模块，则重置其为null，这里也就是对同名模块的重新注册。</p>
+<p>这里可以看到，如果通过angular.module(name)来调用，则会直接跳过判断语句，进入ensure，此时如果存在该模块，则直接返回modules[name]，在这种情况下，angular.module的作用相当于是一个getter。如果通过angular.module(name, requires[, configFn])来调用，则用作setter，来注册一个模块。</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/10/angular-start/" itemprop="url">
                   AngularJS深入(1)--启动
                 </a>
@@ -1467,7 +1594,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1475,7 +1602,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1484,7 +1611,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

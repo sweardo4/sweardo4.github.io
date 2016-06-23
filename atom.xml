@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.xiaoluo.win/"/>
-  <updated>2016-06-21T08:09:13.000Z</updated>
+  <updated>2016-06-23T02:14:50.000Z</updated>
   <id>http://www.xiaoluo.win/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>koa学习(1) --- 快速开始</title>
+    <link href="http://www.xiaoluo.win/2016/06/23/koa-start/"/>
+    <id>http://www.xiaoluo.win/2016/06/23/koa-start/</id>
+    <published>2016-06-23T01:51:56.000Z</published>
+    <updated>2016-06-23T02:14:50.000Z</updated>
+    
+    <content type="html">&lt;p&gt;参考资料:&lt;br&gt;&lt;a href=&quot;http://koajs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;koa&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://book.apebook.org/minghe/koa-action/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;koa实战&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;安装和运行&quot;&gt;&lt;a href=&quot;#安装和运行&quot; class=&quot;headerlink&quot; title=&quot;安装和运行&quot;&gt;&lt;/a&gt;安装和运行&lt;/h1&gt;&lt;h2 id=&quot;方法一&quot;&gt;&lt;a href=&quot;#方法一&quot; class=&quot;headerlink&quot; title=&quot;方法一&quot;&gt;&lt;/a&gt;方法一&lt;/h2&gt;&lt;p&gt;Koa要求Node版本至少在 0.11.x 以上，且开启 harmony。node 的具体安装请看nvm&lt;br&gt;mac下推荐安装 n 模块，非常方便地安装多个 node 版本，可以切换使用：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install -g n&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;n stable&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;安装-generator-k&quot;&gt;&lt;a href=&quot;#安装-generator-k&quot; class=&quot;headerlink&quot; title=&quot;安装 generator-k&quot;&gt;&lt;/a&gt;安装 generator-k&lt;/h3&gt;&lt;p&gt;generator-k 是我写的 koa 项目工程生成器，带有经过筛选的优秀中间件，生成即用。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install -g yo generator-k&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;generator-k 依赖于 yoeman，所以必须安装 yo。&lt;/p&gt;
+&lt;p&gt;安装成功后，创建一个 book 目录（作为demo工程），并进入，然后运行：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yo k&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;命令安装的koa版本是0.6  所使用的view模板是xtemplate模板引擎&lt;/p&gt;
+&lt;h3 id=&quot;运行示例&quot;&gt;&lt;a href=&quot;#运行示例&quot; class=&quot;headerlink&quot; title=&quot;运行示例&quot;&gt;&lt;/a&gt;运行示例&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;node --harmony app.js&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;方法二&quot;&gt;&lt;a href=&quot;#方法二&quot; class=&quot;headerlink&quot; title=&quot;方法二&quot;&gt;&lt;/a&gt;方法二&lt;/h2&gt;&lt;h3 id=&quot;一键安装koa1-2和koa2&quot;&gt;&lt;a href=&quot;#一键安装koa1-2和koa2&quot; class=&quot;headerlink&quot; title=&quot;一键安装koa1.2和koa2&quot;&gt;&lt;/a&gt;一键安装koa1.2和koa2&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install koa-generator -g&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;koa test &amp;amp;&amp;amp; cd test &amp;amp;&amp;amp; npm install  #生成koa1项目 并安装依赖&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;koa2 test &amp;amp;&amp;amp; cd test &amp;amp;&amp;amp; npm install  #生成koa2项目  并安装依赖&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;其他可选参数&quot;&gt;&lt;a href=&quot;#其他可选参数&quot; class=&quot;headerlink&quot; title=&quot;其他可选参数&quot;&gt;&lt;/a&gt;其他可选参数&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-h, --help          帮助&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-V, --version       版本号&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-e, --ejs           添加ejs模板引擎支持(默认是jade)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    --hbs           添加hbs模板引擎支持(默认是hbs)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-H, --hogan         添加hogan.js支持&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-c, --css &amp;lt;engine&amp;gt;  添加css样式 支持 less sass styus css(默认是css)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    --git           添加 .gitignore&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-f, --force         force on non-empty directory&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;运行&quot;&gt;&lt;a href=&quot;#运行&quot; class=&quot;headerlink&quot; title=&quot;运行&quot;&gt;&lt;/a&gt;运行&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm start&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;访问 &lt;a href=&quot;http://localhost:3000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:3000&lt;/a&gt; 就可以看到项目效果&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考资料:&lt;br&gt;&lt;a href=&quot;http://koajs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;koa&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://book.apebook.org/minghe/koa-action/index.h
+    
+    </summary>
+    
+      <category term="koa" scheme="http://www.xiaoluo.win/categories/koa/"/>
+    
+    
+      <category term="koa koa2 nodejs" scheme="http://www.xiaoluo.win/tags/koa-koa2-nodejs/"/>
+    
+  </entry>
   
   <entry>
     <title>bootstrap源码解析之Carousel插件</title>
