@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.xiaoluo.win/2016/01/08/angluar-example/</loc>
+    <lastmod>2016-06-23T07:08:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>AngluarJS + ionic 项目实例解析</title>
+        <pubTime>2016-01-08T10:14:57.000Z</pubTime>
+        
+        <tag>AngularJS</tag>
+         
+         
+           
+             
+              <breadCrumb title="AngularJS" url="http://www.xiaoluo.win/categories/AngularJS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.xiaoluo.win/2016/06/23/koa-start/</loc>
     <lastmod>2016-06-23T02:14:50.000Z</lastmod>
     <data>
@@ -17,26 +37,6 @@
            
              
               <breadCrumb title="koa" url="http://www.xiaoluo.win/categories/koa/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/01/08/angluar-example/</loc>
-    <lastmod>2016-06-21T10:30:04.000Z</lastmod>
-    <data>
-        <display>
-        <title>AngluarJS + ionic 项目实例解析</title>
-        <pubTime>2016-01-08T10:14:57.000Z</pubTime>
-        
-        <tag>AngularJS</tag>
-         
-         
-           
-             
-              <breadCrumb title="AngularJS" url="http://www.xiaoluo.win/categories/AngularJS/"/>
           
         </display>
     </data>
