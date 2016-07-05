@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.xiaoluo.win/2016/07/05/velocityone/</loc>
+    
+    <lastmod>2016-07-05T08:02:35.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.xiaoluo.win/2016/04/19/reactone/</loc>
+    
+    <lastmod>2016-07-05T08:01:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.xiaoluo.win/about/index.html</loc>
     
     <lastmod>2016-06-28T06:02:54.000Z</lastmod>
@@ -103,13 +117,6 @@
     <loc>http://www.xiaoluo.win/2016/02/26/angular-directive/</loc>
     
     <lastmod>2016-06-21T08:28:42.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoluo.win/2016/04/19/reactone/</loc>
-    
-    <lastmod>2016-06-21T08:09:33.000Z</lastmod>
     
   </url>
   

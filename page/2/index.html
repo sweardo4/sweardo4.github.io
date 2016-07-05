@@ -261,6 +261,132 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/20/angular-createInjector/" itemprop="url">
+                  AngularJS深入(3) -- 依赖注入
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-20T11:16:15+08:00" content="2016-02-20">
+              2016-02-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/AngularJS/" itemprop="url" rel="index">
+                    <span itemprop="name">AngularJS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/20/angular-createInjector/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/20/angular-createInjector/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-实例"><a href="#1-实例" class="headerlink" title="1.实例"></a>1.实例</h2><p><a href="http://jsfiddle.net/whitewolf/zyA5B/8/" target="_blank" rel="external">在线查看</a></p>
+<p>index.html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-app</span>=<span class="string">"myModule"</span>  <span class="attr">ng-controller</span>=<span class="string">"myController"</span> <span class="attr">ng-init</span>=<span class="string">"msg='test for alert'"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">ng-model</span>=<span class="string">"msg"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">ng-click</span>=<span class="string">"message(msg);"</span>&gt;</span>click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">br</span>/&gt;</span> &#123;&#123;msg&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>app.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myModule = angular.module(<span class="string">'myModule'</span>, []);</span><br><span class="line"></span><br><span class="line">myModule.factory(<span class="string">'$alert'</span>, [<span class="string">'$window'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$window</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		alert: <span class="function"><span class="keyword">function</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">			$<span class="built_in">window</span>.alert(text);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;&#125;]);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> myController = <span class="function"><span class="keyword">function</span>(<span class="params">$scope, $alert</span>) </span>&#123;</span><br><span class="line">		$scope.message = <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(msg);</span><br><span class="line">			$alert.alert(msg);</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;;</span><br><span class="line">	myController.$inject = [<span class="string">'$scope'</span>, <span class="string">'$alert'</span>];</span><br><span class="line">	myModule.controller(<span class="string">"myController"</span>, myController);</span><br></pre></td></tr></table></figure></p>
+<pre><code>##工厂方法注入
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">angualar.module(<span class="string">'myModule'</span>, []).</span><br><span class="line"></span><br><span class="line">config([<span class="string">'depProvider'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">depProvider</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">&#125;]).</span><br><span class="line"></span><br><span class="line">factory(<span class="string">'serviceId'</span>, [<span class="string">'depService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">depService</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">&#125;]).</span><br><span class="line"></span><br><span class="line">directive(<span class="string">'directiveName'</span>, [<span class="string">'depService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">depService</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">&#125;]).</span><br><span class="line"></span><br><span class="line">filter(<span class="string">'filterName'</span>, [<span class="string">'depService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">depService</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">&#125;]).</span><br><span class="line"></span><br><span class="line">run([<span class="string">'depService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">depService</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">&#125;]);</span><br></pre></td></tr></table></figure>
+</code></pre><h2 id="2-源码解析"><a href="#2-源码解析" class="headerlink" title="2.源码解析"></a>2.源码解析</h2><p>AngularJS的一个强大之处就在于依赖注入。在调用bootstrap的时候，会调用createInjector来创建一个注射器进行注入。该方法的代码简化如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createInjector</span>(<span class="params">modulesToLoad, strictDi</span>) </span>&#123;</span><br><span class="line">    strictDi = (strictDi === <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">var</span> INSTANTIATING = &#123;&#125;,</span><br><span class="line">        providerSuffix = <span class="string">'Provider'</span>,</span><br><span class="line">        path = [],</span><br><span class="line">        loadedModules = <span class="keyword">new</span> HashMap([], <span class="literal">true</span>),</span><br><span class="line">        providerCache = &#123;</span><br><span class="line">            <span class="comment">// ... ...</span></span><br><span class="line">        &#125;,</span><br><span class="line">        providerInjector = (providerCache.$injector =</span><br><span class="line">            createInternalInjector(providerCache, <span class="function"><span class="keyword">function</span>(<span class="params">serviceName, caller</span>) </span>&#123;</span><br><span class="line">                <span class="comment">// ... ...</span></span><br><span class="line">            &#125;)),</span><br><span class="line">        instanceCache = &#123;&#125;,</span><br><span class="line">        instanceInjector = (instanceCache.$injector =</span><br><span class="line">            createInternalInjector(instanceCache, <span class="function"><span class="keyword">function</span>(<span class="params">serviceName, caller</span>) </span>&#123;</span><br><span class="line">                <span class="comment">// ... ...</span></span><br><span class="line">            &#125;));</span><br><span class="line"></span><br><span class="line">    forEach(loadModules(modulesToLoad), <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (fn) instanceInjector.invoke(fn);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> instanceInjector;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">supportObject</span>(<span class="params">delegate</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">provider</span>(<span class="params">name, provider_</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">enforceReturnValue</span>(<span class="params">name, factory</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">factory</span>(<span class="params">name, factoryFn, enforce</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">service</span>(<span class="params">name, constructor</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">value</span>(<span class="params">name, val</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">constant</span>(<span class="params">name, value</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">decorator</span>(<span class="params">serviceName, decorFn</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">loadModules</span>(<span class="params">modulesToLoad</span>) </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">createInternalInjector</span>(<span class="params">cache, factory</span>) </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">getService</span>(<span class="params">serviceName, caller</span>) </span>&#123;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">invoke</span>(<span class="params">fn, self, locals, serviceName</span>) </span>&#123;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">instantiate</span>(<span class="params">Type, locals, serviceName</span>) </span>&#123;&#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="comment">// ... ...</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/14/angular-module/" itemprop="url">
                   AngularJS深入(2) -- 模块化
                 </a>
@@ -1435,131 +1561,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/21/init/" itemprop="url">
-                  博客开通了
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-21T17:40:11+08:00" content="2015-10-21">
-              2015-10-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/博客开通了/" itemprop="url" rel="index">
-                    <span itemprop="name">博客开通了</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/21/init/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/21/init/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="博客开通了"><a href="#博客开通了" class="headerlink" title="博客开通了"></a>博客开通了</h1><p>欢迎大家来逛逛</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1600,7 +1606,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1608,7 +1614,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1617,7 +1623,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
