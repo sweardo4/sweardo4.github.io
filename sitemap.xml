@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.xiaoluo.win/2016/04/26/React/react-native-two/</loc>
+    
+    <lastmod>2016-10-31T03:59:05.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.xiaoluo.win/2016/10/17/odoo-install/</loc>
     
     <lastmod>2016-10-31T03:30:44.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://www.xiaoluo.win/about/index.html</loc>
     
     <lastmod>2016-10-31T03:18:08.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoluo.win/2016/04/26/React/react-native-two/</loc>
-    
-    <lastmod>2016-07-05T08:28:17.000Z</lastmod>
     
   </url>
   
