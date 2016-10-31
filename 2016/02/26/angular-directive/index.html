@@ -26,7 +26,7 @@ Creating Custom DirectivesHTML Compiler$compileangularjs1.3.0源码解析之dire
 指令的使用通常，指令的定义名是形如 ngBind 这样的 “camel cased” 形式。在使用时，它的引用名可以是：
 
 ng:bindng_bindng-bindx-ng-binddata-ng-bin">
-<meta property="og:updated_time" content="2016-07-05T08:27:08.000Z">
+<meta property="og:updated_time" content="2016-10-31T04:04:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AngularJS深入(5) -- directive">
 <meta name="twitter:description" content="参考资料:
@@ -189,13 +189,13 @@ ng:bindng_bindng-bindx-ng-binddata-ng-bin">
 <blockquote>
 <p><a href="https://docs.angularjs.org/guide/directive" target="_blank" rel="external">Creating Custom Directives</a><br><a href="https://docs.angularjs.org/guide/compiler" target="_blank" rel="external">HTML Compiler</a><br><a href="https://docs.angularjs.org/api/ng/service/$compile" target="_blank" rel="external">$compile</a><br><a href="http://www.html-js.com/article/Front-end-source-code-analysis-directive-angularjs130-source-code-analysis-of-the-original" target="_blank" rel="external">angularjs1.3.0源码解析之directive</a><br><a href="https://checkcheckzz.gitbooks.io/angularjs-learning-notes/content/chapter18/18-1.html" target="_blank" rel="external">AngularJS学习笔记</a></p>
 </blockquote>
-<h2 id="指令的使用"><a href="#指令的使用" class="headerlink" title="指令的使用"></a>指令的使用</h2><p>通常，指令的定义名是形如 ngBind 这样的 “camel cased” 形式。在使用时，它的引用名可以是：</p>
+<h3 id="指令的使用"><a href="#指令的使用" class="headerlink" title="指令的使用"></a>指令的使用</h3><p>通常，指令的定义名是形如 ngBind 这样的 “camel cased” 形式。在使用时，它的引用名可以是：</p>
 <blockquote>
 <p>ng:bind<br>ng_bind<br>ng-bind<br>x-ng-bind<br>data-ng-bind</p>
 </blockquote>
 <p>你可以根据你自己是否有 “HTML validator” 洁癖来选择。<br>指令可以放在多个地方，它们的作用相同：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">my-dir</span>=<span class="string">"exp"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>作为标签的属性</span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"my-dir: exp;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>作为标签类属性的值</span><br><span class="line"><span class="tag">&lt;<span class="name">my-dir</span>&gt;</span><span class="tag">&lt;/<span class="name">my-dir</span>&gt;</span> 作为标签</span><br><span class="line"><span class="comment">&lt;!-- directive: my-dir exp --&gt;</span> 作为注释</span><br></pre></td></tr></table></figure></p>
 <p>这些方式可以使用指令定义中的 restrict 属性来控制</p>
-<h2 id="指令的执行过程"><a href="#指令的执行过程" class="headerlink" title="指令的执行过程"></a>指令的执行过程</h2><p>ng 中对指令的解析与执行过程是这样的：</p>
+<h3 id="指令的执行过程"><a href="#指令的执行过程" class="headerlink" title="指令的执行过程"></a>指令的执行过程</h3><p>ng 中对指令的解析与执行过程是这样的：</p>
 <p>1.浏览器得到 HTML 字符串内容，解析得到 DOM 结构。<br>2.ng 引入，把 DOM 结构扔给 $compile 函数处理：</p>
 <ul>
 <li>找出 DOM 结构中有变量占位符</li>
@@ -206,7 +206,7 @@ ng:bindng_bindng-bindx-ng-binddata-ng-bin">
 <li>得到的所有 link 函数组成一个列表作为 $compile 函数的返回</li>
 </ul>
 <p>3.执行 link 函数（连接模板的 scope）。</p>
-<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><p>一个完整指令的定义应该返回一个对象，这个对象包括了多个属性：</p>
+<h3 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h3><p>一个完整指令的定义应该返回一个对象，这个对象包括了多个属性：</p>
 <blockquote>
 <p><font color="red">name: </font><br>‘指令的 controller 的名字，方便其它指令引用。’</p>
 <p><font color="red">priority:</font><br>‘这个值设置指令的权重，默认是 0 。当一个节点中有多个指令存在时，就按着权限从大到小的顺序依次执行它们的 compile 函数。相同权重顺序不定。’</p>

@@ -4,6 +4,146 @@
 
     
   <url>
+    <loc>http://www.xiaoluo.win/2016/02/10/angular-start/</loc>
+    <lastmod>2016-10-31T04:04:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>AngularJS深入(1)--启动</title>
+        <pubTime>2016-02-10T01:49:09.000Z</pubTime>
+        
+        <tag>AngularJS</tag>
+         
+         
+           
+             
+              <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.xiaoluo.win/2016/02/23/angular-provider/</loc>
+    <lastmod>2016-10-31T04:04:38.000Z</lastmod>
+    <data>
+        <display>
+        <title>AngularJS深入(5) -- provider</title>
+        <pubTime>2016-02-23T05:51:56.000Z</pubTime>
+        
+        <tag>AngularJS</tag>
+         
+         
+           
+             
+              <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.xiaoluo.win/2016/02/14/angular-module/</loc>
+    <lastmod>2016-10-31T04:04:24.000Z</lastmod>
+    <data>
+        <display>
+        <title>AngularJS深入(2) -- 模块化</title>
+        <pubTime>2016-02-14T03:16:15.000Z</pubTime>
+        
+        <tag>AngularJS</tag>
+         
+         
+           
+             
+              <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.xiaoluo.win/2016/02/26/angular-directive/</loc>
+    <lastmod>2016-10-31T04:04:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>AngularJS深入(5) -- directive</title>
+        <pubTime>2016-02-26T05:51:56.000Z</pubTime>
+        
+        <tag>AngularJS</tag>
+         
+         
+           
+             
+              <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.xiaoluo.win/2016/02/20/angular-createInjector/</loc>
+    <lastmod>2016-10-31T04:03:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>AngularJS深入(3) -- 依赖注入</title>
+        <pubTime>2016-02-20T03:16:15.000Z</pubTime>
+        
+        <tag>AngularJS</tag>
+         
+         
+           
+             
+              <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.xiaoluo.win/2016/01/08/angluar-example/</loc>
+    <lastmod>2016-10-31T04:03:47.000Z</lastmod>
+    <data>
+        <display>
+        <title>AngluarJS + ionic 项目实例解析</title>
+        <pubTime>2016-01-08T10:14:57.000Z</pubTime>
+        
+        <tag>AngularJS</tag>
+         
+         
+           
+             
+              <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.xiaoluo.win/2016/04/18/React/react-native-macone/</loc>
+    <lastmod>2016-10-31T04:03:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>react-native 开发环境安装及遇到的问题总结</title>
+        <pubTime>2016-04-18T03:32:43.000Z</pubTime>
+        
+        <tag>react-native</tag>
+         
+         
+           
+             
+              <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.xiaoluo.win/2015/12/07/%E6%84%9F%E6%83%B3/winter/</loc>
     <lastmod>2016-10-31T04:02:12.000Z</lastmod>
     <data>
@@ -103,26 +243,6 @@
     
     
   <url>
-    <loc>http://www.xiaoluo.win/2016/04/18/React/react-native-macone/</loc>
-    <lastmod>2016-07-05T08:28:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>react-native 开发环境安装及遇到的问题总结</title>
-        <pubTime>2016-04-18T03:32:43.000Z</pubTime>
-        
-        <tag>react-native</tag>
-         
-         
-           
-             
-              <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.xiaoluo.win/2015/11/17/%E6%84%9F%E6%83%B3/spring/</loc>
     <lastmod>2016-07-05T08:27:45.000Z</lastmod>
     <data>
@@ -161,132 +281,12 @@
 
     
   <url>
-    <loc>http://www.xiaoluo.win/2016/01/08/angluar-example/</loc>
-    <lastmod>2016-07-05T08:27:16.000Z</lastmod>
-    <data>
-        <display>
-        <title>AngluarJS + ionic 项目实例解析</title>
-        <pubTime>2016-01-08T10:14:57.000Z</pubTime>
-        
-        <tag>AngularJS</tag>
-         
-         
-           
-             
-              <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/02/20/angular-createInjector/</loc>
-    <lastmod>2016-07-05T08:27:12.000Z</lastmod>
-    <data>
-        <display>
-        <title>AngularJS深入(3) -- 依赖注入</title>
-        <pubTime>2016-02-20T03:16:15.000Z</pubTime>
-        
-        <tag>AngularJS</tag>
-         
-         
-           
-             
-              <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/02/26/angular-directive/</loc>
-    <lastmod>2016-07-05T08:27:08.000Z</lastmod>
-    <data>
-        <display>
-        <title>AngularJS深入(5) -- directive</title>
-        <pubTime>2016-02-26T05:51:56.000Z</pubTime>
-        
-        <tag>AngularJS</tag>
-         
-         
-           
-             
-              <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/02/14/angular-module/</loc>
-    <lastmod>2016-07-05T08:27:04.000Z</lastmod>
-    <data>
-        <display>
-        <title>AngularJS深入(2) -- 模块化</title>
-        <pubTime>2016-02-14T03:16:15.000Z</pubTime>
-        
-        <tag>AngularJS</tag>
-         
-         
-           
-             
-              <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/02/23/angular-provider/</loc>
-    <lastmod>2016-07-05T08:27:00.000Z</lastmod>
-    <data>
-        <display>
-        <title>AngularJS深入(5) -- provider</title>
-        <pubTime>2016-02-23T05:51:56.000Z</pubTime>
-        
-        <tag>AngularJS</tag>
-         
-         
-           
-             
-              <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.xiaoluo.win/2016/03/20/angular-scope/</loc>
     <lastmod>2016-07-05T08:26:56.000Z</lastmod>
     <data>
         <display>
         <title>AngularJS深入(6) -- scope</title>
         <pubTime>2016-03-20T05:51:56.000Z</pubTime>
-        
-        <tag>AngularJS</tag>
-         
-         
-           
-             
-              <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/02/10/angular-start/</loc>
-    <lastmod>2016-07-05T08:26:50.000Z</lastmod>
-    <data>
-        <display>
-        <title>AngularJS深入(1)--启动</title>
-        <pubTime>2016-02-10T01:49:09.000Z</pubTime>
         
         <tag>AngularJS</tag>
          
