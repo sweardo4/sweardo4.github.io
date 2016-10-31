@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.xiaoluo.win/"/>
-  <updated>2016-07-05T08:18:20.000Z</updated>
+  <updated>2016-10-31T03:30:44.000Z</updated>
   <id>http://www.xiaoluo.win/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>odoo8.0安装</title>
+    <link href="http://www.xiaoluo.win/2016/10/17/odoo-install/"/>
+    <id>http://www.xiaoluo.win/2016/10/17/odoo-install/</id>
+    <published>2016-10-17T13:51:56.000Z</published>
+    <updated>2016-10-31T03:30:44.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;下载odoo8-0-源码&quot;&gt;&lt;a href=&quot;#下载odoo8-0-源码&quot; class=&quot;headerlink&quot; title=&quot;下载odoo8.0 源码&quot;&gt;&lt;/a&gt;下载odoo8.0 源码&lt;/h2&gt;&lt;h3 id=&quot;clone&quot;&gt;&lt;a href=&quot;#clone&quot; class=&quot;headerlink&quot; title=&quot;clone&quot;&gt;&lt;/a&gt;clone&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git clone https://github.com/odoo/odoo.git -branch --path=1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;直接下载zip包&quot;&gt;&lt;a href=&quot;#直接下载zip包&quot; class=&quot;headerlink&quot; title=&quot;直接下载zip包&quot;&gt;&lt;/a&gt;直接下载zip包&lt;/h3&gt;&lt;p&gt;在github odoo 源码页 先选择相应的版本  然后点击右上的download zip&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;h3 id=&quot;安装python依赖包&quot;&gt;&lt;a href=&quot;#安装python依赖包&quot; class=&quot;headerlink&quot; title=&quot;安装python依赖包&quot;&gt;&lt;/a&gt;安装python依赖包&lt;/h3&gt;&lt;p&gt;到达源码根目录执行&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pip install -r requirements.txt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;和安装npm依赖包 npm install 一样&lt;/p&gt;
+&lt;h3 id=&quot;配置文件&quot;&gt;&lt;a href=&quot;#配置文件&quot; class=&quot;headerlink&quot; title=&quot;配置文件&quot;&gt;&lt;/a&gt;配置文件&lt;/h3&gt;&lt;p&gt;编辑器打开根目录中的 openerp-server.conf文件&lt;br&gt;至少是一下这些内容，请确保您已经安装了postgreSQL 数据库管理程序并创建了管理用户&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;db_host = 127.0.0.1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db_port = 5432&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db_user = odoo8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db_password = odoo8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;关于数据库的安装和使用您或许可以这样做&quot;&gt;&lt;a href=&quot;#关于数据库的安装和使用您或许可以这样做&quot; class=&quot;headerlink&quot; title=&quot;关于数据库的安装和使用您或许可以这样做&quot;&gt;&lt;/a&gt;关于数据库的安装和使用您或许可以这样做&lt;/h2&gt;&lt;h3 id=&quot;命令&quot;&gt;&lt;a href=&quot;#命令&quot; class=&quot;headerlink&quot; title=&quot;命令&quot;&gt;&lt;/a&gt;命令&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo install postgresql  pgadmin3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;使用pgadmin3桌面程序进行数据库管理&lt;/p&gt;
+&lt;h3 id=&quot;一键&quot;&gt;&lt;a href=&quot;#一键&quot; class=&quot;headerlink&quot; title=&quot;一键&quot;&gt;&lt;/a&gt;一键&lt;/h3&gt;&lt;p&gt;在源码setup目录中制作团队给了一个postgres数据库的安装脚本&lt;br&gt;postinstall.sh&lt;br&gt;你可以使用一下命令进行安装&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;./postinstall.sh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;声明:我并未使用过请小心&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;开始使用&quot;&gt;&lt;a href=&quot;#开始使用&quot; class=&quot;headerlink&quot; title=&quot;开始使用&quot;&gt;&lt;/a&gt;开始使用&lt;/h2&gt;&lt;p&gt;启动&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;python odoo.py -c openerp-server.conf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;一般是访问127.1.1.1:8069 就可以看到页面了&lt;br&gt;第一次访问时显示的是首先创建数据库  以后你也可以在这里对数据库进行管理,但是功能很弱&lt;br&gt;这里要注意db_user要有管理数据库的权限&lt;/p&gt;
+&lt;p&gt;之后访问时就会跳到admin登陆页面，注意登陆名使用的是admin  ，密码是你要进入数据库的密码&lt;/p&gt;
+&lt;h2 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://blog.sunansheng.com/python/odoo/odoo.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;odoo 8 开发指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://pycave.com/blog/post/7/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;odoo8 ubuntu 开发环境配置&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2013/12/getting_started_with_postgresql.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阮一峰老师postgres教程&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;下载odoo8-0-源码&quot;&gt;&lt;a href=&quot;#下载odoo8-0-源码&quot; class=&quot;headerlink&quot; title=&quot;下载odoo8.0 源码&quot;&gt;&lt;/a&gt;下载odoo8.0 源码&lt;/h2&gt;&lt;h3 id=&quot;clone&quot;&gt;&lt;a href=&quot;#clone&quot; c
+    
+    </summary>
+    
+      <category term="python" scheme="http://www.xiaoluo.win/categories/python/"/>
+    
+    
+      <category term="odoo8" scheme="http://www.xiaoluo.win/tags/odoo8/"/>
+    
+  </entry>
   
   <entry>
     <title>Velocity.js(1) --- 简单使用</title>
@@ -746,72 +786,6 @@
     
     
       <category term="旅行" scheme="http://www.xiaoluo.win/tags/%E6%97%85%E8%A1%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS布局</title>
-    <link href="http://www.xiaoluo.win/2015/10/26/css/"/>
-    <id>http://www.xiaoluo.win/2015/10/26/css/</id>
-    <published>2015-10-26T09:24:07.000Z</published>
-    <updated>2016-07-05T08:25:16.000Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;1-box-model&quot;&gt;&lt;a href=&quot;#1-box-model&quot; class=&quot;headerlink&quot; title=&quot;1.box-model&quot;&gt;&lt;/a&gt;1.box-model&lt;/h2&gt;&lt;p&gt;盒模型基本结构如图所示：&lt;br&gt;&lt;img src=&quot;/images/box-model.png&quot; alt=&quot;model&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;盒子的content size由许多因素决定，例如：是否设置盒子的width和height值，盒子内是否包含文本或其它盒子，盒子是否是table，等等。&lt;br&gt;background属性的作用范围是border box，margin区域始终是透明的。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;2-position&quot;&gt;&lt;a href=&quot;#2-position&quot; class=&quot;headerlink&quot; title=&quot;2.position&quot;&gt;&lt;/a&gt;2.position&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;static：在普通文档流中，此时设置top，right，bottom和left不起作用。&lt;/li&gt;
-&lt;li&gt;relative：元素相对于其在普通文档流中的位置发生偏移，但是该元素仍然保持它在普通文档流中的位置。&lt;/li&gt;
-&lt;li&gt;absolute：元素脱离普通文档流，相对于其最近的非static祖先元素进行定位。top，right，bottom和left可影响其位置和大小(当未设置width和height的时候)。另外该情况下margin不会发生折叠。&lt;/li&gt;
-&lt;li&gt;fixed：与absolute类似，不过是相对于可视窗口进行定位。当页面滚动的时候，元素相对于窗口位置保持不变。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;3-display、position和float的关系&quot;&gt;&lt;a href=&quot;#3-display、position和float的关系&quot; class=&quot;headerlink&quot; title=&quot;3.display、position和float的关系&quot;&gt;&lt;/a&gt;3.display、position和float的关系&lt;/h2&gt;&lt;p&gt;这三个属性会相互作用，从而影响最重盒子的生成。规则如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/display-position-float.png&quot; alt=&quot;model&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;4-Visual-formatting-model&quot;&gt;&lt;a href=&quot;#4-Visual-formatting-model&quot; class=&quot;headerlink&quot; title=&quot;4.Visual formatting model&quot;&gt;&lt;/a&gt;4.Visual formatting model&lt;/h2&gt;&lt;p&gt;Visual formatting model（可视化格式模型，以下简称VFM）是CSS中非常重要的一个概念。可以理解为，box model确定了一个元素的自身结构，而VFM用来确定这些box如何排列。&lt;/p&gt;
-&lt;p&gt;在VFM中，每一个元素都会根据box model产生零个或多个box，这些box的布局受到以下因素的影响：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;box的size和type&lt;br&gt;定位体系：普通文档流、浮动、绝对定位&lt;br&gt;在文档树中，元素之间的关系&lt;br&gt;其它外部信息，例如viewport、图片的固有尺寸等&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;许多box的定位和尺寸，取决于一个矩形的边界，该矩形被称作为包含块（containing block）。一般来说，一个元素的所生成的box会作为该元素的后代元素的包含块。同时需要注意的是，一个元素的包含块指的是包含该元素的块，而非由该元素所产生的块。&lt;/p&gt;
-&lt;p&gt;每个box相对于它的包含块都会有一个定位，但是box不会被它的包含块所限制，其内容有可能溢出，通过设置overflow的值可以处理溢出。&lt;/p&gt;
-&lt;p&gt;一个元素的包含块的确定遵循如下规则：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;根元素的包含块被称为初始包含块（initial containing block），一般来说在HTML中就是html元素。&lt;br&gt;position为static或relative的元素的包含块由离它最近的block container box（block、table-cell、inline-block）的content box所创建。&lt;br&gt;position为fixed的元素的包含块为当前的viewport。&lt;br&gt;position为absolute的元素的包含块由离它最近的position为relative、absolute或fixed的祖先元素创建：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如果祖先元素为inline，包含块为祖先元素所产生的padding box，同时与祖先元素的direction有关。&lt;/li&gt;
-&lt;li&gt;否则由祖先元素的padding box所创建。&lt;/li&gt;
-&lt;li&gt;如果不存在这样的祖先元素，那么其包含块就是初始包含块。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;块级元素和块框（Block-level elements and block boxes）&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;当一个元素的display值为block、list-item、table的时候，该元素为块级元素。&lt;br&gt;每个块级元素会生成一个主块框（principal block-level box），主块框会为子孙元素建立包含块，生成内容，并且也是涉及所有定位体系统的框。有些块级元素除了主块框之外还会产生额外的框，例如display为list-item的元素。&lt;br&gt;除table外，其它块级元素产生的主块框仅包含块框或仅包含行内框。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;行内元素和行内框（Inline-level elements and inline boxes）&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;当一个元素的display值为inline、inline-table、inline-block的时候，该元素为行内元素。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;非替换的行内元素（inline）：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;width和height设置无效，由内容撑开。默认的margin-left和margin-right为0。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;普通文档流中的非替换的块级元素（block）：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;首先各个属性满足如下等式：margin-left+border-left-width+padding-left+width+padding-right+border-right-width+margin-right=width of containing block&lt;br&gt;如果width不为auto且border-left-width+padding-left+width+padding-right+border-right-width超过了包含块的宽度，margin-left和margin-right的auto值为0。&lt;br&gt;如果width、margin-left、margin-right都不为auto，此时margin-left和margin-right将不完全等于设定值。如果包含块的direction是ltr，则margin-right会自动改变以满足等式；如果包含块的direction是rtl，则margin-left会自动改变以满足等式。&lt;br&gt;如果width、margin-left、margin-right中只有一个是auto，那么该值会自动改变以满足等式。&lt;br&gt;如果width为auto，name设置为auto的margin-left或margin-right为0，此时width会自动改变以满足等式。&lt;br&gt;如果margin-left和margin-right都为auto，则这两者会相等，此方法可以用来使内容在包含块中水平居中。&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;1-box-model&quot;&gt;&lt;a href=&quot;#1-box-model&quot; class=&quot;headerlink&quot; title=&quot;1.box-model&quot;&gt;&lt;/a&gt;1.box-model&lt;/h2&gt;&lt;p&gt;盒模型基本结构如图所示：&lt;br&gt;&lt;img src=&quot;/images/
-    
-    </summary>
-    
-      <category term="css" scheme="http://www.xiaoluo.win/categories/css/"/>
-    
-    
-      <category term="css" scheme="http://www.xiaoluo.win/tags/css/"/>
     
   </entry>
   
