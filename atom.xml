@@ -131,6 +131,31 @@
   </entry>
   
   <entry>
+    <title>css居中</title>
+    <link href="http://www.xiaoluo.win/2016/06/03/tbcenter/"/>
+    <id>http://www.xiaoluo.win/2016/06/03/tbcenter/</id>
+    <published>2016-06-03T12:02:44.000Z</published>
+    <updated>2016-11-03T07:51:55.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;第一种垂直居中&quot;&gt;&lt;a href=&quot;#第一种垂直居中&quot; class=&quot;headerlink&quot; title=&quot;第一种垂直居中&quot;&gt;&lt;/a&gt;第一种垂直居中&lt;/h3&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;div&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    position:absolute;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    height:100%;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // 垂直&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    top:50%;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    margin-top:-50%;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;第二种垂直水平居中&quot;&gt;&lt;a href=&quot;#第二种垂直水平居中&quot; class=&quot;headerlink&quot; title=&quot;第二种垂直水平居中&quot;&gt;&lt;/a&gt;第二种垂直水平居中&lt;/h3&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;img&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;position&lt;/span&gt;: absolute;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;top&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;left&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;right&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;bottom&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;margin&lt;/span&gt;: auto;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;第一种垂直居中&quot;&gt;&lt;a href=&quot;#第一种垂直居中&quot; class=&quot;headerlink&quot; title=&quot;第一种垂直居中&quot;&gt;&lt;/a&gt;第一种垂直居中&lt;/h3&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutte
+    
+    </summary>
+    
+      <category term="css" scheme="http://www.xiaoluo.win/categories/css/"/>
+    
+      <category term="html" scheme="http://www.xiaoluo.win/categories/css/html/"/>
+    
+    
+      <category term="css" scheme="http://www.xiaoluo.win/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
     <title>bootstrap源码解析之Carousel插件</title>
     <link href="http://www.xiaoluo.win/2016/05/11/bscarousel/"/>
     <id>http://www.xiaoluo.win/2016/05/11/bscarousel/</id>
@@ -742,52 +767,6 @@
     
       <category term="随想" scheme="http://www.xiaoluo.win/categories/%E9%9A%8F%E6%83%B3/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Today is the Lantern Festival</title>
-    <link href="http://www.xiaoluo.win/2015/11/17/%E6%84%9F%E6%83%B3/spring/"/>
-    <id>http://www.xiaoluo.win/2015/11/17/感想/spring/</id>
-    <published>2015-11-17T11:00:50.000Z</published>
-    <updated>2016-07-05T08:27:45.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;年年岁岁闹元宵，&lt;/li&gt;
-&lt;li&gt;岁岁年年又今日，&lt;/li&gt;
-&lt;li&gt;十五的月亮十六圆，&lt;/li&gt;
-&lt;li&gt;今日怎知半阴天？&lt;/li&gt;
-&lt;li&gt;家家温暖灯火照，&lt;/li&gt;
-&lt;li&gt;喜看联欢乐逍遥。&lt;/li&gt;
-&lt;li&gt;玫瑰也来添春色，&lt;/li&gt;
-&lt;li&gt;今日更是情人节。&lt;/li&gt;
-&lt;li&gt;一只猫咪街上逛，&lt;/li&gt;
-&lt;li&gt;步调婀娜惹人笑。&lt;/li&gt;
-&lt;li&gt;情人猫咪同路走，&lt;/li&gt;
-&lt;li&gt;不知他们谁思乡。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;年年岁岁闹元宵，&lt;/li&gt;
-&lt;li&gt;岁岁年年又今日，&lt;/li&gt;
-&lt;li&gt;十五的月亮十六圆，&lt;/li&gt;
-&lt;li&gt;今日怎知半阴天？&lt;/li&gt;
-&lt;li&gt;家家温暖灯火照，&lt;/li&gt;
-&lt;li&gt;喜看联欢乐逍遥。&lt;/li&gt;
-&lt;li&gt;玫瑰也来添春色，&lt;
-    
-    </summary>
-    
-      <category term="随想" scheme="http://www.xiaoluo.win/categories/%E9%9A%8F%E6%83%B3/"/>
-    
-    
-      <category term="旅行" scheme="http://www.xiaoluo.win/tags/%E6%97%85%E8%A1%8C/"/>
     
   </entry>
   
