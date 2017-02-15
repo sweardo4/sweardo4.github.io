@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html>
+
+
+  <html class="light page-post">
+
+
 <head>
   <meta charset="utf-8">
   
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://www.xiaoluo.win">
   <title>react-native ios 导航栏实例 | CikeSwear&#39;s blog</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="react-native," />
+  
+
   <meta name="description" content="TabBarIOS 在ios系统中定义导航栏时使用到的组件    你可以从实例和注释中明白react-native组件加载和运用的具体方式    编程环境Xcode7.3  react-native0.2.0
 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051">
 <meta property="og:type" content="article">
@@ -21,413 +28,427 @@
 <meta name="twitter:title" content="react-native ios 导航栏实例">
 <meta name="twitter:description" content="TabBarIOS 在ios系统中定义导航栏时使用到的组件    你可以从实例和注释中明白react-native组件加载和运用的具体方式    编程环境Xcode7.3  react-native0.2.0
 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051">
+
   
-    <link rel="alternative" href="/atom.xml" title="CikeSwear&#39;s blog" type="application/atom+xml">
-  
+
   
     <link rel="icon" href="/favicon.ico">
   
-  <link rel="stylesheet" href="/main.css">
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
   
 
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
 </head>
 
 <body>
-  <div id="container">
-    <div class="left-col">
-      <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img src="/images/tou.jpg" class="js-avatar">
-			
-		</a>
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/">小太阳</a></h1>
-		</hgroup>
 
-		
-		<p class="header-subtitle">Building a better life together</p>
-		
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
 
-		<nav class="header-menu">
-			<ul>
-			
-				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/categories/随想/">随想</a></li>
-	        
-				<li><a href="/tags/旅行/">旅行</a></li>
-	        
-			</ul>
-		</nav>
-		<nav class="header-smart-menu">
-	        
-    		
-    			
-    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
-    			
-    			
-            
-    			
-    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
-    			
-    			
-            
-    			
-    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
-    			
-    			
-            
-    			
-    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
-    			
-    			
-            
-		</nav>
-		<nav class="header-nav">
-			<div class="social">
-				
-					<a class="github" target="_blank" href="https://github.com/sweardo4" title="github">github</a>
-		        
-					<a class="weibo" target="_blank" href="http://weibo.com/u/313335675" title="weibo">weibo</a>
-		        
-					<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-		        
-					<a class="zhihu" target="_blank" href="http://www.zhihu.com/" title="zhihu">zhihu</a>
-		        
-					<a class="mail" target="_blank" href="/cikeswear@gmail.com" title="mail">mail</a>
-		        
-					<a class="twitter" target="_blank" href="https://twitter.com/cikeswear" title="twitter">twitter</a>
-		        
-			</div>
-		</nav>
-	</header>		
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/categories"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tags/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
 </div>
 
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"><i class="icon-list"></i></div>
-  		<h1 class="header-author js-mobile-header hide">小太阳</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				
-					<img src="/images/tou.jpg" class="js-avatar">
-				
-			</div>
-			<hgroup>
-			  <h1 class="header-author">小太阳</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">Building a better life together</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/categories/随想/">随想</a></li>
-		        
-					<li><a href="/tags/旅行/">旅行</a></li>
-		        
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/sweardo4" title="github">github</a>
-			        
-						<a class="weibo" target="_blank" href="http://weibo.com/u/313335675" title="weibo">weibo</a>
-			        
-						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-			        
-						<a class="zhihu" target="_blank" href="http://www.zhihu.com/" title="zhihu">zhihu</a>
-			        
-						<a class="mail" target="_blank" href="/cikeswear@gmail.com" title="mail">mail</a>
-			        
-						<a class="twitter" target="_blank" href="https://twitter.com/cikeswear" title="twitter">twitter</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
 
-      <div class="body-wrap">
-        <article id="post-React/react-native-two" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      react-native ios 导航栏实例
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+
+<div class="content content-post CENTER">
+   <article id="post-React/react-native-two" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">react-native ios 导航栏实例</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.04.26</span>
+      </span>
+
       
-        <p>  TabBarIOS 在ios系统中定义导航栏时使用到的组件<br>    你可以从实例和注释中明白react-native组件加载和运用的具体方式<br>    编程环境Xcode7.3  react-native0.2.0</p>
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>小太阳</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/js框架/">js框架</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2016/04/26/React/react-native-two/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>  TabBarIOS 在ios系统中定义导航栏时使用到的组件<br>    你可以从实例和注释中明白react-native组件加载和运用的具体方式<br>    编程环境Xcode7.3  react-native0.2.0</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Sample React Native App</span><br><span class="line"> * https://github.com/facebook/react-native</span><br><span class="line"> */</span><br><span class="line">//多种加载方式</span><br><span class="line">/*</span><br><span class="line">1.var Index = require('./pages/Index');</span><br><span class="line">  let</span><br><span class="line">  const</span><br><span class="line">2.import Index from './pages/Index';</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import React, &#123;</span><br><span class="line">  AppRegistry,</span><br><span class="line">  Component,//</span><br><span class="line">  StyleSheet,//样式对象</span><br><span class="line">  Text,//文本元素</span><br><span class="line">  View,//View 页</span><br><span class="line">  TabBarIOS,//导航栏</span><br><span class="line">&#125; from 'react-native';</span><br><span class="line"></span><br><span class="line">class firstErp extends Component &#123;</span><br><span class="line">  constructor(props)&#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state=&#123;</span><br><span class="line">         selectedTab: '下载',//定义初始化界面</span><br><span class="line">         notifCount: 0,//访问次数</span><br><span class="line">         presses: 0,//访问次数</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  //进行渲染页面内容</span><br><span class="line">  _renderContent(color: string, pageText: string, num?: number) &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;View style=&#123;[styles.tabContent, &#123;backgroundColor: color&#125;]&#125;&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.tabText&#125;&gt;&#123;pageText&#125;&lt;/Text&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.tabText&#125;&gt;第 &#123;num&#125; 次重复渲染&#123;pageText&#125;&lt;/Text&gt;</span><br><span class="line">      &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;//返回组件结构的函数。</span><br><span class="line">    return (</span><br><span class="line">      &lt;View style=&#123;&#123;flex:1&#125;&#125;&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</span><br><span class="line">          TabBarIOS使用实例</span><br><span class="line">        &lt;/Text&gt;</span><br><span class="line">        &lt;TabBarIOS</span><br><span class="line">        style=&#123;&#123;flex:1,alignItems:"flex-end"&#125;&#125;</span><br><span class="line">        tintColor="white"</span><br><span class="line">        barTintColor="darkslateblue"&gt;</span><br><span class="line">        &lt;TabBarIOS.Item</span><br><span class="line">          title="自定义"</span><br><span class="line">          selected=&#123;this.state.selectedTab === '自定义'&#125;</span><br><span class="line">          onPress=&#123;() =&gt; &#123;</span><br><span class="line">            this.setState(&#123;</span><br><span class="line">              selectedTab: '自定义',</span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;&#125;</span><br><span class="line">          &gt;</span><br><span class="line">          &#123;this._renderContent('#414A8C', '自定义界面')&#125;</span><br><span class="line">        &lt;/TabBarIOS.Item&gt;</span><br><span class="line"></span><br><span class="line">        //selected为true时显示当前页  也就是selectedTab记录了当前的状态</span><br><span class="line">        //badge 表示右上角显示的小图标 比如通知消息小图标</span><br><span class="line">        //onPress 点击时所要进行的操作</span><br><span class="line">        &lt;TabBarIOS.Item</span><br><span class="line">          systemIcon="history"</span><br><span class="line">          selected=&#123;this.state.selectedTab === '历史'&#125;</span><br><span class="line">          badge=&#123;this.state.notifCount &gt; 0 ? this.state.notifCount : undefined&#125;</span><br><span class="line">          onPress=&#123;() =&gt; &#123;</span><br><span class="line">            this.setState(&#123;</span><br><span class="line">              selectedTab: '历史',</span><br><span class="line">              notifCount: this.state.notifCount + 1,</span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;&#125;</span><br><span class="line">          &gt;</span><br><span class="line">          &#123;this._renderContent('#783E33', '历史记录', this.state.notifCount)&#125;//加载历史记录页</span><br><span class="line">        &lt;/TabBarIOS.Item&gt;</span><br><span class="line">        &lt;TabBarIOS.Item</span><br><span class="line">           systemIcon="downloads"</span><br><span class="line">           selected=&#123;this.state.selectedTab === '下载'&#125;</span><br><span class="line">           badge=&#123;this.state.presses &gt; 0 ? this.state.presses : undefined&#125;</span><br><span class="line">            onPress=&#123;() =&gt; &#123;</span><br><span class="line">            this.setState(&#123;</span><br><span class="line">              selectedTab: '下载',</span><br><span class="line">              presses: this.state.presses + 1</span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;&#125;&gt;</span><br><span class="line">           &#123;this._renderContent('#21551C', '下载页面', this.state.presses)&#125;</span><br><span class="line">        &lt;/TabBarIOS.Item&gt;</span><br><span class="line"></span><br><span class="line">      &lt;/TabBarIOS&gt;</span><br><span class="line">      &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">//关于样式和原样式一样，只是命名采用驼峰式，还有就是定位方式采用flex</span><br><span class="line">const styles = StyleSheet.create(&#123;</span><br><span class="line">  tabContent: &#123;</span><br><span class="line">    flex: 1,</span><br><span class="line">    alignItems: 'center',</span><br><span class="line">  &#125;,</span><br><span class="line">  welcome: &#123;</span><br><span class="line">    fontSize: 20,</span><br><span class="line">    textAlign: 'center',</span><br><span class="line">    marginTop: 20,</span><br><span class="line">  &#125;,</span><br><span class="line">  tabText: &#123;</span><br><span class="line">    color: 'white',</span><br><span class="line">    margin: 50,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//              注册和运行</span><br><span class="line">AppRegistry.registerComponent('firstErp', () =&gt; firstErp);</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/04/26/React/react-native-two/" class="archive-article-date">
-  	<time datetime="2016-04-26T02:14:07.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-26</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-native/">react-native</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/js框架/">js框架</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
+    
   </div>
 </article>
 
-  
-<nav id="article-nav">
-  
-    <a href="/2016/05/06/jquery/boot31/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul class="theme.donation.items.length">
         
-          bootstrap源码解析之Alert插件
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
         
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
       </div>
-    </a>
-  
-  
-    <a href="/2016/04/19/reactone/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">react分清这些关键字</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-<div class="share_jia">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">Share to: &nbsp; </span>
-		<a class="jiathis_button_facebook"></a> 
-	    <a class="jiathis_button_twitter"></a>
-	    <a class="jiathis_button_plus"></a> 
-	    <a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="React/react-native-two" data-title="react-native ios 导航栏实例" data-url="http://www.xiaoluo.win/2016/04/26/React/react-native-two/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"cikeswear"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
-
-
-      </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2017 小太阳
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
     </div>
   </div>
-</footer>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/04/19/reactone/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/05/06/jquery/boot31/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
     </div>
-    <script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: false,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false,
-		root: "/",
-		innerArchive: true
-	}
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/categories"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tags/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://www.xiaoluo.win/2016/04/26/React/react-native-two/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
 </script>
 
-<script src="/./main.js"></script>
-
-
-    
-<div class="tools-col">
-  <ul class="btn-wrap">
-    
-      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
-    
-    
-      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
-    
-    
-      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
-    
-    
-      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
-    
-  </ul>
-  <div class="tools-wrap">
-    
-    	<section class="tools-section tools-section-all chose">
-    	</section>
-    
-
-    
-    	<section class="tools-section tools-section-tag">
-    			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/AngularJS/" style="font-size: 20px;">AngularJS</a> <a href="/tags/Event/" style="font-size: 10px;">Event</a> <a href="/tags/Velocity/" style="font-size: 10px;">Velocity</a> <a href="/tags/bs/" style="font-size: 15px;">bs</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/koa/" style="font-size: 10px;">koa</a> <a href="/tags/odoo8/" style="font-size: 10px;">odoo8</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-native/" style="font-size: 15px;">react-native</a> <a href="/tags/博客开通了/" style="font-size: 10px;">博客开通了</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a>
-    			</div>
-    	</section>
-    
-
-    
-    	<section class="tools-section tools-section-friends">
-  		
-  			<div class="friends-wrap" id="js-friends">
-  			
-  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/sweardo4">小太阳</a>
-  	        
-  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://weibo.com/u/313335675">宝宝</a>
-  	        
-  	        </div>
-  		
-    	</section>
-    
-
-    
-    	<section class="tools-section tools-section-me">
-  	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">宝宝和小太阳的故事</div>
-  	  	
-    	</section>
-    
-  </div>
-  
-</div>
-    <!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-  </div>
 </body>
 </html>
