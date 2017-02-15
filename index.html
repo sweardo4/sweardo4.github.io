@@ -158,6 +158,52 @@
       <div class="body-wrap">
         
   
+    <article id="post-jquery/checkbox.select" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: jquery 插件之全选和取消全选<br>date: 2016-05-20 23:01:29<br>categories: jquery插件</p>
+<h2 id="tags-jquery"><a href="#tags-jquery" class="headerlink" title="tags: jquery"></a>tags: jquery</h2><h2 id="prop和attr的区别"><a href="#prop和attr的区别" class="headerlink" title="prop和attr的区别"></a>prop和attr的区别</h2><p>jquery在1.6版本之后引入属性方法prop</p>
+<p>那这两者应该如何使用呢<br>其实很简单</p>
+<blockquote>
+<p>对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。<br>对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。</p>
+</blockquote>
+<p>讲到这里就不得不说我之前遇到的一个问题，当遇到像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#chk1&quot;).prop(&quot;checked&quot;) == false</span><br><span class="line">$(&quot;#chk2&quot;).prop(&quot;checked&quot;) == true</span><br></pre></td></tr></table></figure></p>
+<p>如果上面使用attr方法，则会出现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#chk1&quot;).attr(&quot;checked&quot;) == undefined</span><br><span class="line">$(&quot;#chk2&quot;).attr(&quot;checked&quot;) == &quot;checked&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="checkbox全选和取消全选小插件"><a href="#checkbox全选和取消全选小插件" class="headerlink" title="checkbox全选和取消全选小插件"></a>checkbox全选和取消全选小插件</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">!(<span class="function"><span class="keyword">function</span>(<span class="params">$,window,document,undefined</span>)</span>&#123;</span><br><span class="line">		<span class="comment">/**</span><br><span class="line">		 * [MySelect description]</span><br><span class="line">		 * @param &#123;select&#125; ele     选择器</span><br><span class="line">		 * @param &#123;object&#125; options 控制对象</span><br><span class="line">		 */</span></span><br><span class="line">		<span class="keyword">var</span>  MySelect = <span class="function"><span class="keyword">function</span>(<span class="params">ele,options</span>)</span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.$element = ele,</span><br><span class="line">			<span class="keyword">this</span>.defaults = &#123;</span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="keyword">this</span>.setting = $.extend(&#123;&#125;,<span class="keyword">this</span>.defaults,options)</span><br><span class="line">		&#125;</span><br><span class="line">		MySelect.prototype = &#123;</span><br><span class="line">			allChecked:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">				that.$element.on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">					<span class="keyword">var</span> isChecked = (that.$element)[<span class="number">0</span>].checked;</span><br><span class="line">					$(that.setting.select).prop(<span class="string">'checked'</span>,isChecked);</span><br><span class="line">				&#125;)</span><br><span class="line">				$(that.setting.select).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">					<span class="keyword">var</span> allchecked = <span class="literal">true</span>;</span><br><span class="line">					$(that.setting.select).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">						$(<span class="keyword">this</span>).prop(<span class="string">'checked'</span>) ?  <span class="string">''</span> : allchecked = <span class="literal">false</span>;</span><br><span class="line">					&#125;)</span><br><span class="line">					<span class="keyword">if</span>(allchecked)&#123;</span><br><span class="line">					  that.$element.prop(<span class="string">'checked'</span>,<span class="literal">true</span>);</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">if</span>(!allchecked)&#123;</span><br><span class="line">					  that.$element.prop(<span class="string">'checked'</span>,<span class="literal">false</span>);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		$.fn.MySelect = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> checked = <span class="keyword">new</span> MySelect(<span class="keyword">this</span>, options);</span><br><span class="line">			<span class="keyword">return</span> checked.allChecked();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)(jQuery,<span class="built_in">window</span>,<span class="built_in">document</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>如何使用，往下看
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#filled-all'</span>).MySelect(&#123;<span class="string">'select'</span>:<span class="string">'.filled-one'</span>&#125;);</span><br></pre></td></tr></table></figure>
+</code></pre>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/02/15/jquery/checkbox.select/" class="archive-article-date">
+  	<time datetime="2017-02-15T09:46:36.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-15</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="posts-odoo-install" class="article article-type-posts" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -422,7 +468,7 @@
 
 
   
-    <article id="post-bscarousel" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-jquery/bscarousel" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -432,7 +478,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/11/bscarousel/">bootstrap源码解析之Carousel插件</a>
+      <a class="article-title" href="/2016/05/11/jquery/bscarousel/">bootstrap源码解析之Carousel插件</a>
     </h1>
   
 
@@ -447,7 +493,7 @@
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/05/11/bscarousel/" class="archive-article-date">
+      <a href="/2016/05/11/jquery/bscarousel/" class="archive-article-date">
   	<time datetime="2016-05-11T03:47:49.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-11</time>
 </a>
       
@@ -478,7 +524,7 @@
 
 
   
-    <article id="post-boot31" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-jquery/boot31" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -488,7 +534,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/06/boot31/">bootstrap源码解析之Alert插件</a>
+      <a class="article-title" href="/2016/05/06/jquery/boot31/">bootstrap源码解析之Alert插件</a>
     </h1>
   
 
@@ -505,7 +551,7 @@
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/05/06/boot31/" class="archive-article-date">
+      <a href="/2016/05/06/jquery/boot31/" class="archive-article-date">
   	<time datetime="2016-05-06T07:44:13.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-06</time>
 </a>
       
@@ -747,64 +793,6 @@
 
 
   
-    <article id="posts-angular-scope" class="article article-type-posts" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/20/angular-scope/">AngularJS深入(6) -- scope</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Angular作用域"><a href="#Angular作用域" class="headerlink" title="Angular作用域"></a>Angular作用域</h1><p>AngularJS存在四种作用域:</p>
-<blockquote>
-<p>1.普通的带原型继承的作用域 – ng-include, ng-switch, ng-controller, directive with scope: true；<br>2.普通的带原型继承的，并且有赋值行为的作用域 – ng-repeat，ng-repeat为每一个迭代项创建一个普通的有原型继承的子作用域，但同时在子作用域中创建新属性存储迭代项；<br>3.“Isolate”作用域 – directive with scope: {…}， 该作用域没有原型继承，但可以通过’=’, ‘@’, 和 ‘&amp;’与父作用域通信。<br>4.“transcluded”作用域 – directive with transclude: true，它也是普通的带原型继承的作用域，但它与“Isolate”作用域是相邻的好基友。</p>
-</blockquote>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/03/20/angular-scope/" class="archive-article-date">
-  	<time datetime="2016-03-20T05:51:56.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-20</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AngularJS/">AngularJS</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/js框架/">js框架</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -817,7 +805,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 小太阳
+    		&copy; 2017 小太阳
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

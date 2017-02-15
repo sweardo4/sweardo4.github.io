@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://www.xiaoluo.win">
+  <title>CikeSwear&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: jquery 插件之全选和取消全选date: 2016-05-20 23:01:29categories: jquery插件
+tags: jqueryprop和attr的区别jquery在1.6版本之后引入属性方法prop
+那这两者应该如何使用呢其实很简单
+
+对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。对于HTML元素我们自己自定义的DOM属性，在处理时，使用a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CikeSwear's blog">
+<meta property="og:url" content="http://www.xiaoluo.win/2017/02/15/jquery/checkbox.select/index.html">
+<meta property="og:site_name" content="CikeSwear's blog">
+<meta property="og:description" content="title: jquery 插件之全选和取消全选date: 2016-05-20 23:01:29categories: jquery插件
+tags: jqueryprop和attr的区别jquery在1.6版本之后引入属性方法prop
+那这两者应该如何使用呢其实很简单
+
+对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。对于HTML元素我们自己自定义的DOM属性，在处理时，使用a">
+<meta property="og:updated_time" content="2017-02-15T09:58:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CikeSwear's blog">
+<meta name="twitter:description" content="title: jquery 插件之全选和取消全选date: 2016-05-20 23:01:29categories: jquery插件
+tags: jqueryprop和attr的区别jquery在1.6版本之后引入属性方法prop
+那这两者应该如何使用呢其实很简单
+
+对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。对于HTML元素我们自己自定义的DOM属性，在处理时，使用a">
+  
+    <link rel="alternative" href="/atom.xml" title="CikeSwear&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/images/tou.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">小太阳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Building a better life together</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/categories/随想/">随想</a></li>
+	        
+				<li><a href="/tags/旅行/">旅行</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/sweardo4" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/313335675" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+		        
+					<a class="zhihu" target="_blank" href="http://www.zhihu.com/" title="zhihu">zhihu</a>
+		        
+					<a class="mail" target="_blank" href="/cikeswear@gmail.com" title="mail">mail</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/cikeswear" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">小太阳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/images/tou.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">小太阳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Building a better life together</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/随想/">随想</a></li>
+		        
+					<li><a href="/tags/旅行/">旅行</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sweardo4" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/313335675" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="/cikeswear@gmail.com" title="mail">mail</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/cikeswear" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-jquery/checkbox.select" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: jquery 插件之全选和取消全选<br>date: 2016-05-20 23:01:29<br>categories: jquery插件</p>
+<h2 id="tags-jquery"><a href="#tags-jquery" class="headerlink" title="tags: jquery"></a>tags: jquery</h2><h2 id="prop和attr的区别"><a href="#prop和attr的区别" class="headerlink" title="prop和attr的区别"></a>prop和attr的区别</h2><p>jquery在1.6版本之后引入属性方法prop</p>
+<p>那这两者应该如何使用呢<br>其实很简单</p>
+<blockquote>
+<p>对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。<br>对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。</p>
+</blockquote>
+<p>讲到这里就不得不说我之前遇到的一个问题，当遇到像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#chk1&quot;).prop(&quot;checked&quot;) == false</span><br><span class="line">$(&quot;#chk2&quot;).prop(&quot;checked&quot;) == true</span><br></pre></td></tr></table></figure></p>
+<p>如果上面使用attr方法，则会出现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#chk1&quot;).attr(&quot;checked&quot;) == undefined</span><br><span class="line">$(&quot;#chk2&quot;).attr(&quot;checked&quot;) == &quot;checked&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="checkbox全选和取消全选小插件"><a href="#checkbox全选和取消全选小插件" class="headerlink" title="checkbox全选和取消全选小插件"></a>checkbox全选和取消全选小插件</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">!(<span class="function"><span class="keyword">function</span>(<span class="params">$,window,document,undefined</span>)</span>&#123;</span><br><span class="line">		<span class="comment">/**</span><br><span class="line">		 * [MySelect description]</span><br><span class="line">		 * @param &#123;select&#125; ele     选择器</span><br><span class="line">		 * @param &#123;object&#125; options 控制对象</span><br><span class="line">		 */</span></span><br><span class="line">		<span class="keyword">var</span>  MySelect = <span class="function"><span class="keyword">function</span>(<span class="params">ele,options</span>)</span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.$element = ele,</span><br><span class="line">			<span class="keyword">this</span>.defaults = &#123;</span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="keyword">this</span>.setting = $.extend(&#123;&#125;,<span class="keyword">this</span>.defaults,options)</span><br><span class="line">		&#125;</span><br><span class="line">		MySelect.prototype = &#123;</span><br><span class="line">			allChecked:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">				that.$element.on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">					<span class="keyword">var</span> isChecked = (that.$element)[<span class="number">0</span>].checked;</span><br><span class="line">					$(that.setting.select).prop(<span class="string">'checked'</span>,isChecked);</span><br><span class="line">				&#125;)</span><br><span class="line">				$(that.setting.select).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">					<span class="keyword">var</span> allchecked = <span class="literal">true</span>;</span><br><span class="line">					$(that.setting.select).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">						$(<span class="keyword">this</span>).prop(<span class="string">'checked'</span>) ?  <span class="string">''</span> : allchecked = <span class="literal">false</span>;</span><br><span class="line">					&#125;)</span><br><span class="line">					<span class="keyword">if</span>(allchecked)&#123;</span><br><span class="line">					  that.$element.prop(<span class="string">'checked'</span>,<span class="literal">true</span>);</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">if</span>(!allchecked)&#123;</span><br><span class="line">					  that.$element.prop(<span class="string">'checked'</span>,<span class="literal">false</span>);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		$.fn.MySelect = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> checked = <span class="keyword">new</span> MySelect(<span class="keyword">this</span>, options);</span><br><span class="line">			<span class="keyword">return</span> checked.allChecked();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)(jQuery,<span class="built_in">window</span>,<span class="built_in">document</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>如何使用，往下看
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#filled-all'</span>).MySelect(&#123;<span class="string">'select'</span>:<span class="string">'.filled-one'</span>&#125;);</span><br></pre></td></tr></table></figure>
+</code></pre>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/02/15/jquery/checkbox.select/" class="archive-article-date">
+  	<time datetime="2017-02-15T09:46:36.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-15</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/17/odoo-install/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">odoo8.0安装</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="jquery/checkbox.select" data-title="" data-url="http://www.xiaoluo.win/2017/02/15/jquery/checkbox.select/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"cikeswear"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 小太阳
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/AngularJS/" style="font-size: 20px;">AngularJS</a> <a href="/tags/Event/" style="font-size: 10px;">Event</a> <a href="/tags/Velocity/" style="font-size: 10px;">Velocity</a> <a href="/tags/bs/" style="font-size: 15px;">bs</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/koa/" style="font-size: 10px;">koa</a> <a href="/tags/odoo8/" style="font-size: 10px;">odoo8</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-native/" style="font-size: 15px;">react-native</a> <a href="/tags/博客开通了/" style="font-size: 10px;">博客开通了</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/sweardo4">小太阳</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://weibo.com/u/313335675">宝宝</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">宝宝和小太阳的故事</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
