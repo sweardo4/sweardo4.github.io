@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.xiaoluo.win/about/index.html</loc>
+    
+    <lastmod>2017-02-16T08:17:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.xiaoluo.win/2016/05/20/jquery/checkbox.select/</loc>
     
     <lastmod>2017-02-16T02:54:32.000Z</lastmod>
@@ -103,13 +110,6 @@
     <loc>http://www.xiaoluo.win/2016/10/17/odoo-install/</loc>
     
     <lastmod>2016-10-31T03:30:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.xiaoluo.win/about/index.html</loc>
-    
-    <lastmod>2016-10-31T03:18:08.000Z</lastmod>
     
   </url>
   
