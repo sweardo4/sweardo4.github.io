@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>CikeSwear&#39;s blog</title>
-  <subtitle>Building a better life together</subtitle>
+  <title>小太阳&#39;s blog</title>
+  <subtitle>Better</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.xiaoluo.win/"/>
@@ -160,7 +160,7 @@
     <link href="http://www.xiaoluo.win/2016/05/20/jquery/checkbox.select/"/>
     <id>http://www.xiaoluo.win/2016/05/20/jquery/checkbox.select/</id>
     <published>2016-05-20T15:01:29.000Z</published>
-    <updated>2017-02-17T09:51:21.000Z</updated>
+    <updated>2017-02-17T09:56:23.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;prop和attr的区别&quot;&gt;&lt;a href=&quot;#prop和attr的区别&quot; class=&quot;headerlink&quot; title=&quot;prop和attr的区别&quot;&gt;&lt;/a&gt;prop和attr的区别&lt;/h2&gt;&lt;p&gt;jquery在1.6版本之后引入属性方法prop&lt;/p&gt;
 &lt;p&gt;那这两者应该如何使用呢&lt;br&gt;其实很简单&lt;/p&gt;
