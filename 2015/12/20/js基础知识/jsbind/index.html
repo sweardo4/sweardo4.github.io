@@ -7,27 +7,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>css居中 | 小太阳</title>
+  <title>JAVASCRIPT原生事件BIND | 小太阳</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="css," />
+    <meta name="keywords" content="JAVASCRIPT," />
   
 
-  <meta name="description" content="第一种垂直居中123456div&amp;#123;    position:absolute;    height:100%;    top:50%;    margin-top:-50%;&amp;#125;
-第二种垂直水平居中123456789img&amp;#123;    position: absolute;    top: 0;    left: 0;    right: 0;    bottom: 0;">
+  <meta name="description" content="方法1123456789function addEventHandler(oTarget, sEventType, fnHandler) &amp;#123;	if (oTarget.addEventListener) &amp;#123;		oTarget.addEventListener(sEventType, fnHandler, false);	&amp;#125; else if (oTarget.attach">
 <meta property="og:type" content="article">
-<meta property="og:title" content="css居中">
-<meta property="og:url" content="http://www.xiaoluo.win/2016/06/03/tbcenter/index.html">
+<meta property="og:title" content="JAVASCRIPT原生事件BIND">
+<meta property="og:url" content="http://www.xiaoluo.win/2015/12/20/js基础知识/jsbind/index.html">
 <meta property="og:site_name" content="小太阳">
-<meta property="og:description" content="第一种垂直居中123456div&amp;#123;    position:absolute;    height:100%;    top:50%;    margin-top:-50%;&amp;#125;
-第二种垂直水平居中123456789img&amp;#123;    position: absolute;    top: 0;    left: 0;    right: 0;    bottom: 0;">
-<meta property="og:updated_time" content="2016-11-03T07:53:07.000Z">
+<meta property="og:description" content="方法1123456789function addEventHandler(oTarget, sEventType, fnHandler) &amp;#123;	if (oTarget.addEventListener) &amp;#123;		oTarget.addEventListener(sEventType, fnHandler, false);	&amp;#125; else if (oTarget.attach">
+<meta property="og:updated_time" content="2017-02-24T10:33:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="css居中">
-<meta name="twitter:description" content="第一种垂直居中123456div&amp;#123;    position:absolute;    height:100%;    top:50%;    margin-top:-50%;&amp;#125;
-第二种垂直水平居中123456789img&amp;#123;    position: absolute;    top: 0;    left: 0;    right: 0;    bottom: 0;">
+<meta name="twitter:title" content="JAVASCRIPT原生事件BIND">
+<meta name="twitter:description" content="方法1123456789function addEventHandler(oTarget, sEventType, fnHandler) &amp;#123;	if (oTarget.addEventListener) &amp;#123;		oTarget.addEventListener(sEventType, fnHandler, false);	&amp;#125; else if (oTarget.attach">
 
   
 
@@ -199,22 +196,17 @@ ga('send', 'pageview');
 </div>
 
 
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一种垂直居中"><span class="toc-text">第一种垂直居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二种垂直水平居中"><span class="toc-text">第二种垂直水平居中</span></a></li></ol>
-  </div>
-
 
 
 <div class="content content-post CENTER">
-   <article id="post-tbcenter" class="article article-type-post" itemprop="blogPost">
+   <article id="post-js基础知识/jsbind" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">css居中</h1>
+    <h1 class="post-title">JAVASCRIPT原生事件BIND</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2016.06.03</span>
+        <span>2015.12.20</span>
       </span>
 
       
@@ -227,7 +219,7 @@ ga('send', 'pageview');
       
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/css/">css</a> / <a class="article-category-link" href="/categories/css/html/">html</a>
+    <a class="article-category-link" href="/categories/JAVASCRIPT基础知识/">JAVASCRIPT基础知识</a>
   </span>
 
 
@@ -244,7 +236,7 @@ ga('send', 'pageview');
 
       
         <i class="icon-comment"></i> 
-        <span class="ds-thread-count" data-thread-key="post-tbcenter"><i class="fa fa-spinner fa-spin"></i></span> 条评论
+        <span class="ds-thread-count" data-thread-key="post-js基础知识/jsbind"><i class="fa fa-spinner fa-spin"></i></span> 条评论
       
       
     </div>
@@ -252,8 +244,9 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <h3 id="第一种垂直居中"><a href="#第一种垂直居中" class="headerlink" title="第一种垂直居中"></a>第一种垂直居中</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>:absolute;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">top</span>:<span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>:-<span class="number">50%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="第二种垂直水平居中"><a href="#第二种垂直水平居中" class="headerlink" title="第二种垂直水平居中"></a>第二种垂直水平居中</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      <p>方法1<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addEventHandler</span>(<span class="params">oTarget, sEventType, fnHandler</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (oTarget.addEventListener) &#123;</span><br><span class="line">		oTarget.addEventListener(sEventType, fnHandler, <span class="literal">false</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (oTarget.attachEvent) &#123;</span><br><span class="line">		oTarget.attachEvent(<span class="string">"on"</span> + sEventType, fnHandler);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		oTarget[<span class="string">"on"</span> + sEventType] = fnHandler;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>方法2<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事件绑定</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addEvent</span>(<span class="params">o,s,fn</span>)</span>&#123;</span><br><span class="line">  o.attachEvent ? o.attachEvent(<span class="string">'on'</span>+s,fn):o.addEventListener(s,fn,<span class="literal">false</span>)</span><br><span class="line">  <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
     
   </div>
 </article>
@@ -283,10 +276,10 @@ ga('send', 'pageview');
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2016/05/20/jquery/checkbox.select/">
+    <a class="show pull-left" href="/2015/12/07/感想/winter/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2016/06/23/koa-start/">
+    <a class="show pull-right" href="/2016/01/08/angluar-example/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -395,8 +388,8 @@ ga('send', 'pageview');
     
   <section class="duoshuo-comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="post-tbcenter" 
-      data-title="css居中" data-url="http://www.xiaoluo.win/2016/06/03/tbcenter/index.html"></div>
+    <div class="ds-thread" data-thread-key="post-js基础知识/jsbind" 
+      data-title="JAVASCRIPT原生事件BIND" data-url="http://www.xiaoluo.win/2015/12/20/js基础知识/jsbind/index.html"></div>
     <!-- 多说评论框 end -->
   </section>
 
