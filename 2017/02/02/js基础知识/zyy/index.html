@@ -7,30 +7,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>js作用域 | 小太阳</title>
+  <title>JAVASCRIPT作用域 | 小太阳</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="js," />
+    <meta name="keywords" content="JAVASCRIPT," />
   
 
-  <meta name="description" content="首先先看词法作用域的含义。【词法作用域】js静态作用域，即指其在编译的阶段就可以决定变量的引用。静态作用域只跟变量定义的位置有关与代码执行的顺序无关。
-第一个栗子12345678910var x = 0;function foo() &amp;#123;  alert(x);//0&amp;#125;function bar() &amp;#123;  var x = 20;  foo();&amp;#125;bar();
-第二">
+  <meta name="description" content="首先先看词法作用域的含义。【词法作用域】JAVASCRIPT静态作用域，即指其在编译的阶段就可以决定变量的引用。静态作用域只跟变量定义的位置有关与代码执行的顺序无关。
+第一个栗子12345678910var x = 0;function foo() &amp;#123;  alert(x);//0&amp;#125;function bar() &amp;#123;  var x = 20;  foo();&amp;#125;b">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js作用域">
+<meta property="og:title" content="JAVASCRIPT作用域">
 <meta property="og:url" content="http://www.xiaoluo.win/2017/02/02/js基础知识/zyy/index.html">
 <meta property="og:site_name" content="小太阳">
-<meta property="og:description" content="首先先看词法作用域的含义。【词法作用域】js静态作用域，即指其在编译的阶段就可以决定变量的引用。静态作用域只跟变量定义的位置有关与代码执行的顺序无关。
-第一个栗子12345678910var x = 0;function foo() &amp;#123;  alert(x);//0&amp;#125;function bar() &amp;#123;  var x = 20;  foo();&amp;#125;bar();
-第二">
-<meta property="og:updated_time" content="2017-02-24T08:31:56.000Z">
+<meta property="og:description" content="首先先看词法作用域的含义。【词法作用域】JAVASCRIPT静态作用域，即指其在编译的阶段就可以决定变量的引用。静态作用域只跟变量定义的位置有关与代码执行的顺序无关。
+第一个栗子12345678910var x = 0;function foo() &amp;#123;  alert(x);//0&amp;#125;function bar() &amp;#123;  var x = 20;  foo();&amp;#125;b">
+<meta property="og:updated_time" content="2017-02-24T09:16:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js作用域">
-<meta name="twitter:description" content="首先先看词法作用域的含义。【词法作用域】js静态作用域，即指其在编译的阶段就可以决定变量的引用。静态作用域只跟变量定义的位置有关与代码执行的顺序无关。
-第一个栗子12345678910var x = 0;function foo() &amp;#123;  alert(x);//0&amp;#125;function bar() &amp;#123;  var x = 20;  foo();&amp;#125;bar();
-第二">
+<meta name="twitter:title" content="JAVASCRIPT作用域">
+<meta name="twitter:description" content="首先先看词法作用域的含义。【词法作用域】JAVASCRIPT静态作用域，即指其在编译的阶段就可以决定变量的引用。静态作用域只跟变量定义的位置有关与代码执行的顺序无关。
+第一个栗子12345678910var x = 0;function foo() &amp;#123;  alert(x);//0&amp;#125;function bar() &amp;#123;  var x = 20;  foo();&amp;#125;b">
 
   
 
@@ -207,7 +204,7 @@ ga('send', 'pageview');
 <div class="content content-post CENTER">
    <article id="post-js基础知识/zyy" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">js作用域</h1>
+    <h1 class="post-title">JAVASCRIPT作用域</h1>
 
     <div class="article-meta">
       <span>
@@ -225,7 +222,7 @@ ga('send', 'pageview');
       
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/js基础知识/">js基础知识</a>
+    <a class="article-category-link" href="/categories/JAVASCRIPT基础知识/">JAVASCRIPT基础知识</a>
   </span>
 
 
@@ -250,14 +247,14 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <p>首先先看词法作用域的含义。<br>【词法作用域】js静态作用域，即指其在编译的阶段就可以决定变量的引用。静态作用域只跟变量定义的位置有关与代码执行的顺序无关。</p>
+      <p>首先先看词法作用域的含义。<br>【词法作用域】JAVASCRIPT静态作用域，即指其在编译的阶段就可以决定变量的引用。静态作用域只跟变量定义的位置有关与代码执行的顺序无关。</p>
 <p>第一个栗子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(x);<span class="comment">//0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">20</span>;</span><br><span class="line">  foo();</span><br><span class="line">&#125;</span><br><span class="line">bar();</span><br></pre></td></tr></table></figure></p>
 <p>第二个栗子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(x);<span class="comment">//100</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">20</span>;</span><br><span class="line">  foo();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">100</span>;</span><br><span class="line">bar();</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>权威指南中说：Javascript中的函数“在定义它们的作用域里运行，而不是在执行它们的作用域里运行”</p>
 </blockquote>
-<p>js其没有块级作用域（只有函数作用域，就是只有 function 用于可以定义作用域）<br>第三个栗子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> c  = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">if</span>(!b)&#123;</span><br><span class="line">        <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(b);<span class="comment">//2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line"><span class="comment">//coding something</span></span><br><span class="line">&#125;</span><br><span class="line">fo();</span><br><span class="line"><span class="built_in">console</span>.log(i)<span class="comment">//10</span></span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//3</span></span><br><span class="line"><span class="built_in">console</span>.log(c);<span class="comment">//err c is not defined</span></span><br></pre></td></tr></table></figure></p>
-<p>this关键字<br>首先，必须搞清楚在JS里面，函数的几种调用方式:</p>
+<p>JAVASCRIPT其没有块级作用域（只有函数作用域，就是只有 function 用于可以定义作用域）<br>第三个栗子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> c  = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">if</span>(!b)&#123;</span><br><span class="line">        <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(b);<span class="comment">//2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line"><span class="comment">//coding something</span></span><br><span class="line">&#125;</span><br><span class="line">fo();</span><br><span class="line"><span class="built_in">console</span>.log(i)<span class="comment">//10</span></span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//3</span></span><br><span class="line"><span class="built_in">console</span>.log(c);<span class="comment">//err c is not defined</span></span><br></pre></td></tr></table></figure></p>
+<p>this关键字<br>首先，必须搞清楚在JAVASCRIPT里面，函数的几种调用方式:</p>
 <ul>
 <li>普通函数调用</li>
 <li>作为方法来调用</li>
@@ -414,7 +411,7 @@ ga('send', 'pageview');
   <section class="duoshuo-comments">
     <!-- 多说评论框 start -->
     <div class="ds-thread" data-thread-key="post-js基础知识/zyy" 
-      data-title="js作用域" data-url="http://www.xiaoluo.win/2017/02/02/js基础知识/zyy/index.html"></div>
+      data-title="JAVASCRIPT作用域" data-url="http://www.xiaoluo.win/2017/02/02/js基础知识/zyy/index.html"></div>
     <!-- 多说评论框 end -->
   </section>
 
