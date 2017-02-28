@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.xiaoluo.win/2016/05/20/jquery/checkbox.select/</loc>
+    <lastmod>2017-02-28T06:52:58.000Z</lastmod>
+    <data>
+        <display>
+        <title>jquery 插件之全选和取消全选</title>
+        <pubTime>2016-05-20T15:01:29.000Z</pubTime>
+        
+        <tag>jquery</tag>
+         
+         
+           
+             
+              <breadCrumb title="jquery插件" url="http://www.xiaoluo.win/categories/jquery%E6%8F%92%E4%BB%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.xiaoluo.win/2016/10/02/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/zyy/</loc>
     <lastmod>2017-02-28T06:49:34.000Z</lastmod>
     <data>
@@ -57,26 +77,6 @@
            
              
               <breadCrumb title="JAVASCRIPT基础知识" url="http://www.xiaoluo.win/categories/JAVASCRIPT%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/05/20/jquery/checkbox.select/</loc>
-    <lastmod>2017-02-28T06:42:28.000Z</lastmod>
-    <data>
-        <display>
-        <title>jquery 插件之全选和取消全选</title>
-        <pubTime>2016-05-20T15:01:29.000Z</pubTime>
-        
-        <tag>jquery</tag>
-         
-         
-           
-             
-              <breadCrumb title="jquery插件" url="http://www.xiaoluo.win/categories/jquery%E6%8F%92%E4%BB%B6/"/>
           
         </display>
     </data>
