@@ -254,6 +254,37 @@
   </entry>
   
   <entry>
+    <title>ionic 问题使用总结</title>
+    <link href="http://www.xiaoluo.win/2016/05/20/ionicerr/"/>
+    <id>http://www.xiaoluo.win/2016/05/20/ionicerr/</id>
+    <published>2016-05-20T15:31:50.000Z</published>
+    <updated>2017-03-09T07:09:43.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;ionic-问题使用总结&quot;&gt;&lt;a href=&quot;#ionic-问题使用总结&quot; class=&quot;headerlink&quot; title=&quot;ionic 问题使用总结&quot;&gt;&lt;/a&gt;ionic 问题使用总结&lt;/h3&gt;&lt;p&gt;ionic run android –prod –release&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;FAILURE: Build failed with an exception.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* What went wrong:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;A problem occurred configuring root project &lt;span class=&quot;string&quot;&gt;&#39;android&#39;&lt;/span&gt;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; You have not accepted the license agreements of the following SDK components:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [Android SDK Platform 25].&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Before building your project, you need to accept the license agreements and complete the installation of the missing components using the Android Studio SDK Manager.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Alternatively, to learn how to transfer the license agreements from one workstation to another, go to http://d.android.com/r/studio-ui/&lt;span class=&quot;built_in&quot;&gt;export&lt;/span&gt;-licenses.html&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* Try:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more &lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt; output.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;解决&lt;br&gt;使用命令android list sdk –all 找到所缺少的SDK components 序号&lt;br&gt;android update sdk -u -a -t 33  (33为我们找到的序号)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考资料&lt;br&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000008395219&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://segmentfault.com/a/1190000008395219&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;ionic-问题使用总结&quot;&gt;&lt;a href=&quot;#ionic-问题使用总结&quot; class=&quot;headerlink&quot; title=&quot;ionic 问题使用总结&quot;&gt;&lt;/a&gt;ionic 问题使用总结&lt;/h3&gt;&lt;p&gt;ionic run android –prod –relea
+    
+    </summary>
+    
+      <category term="ionic" scheme="http://www.xiaoluo.win/categories/ionic/"/>
+    
+    
+      <category term="ionic" scheme="http://www.xiaoluo.win/tags/ionic/"/>
+    
+  </entry>
+  
+  <entry>
     <title>jquery 插件之全选和取消全选</title>
     <link href="http://www.xiaoluo.win/2016/05/20/jquery/checkbox.select/"/>
     <id>http://www.xiaoluo.win/2016/05/20/jquery/checkbox.select/</id>
@@ -756,34 +787,6 @@
     
     
       <category term="AngularJS" scheme="http://www.xiaoluo.win/tags/AngularJS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>南王地-仙石化成人</title>
-    <link href="http://www.xiaoluo.win/2016/02/03/jade/"/>
-    <id>http://www.xiaoluo.win/2016/02/03/jade/</id>
-    <published>2016-02-03T12:10:29.000Z</published>
-    <updated>2016-07-05T08:25:49.000Z</updated>
-    
-    <content type="html">&lt;p&gt;今日有一仙石在这地方幻化成人，变得和我认识那个女子一样年纪，也巧不知怎么没过多久他们却成了好盆友，整日在山中一起玩耍，并没有因为出生而变的存在隔阂，就像出生在同一娘胎一样关系友好。只见的那仙石面容如白色海棠花一样，依稀有些淡红夹在其中，秀丽而端庄。&lt;br&gt;我是时常去这地的， 就这样仙石在这里生活的久了我们也就认识了，在这里我是对她有很多说不出的事情来，一次我是见到她哭了，也是我在这里第一次见到女孩哭，且哭的是那样的伤心，我不知道如何劝慰她，也不好意思去问到底发生了什么事情，我怕提起来她哭的更厉害了。&lt;br&gt;我们也是时常在一起玩耍，记得在一个集市上，她曾送我一个五彩的手环，那个手环我一直收藏者，有时我也带出来让别人看看，但是每一次她都不会出现。&lt;br&gt;我曾问过她喜欢读什么书？她说《红》，最喜欢的作家是张大小姐那个为爱而疯狂的传奇女子，巧的是我也是喜欢的，也不知她是什么时候读的，因此我觉察到我们的喜好大都是相同。&lt;br&gt;有些时候感觉我在故意远离这些人，也在故意远离这个地方，总感觉分离的日子进了，先远离一点别离之痛也就少一点吧！&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;有诗云云 :&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;相聚的终将相聚，别离的终将别离。&lt;/li&gt;
-&lt;li&gt;唱的是分离后的相聚，饮得是天落下的眼泪。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今日有一仙石在这地方幻化成人，变得和我认识那个女子一样年纪，也巧不知怎么没过多久他们却成了好盆友，整日在山中一起玩耍，并没有因为出生而变的存在隔阂，就像出生在同一娘胎一样关系友好。只见的那仙石面容如白色海棠花一样，依稀有些淡红夹在其中，秀丽而端庄。&lt;br&gt;我是时常去这地的，
-    
-    </summary>
-    
-      <category term="随想" scheme="http://www.xiaoluo.win/categories/%E9%9A%8F%E6%83%B3/"/>
-    
     
   </entry>
   
