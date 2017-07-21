@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.xiaoluo.win/2016/10/17/odoo-install/</loc>
+    <lastmod>2017-07-21T05:34:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>odoo8.0安装</title>
+        <pubTime>2016-10-17T13:51:56.000Z</pubTime>
+        
+        <tag>odoo8</tag>
+         
+         
+           
+             
+              <breadCrumb title="python" url="http://www.xiaoluo.win/categories/python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.xiaoluo.win/2016/05/20/ionicerr/</loc>
     <lastmod>2017-03-09T07:09:43.000Z</lastmod>
     <data>
@@ -341,26 +361,6 @@
            
              
               <breadCrumb title="js框架" url="http://www.xiaoluo.win/categories/js%E6%A1%86%E6%9E%B6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.xiaoluo.win/2016/10/17/odoo-install/</loc>
-    <lastmod>2016-10-31T03:30:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>odoo8.0安装</title>
-        <pubTime>2016-10-17T13:51:56.000Z</pubTime>
-        
-        <tag>odoo8</tag>
-         
-         
-           
-             
-              <breadCrumb title="python" url="http://www.xiaoluo.win/categories/python/"/>
           
         </display>
     </data>
